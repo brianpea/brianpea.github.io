@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="../works_styles.css">
+
+  <link rel="icon" href="../../favicon.gif" type="image/gif">
+
+  <title>Brian Pea</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="../../vh.js"></script>
+
+  <script>
+    function right1() {
+      document.getElementById("gallery").innerHTML = "<img src='PuppyCare_2.png'><a id='left' href='#' onclick='left1(); return false;'><</a><a id='right' href='#' onclick='right2(); return false;'>></a>";
+    }
+
+    function right2() {
+      document.getElementById("gallery").innerHTML = "<img src='PuppyCare_3.png'><a id='left' href='#' onclick='left2(); return false;'><</a><a id='right' href='#' onclick='right3(); return false;'>></a>";
+    }
+
+    function right3() {
+      document.getElementById("gallery").innerHTML = "<img src='PuppyCare_4.png'><a id='left' href='#' onclick='left3(); return false;'><</a><a id='right' href='#' onclick='right4(); return false;'>></a>";
+    }
+
+    function right4() {
+      document.getElementById("gallery").innerHTML = "<img src='PuppyCare_5.png'><a id='left' href='#' onclick='left4(); return false;'><</a>";
+    }
+
+    function left1() {
+      document.getElementById("gallery").innerHTML = "<img src='PuppyCare_1.png'><a id='right' href='#' onclick='right1(); return false;'>></a>";
+    }
+
+    function left2() {
+      document.getElementById("gallery").innerHTML = "<img src='PuppyCare_2.png'><a id='left' href='#' onclick='left1(); return false;'><</a><a id='right' href='#' onclick='right2(); return false;'>></a>";
+    }
+
+    function left3() {
+      document.getElementById("gallery").innerHTML = "<img src='PuppyCare_3.png'><a id='left' href='#' onclick='left2(); return false;'><</a><a id='right' href='#' onclick='right3(); return false;'>></a>";
+    }
+
+    function left4() {
+      document.getElementById("gallery").innerHTML = "<img src='PuppyCare_4.png'><a id='left' href='#' onclick='left3(); return false;'><</a><a id='right' href='#' onclick='right4(); return false;'>></a>";
+    }
+  </script>
+
+</head>
+
+<body>
+
+  <div class="nav">
+    <a href="/work" id="left">Work</a>
+    <a href="/" id="middle">Home</a>
+    <a href="/journal" id="right">Journal</a>
+  </div>
+
+  <div class="blocks">
+    <div id="block1" style="background: whitesmoke">
+      <div class="blockContent" id="gallery">
+        <img src='PuppyCare_1.png'>
+        <a id='right' href='#' onclick='right1(); return false;'>
+          >
+        </a>
+      </div>
+    </div>
+
+    <div id="block2" style="background: orangered">
+      <div class="blockContent">
+        <h1>The Mechanics of Puppy Care (2018)</h1>
+        <p>A 20 page Xerox booklet outlining a collaborative protocol for raising a puppy.</p>
+        <p>The booklet is available for download <a href="TheMechanicsOfPuppyCare.pdf">here</a>.</p>
+      </div>
+    </div>
+
+  </div>
+
+</body></html>

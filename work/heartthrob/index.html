@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="../works_styles.css">
+
+  <link rel="icon" href="../../favicon.gif" type="image/gif">
+
+  <title>Brian Pea</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="../../vh.js"></script>
+
+  <script>
+    function right1() {
+      document.getElementById("gallery").innerHTML = "<iframe id='sq' src='https://editor.p5js.org/bpea/embed/WA5zQrZj6'></iframe><a id='left' href='#' onclick='left1(); return false;'><</a><a id='right' href='#' onclick='right2(); return false;'>></a>";
+    }
+
+    function right2() {
+      document.getElementById("gallery").innerHTML = "<iframe id='sq' src='https://editor.p5js.org/bpea/embed/1C5hX6h8P'></iframe><a id='left' href='#' onclick='left2(); return false;'><</a>";
+    }
+
+    function left1() {
+      document.getElementById("gallery").innerHTML = "<iframe id='sq' src='https://editor.p5js.org/bpea/embed/SOyTaDXxX'></iframe><a id='right' href='#' onclick='right1(); return false;'>></a>";
+    }
+
+    function left2() {
+      document.getElementById("gallery").innerHTML = "<iframe id='sq' src='https://editor.p5js.org/bpea/embed/WA5zQrZj6'></iframe><a id='left' href='#' onclick='left1(); return false;'><</a><a id='right' href='#' onclick='right2(); return false;'>></a>";
+    }
+  </script>
+
+</head>
+
+<body>
+
+  <div class="nav">
+    <a href="/work" id="left">Work</a>
+    <a href="/" id="middle">Home</a>
+    <a href="/journal" id="right">Journal</a>
+  </div>
+
+  <div class="blocks">
+    <div id="block1" style="background: white">
+      <div class="blockContent" id="gallery">
+        <iframe id="sq" src='https://editor.p5js.org/bpea/embed/SOyTaDXxX'></iframe>
+        <a id='right' href='#' onclick='right1(); return false;'>
+          >
+        </a>
+      </div>
+    </div>
+
+    <div id="block2" style="background: mistyrose">
+      <div class="blockContent">
+        <h1>Heartthrob (2017)</h1>
+        <p>A series of Javascript-based animations of Heartthrob, the good-natured Valentine boy with yellow sneakers.</p>
+      </div>
+    </div>
+
+  </div>
+
+</body></html>

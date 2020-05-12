@@ -1,0 +1,159 @@
+body {
+  background: yellow;
+  font-family: monospace;
+  margin: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+a {
+  font-size: 1em;
+  font-weight: lighter;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+a {
+  color: black;
+}
+
+.nav {
+  position: fixed;
+  z-index: 2;
+}
+
+.nav #left {
+  position: fixed;
+  left: 25px;
+  bottom: 25px;
+}
+
+.nav #middle {
+  position: fixed;
+  left: 50vw;
+  bottom: 25px;
+  transform: translate(-50%);
+}
+
+.nav #right {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+}
+
+.blocks {
+  z-index: 1;
+}
+
+.blocks h1 {
+  font-size: 1em;
+  font-weight: lighter;
+}
+
+.blockContent {
+  padding: 25px;
+  display: inline-block;
+}
+
+#block1 {
+  position: fixed;
+  width: 75vw;
+  height: calc(var(--vh, 1vh) * 100);
+  border: 0;
+  overflow: scroll;
+}
+
+#block1 img,
+video {
+  width: 50vw;
+  position: fixed;
+  top: calc(var(--vh, 1vh) * 50);
+  left: 37.5vw;
+  transform: translate(-50%, -50%);
+}
+
+#block1 #rect {
+  width: 50vw;
+  position: fixed;
+  top: calc(var(--vh, 1vh) * 50);
+  left: 37.5vw;
+  transform: translate(-50%, -50%);
+  border: 0;
+  text-align: center;
+}
+
+#block1 #sq {
+  width: 50vw;
+  height: 50vw;
+  position: fixed;
+  top: calc(var(--vh, 1vh) * 50);
+  left: 37.5vw;
+  transform: translate(-50%, -50%);
+  border: 0;
+}
+
+#block1 #left {
+  position: absolute;
+  left: 25px;
+  top: calc(var(--vh, 1vh) * 50);
+  transform: translate(0, -50%);
+}
+
+#block1 #right {
+  position: absolute;
+  right: 25px;
+  top: calc(var(--vh, 1vh) * 50);
+  transform: translate(0, -50%);
+}
+
+#block2 {
+  position: fixed;
+  left: 75vw;
+  width: 25vw;
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: scroll;
+}
+
+@media (max-width:750px) {
+  #block1 {
+    top: calc(var(--vh, 1vh) * 35);
+    width: 100vw;
+    height: calc(var(--vh, 1vh) * 65);
+  }
+
+  #block1 img,
+  video {
+    width: 75vw;
+    top: calc(var(--vh, 1vh) * 67.5);
+    left: 50vw;
+  }
+
+  #block1 #rect {
+    width: 75vw;
+    top: calc(var(--vh, 1vh) * 67.5);
+    left: 50vw;
+  }
+
+  #block1 #sq {
+    width: 75vw;
+    height: 75vw;
+    top: calc(var(--vh, 1vh) * 67.5);
+    left: 50vw;
+  }
+
+  #block1 #left {
+    top: calc(var(--vh, 1vh) * 33.75);
+  }
+
+  #block1 #right {
+    top: calc(var(--vh, 1vh) * 33.75);
+  }
+
+  #block2 {
+    left: 0;
+    width: 100vw;
+    height: calc(var(--vh, 1vh) * 35);
+  }
+}

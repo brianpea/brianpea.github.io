@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="../works_styles.css">
+
+  <link rel="icon" href="../../favicon.gif" type="image/gif">
+
+  <title>Brian Pea</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="../../vh.js"></script>
+
+  <script>
+    function right1() {
+      document.getElementById("gallery").innerHTML = "<img src='HugOWar_2.jpg'><a id='left' href='#' onclick='left2()'; return false;'><</a><a id='right' href='#' onclick='right2()'; return false;'>></a>";
+    }
+
+    function right2() {
+      document.getElementById("gallery").innerHTML = "<img src='HugOWar_3.jpg'><a id='left' href='#' onclick='left3()'; return false;'><</a><a id='right' href='#' onclick='right3()'; return false;'>></a>";
+    }
+
+    function right3() {
+      document.getElementById("gallery").innerHTML = "<img src='HugOWar_4.jpg'><a id='left' href='#' onclick='left4()'; return false;'><</a>";
+    }
+
+    function left2() {
+      document.getElementById("gallery").innerHTML = "<img src='HugOWar_1.jpg'><a id='right' href='#' onclick='right1()'; return false;'>></a>";
+    }
+
+    function left3() {
+      document.getElementById("gallery").innerHTML = "<img src='HugOWar_2.jpg'><a id='left' href='#' onclick='left2()'; return false;'><</a><a id='right' href='#' onclick='right2()'; return false;'>></a>";
+    }
+
+    function left4() {
+      document.getElementById("gallery").innerHTML = "<img src='HugOWar_3.jpg'><a id='left' href='#' onclick='left3()'; return false;'><</a>";
+    }
+  </script>
+
+</head>
+
+<body>
+
+  <div class="nav">
+    <a href="/work" id="left">Work</a>
+    <a href="/" id="middle">Home</a>
+    <a href="/journal" id="right">Journal</a>
+  </div>
+
+  <div class="blocks">
+    <div id="block1" style="background: lawngreen">
+      <div class="blockContent" id="gallery">
+        <img src='HugOWar_1.jpg'>
+        <a id='right' href='#' onclick='right1(); return false;'>
+          >
+        </a>
+      </div>
+    </div>
+
+    <div id="block2" style="background: lemonchiffon">
+      <div class="blockContent">
+        <h1>HugOWar (2019)</h1>
+        <p>A short film, accompanied by custom audio software and Riso prints, meditating on conflicts within children's interests and rights.</p>
+        <p>Special thanks to Chuck Sheetz, Sarah Rara, and Julian Stein.</p>
+      </div>
+    </div>
+
+  </div>
+
+</body></html>

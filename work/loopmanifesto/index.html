@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="../works_styles.css">
+
+  <link rel="icon" href="../../favicon.gif" type="image/gif">
+
+  <title>Brian Pea</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="../../vh.js"></script>
+
+  <script>
+    function right1() {
+      document.getElementById("gallery").innerHTML = "<img src='LoopManifesto_2.png'><a id='left' href='#' onclick='left1(); return false;'><</a><a id='right' href='#' onclick='right2(); return false;'>></a>";
+    }
+
+    function right2() {
+      document.getElementById("gallery").innerHTML = "<img src='LoopManifesto_3.png'><a id='left' href='#' onclick='left2(); return false;'><</a><a id='right' href='#' onclick='right3(); return false;'>></a>";
+    }
+
+    function right3() {
+      document.getElementById("gallery").innerHTML = "<img src='LoopManifesto_4.png'><a id='left' href='#' onclick='left3(); return false;'><</a>";
+    }
+
+    function left1() {
+      document.getElementById("gallery").innerHTML = "<img src='LoopManifesto_1.png'><a id='right' href='#' onclick='right1(); return false;'>></a>";
+    }
+
+    function left2() {
+      document.getElementById("gallery").innerHTML = "<img src='LoopManifesto_2.png'><a id='left' href='#' onclick='left1(); return false;'><</a><a id='right' href='#' onclick='right2(); return false;'>></a>";
+    }
+
+    function left3() {
+      document.getElementById("gallery").innerHTML = "<img src='LoopManifesto_3.png'><a id='left' href='#' onclick='left2(); return false;'><</a><a id='right' href='#' onclick='right3(); return false;'>></a>";
+    }
+  </script>
+
+</head>
+
+<body>
+
+  <div class="nav">
+    <a href="/work" id="left">Work</a>
+    <a href="/" id="middle">Home</a>
+    <a href="/journal" id="right">Journal</a>
+  </div>
+
+  <div class="blocks">
+    <div id="block1" style="background: deeppink">
+      <div class="blockContent" id="gallery">
+        <img src='LoopManifesto_1.png'>
+        <a id='right' href='#' onclick='right1(); return false;'>
+          >
+        </a>
+      </div>
+    </div>
+
+    <div id="block2" style="background: lightyellow">
+      <div class="blockContent">
+        <h1>The Loop Manifesto (2019)</h1>
+        <p>A large-format Riso printed book on the cyclical systems that supply our water, based on research on various invisible sources of water pollution and their exponential consequences when industrialized.</p>
+      </div>
+    </div>
+
+  </div>
+
+</body></html>
