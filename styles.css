@@ -1,0 +1,44 @@
+body {
+  background: yellow;
+  font-family: monospace;
+  margin: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+a {
+  font-size: 1em;
+  font-weight: lighter;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+a {
+  color: black;
+}
+
+.nav {
+  position: fixed;
+  z-index: 2;
+}
+
+.nav #left {
+  position: fixed;
+  left: 25px;
+  bottom: 25px;
+}
+
+.nav #middle {
+  position: fixed;
+  left: 50vw;
+  bottom: 25px;
+  transform: translate(-50%);
+}
+
+.nav #right {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+}
