@@ -29,6 +29,10 @@
   overflow: scroll;
 }
 
+#block2 .links {
+  display: none;
+}
+
 #block3 {
   position: fixed;
   left: 35vw;
@@ -40,6 +44,14 @@
 
 #block3 img {
   width: 100%;
+}
+
+#block3 .media {
+  display: none;
+}
+
+#block3 #img0 {
+  display: inline-block;
 }
 
 #img {

@@ -13,43 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <script src="../../vh.js"></script>
-
-  <script>
-    function link1() {
-      document.getElementById("link").innerHTML = "<p><a href='/work/hugowar'>HugOWar</a><br><a href='/work/flowerhaircut'>Do Flowers Get Haircuts?</a><br><a href='/work/heartthrob'>Heartthrob</a></p><p><a href='/reel'>Animation Reel</a>";
-      document.getElementById("img").innerHTML = "<a href='/work/hugowar'><img src='HugOWar.jpg' alt='The artist viewing an animated butterfly drinking nectar.'></a><p>HugOWar (2019)</p>";
-
-      colorBlock();
-    }
-
-    function link2() {
-      document.getElementById("link").innerHTML = "<p><a href='/work/tyketalks'>TykeTalks</a><br><a href='/work/homebodys'>The Homebody's</a></p>";
-      document.getElementById("img").innerHTML = "<a href='/work/tyketalks'><img src='TykeTalks.jpg' alt='A young girl running away, with caption &quot;Turns into? Butterfly.&quot;'></a><p>TykeTalks (2018)</p>";
-
-      colorBlock();
-    }
-
-    function link3() {
-      document.getElementById("link").innerHTML = "<p><a href='/work/platelandia'>Platelandia</a><br><a href='/work/loopmanifesto'>The Loop Manifesto</a><br><a href='/work/puppycare'>The Mechanics of Puppy Care</a></p>";
-      document.getElementById("img").innerHTML = "<a href='/work/platelandia'><img src='Platelandia.png' alt='An illustration of a side-view mirror looking at some odd characters.'></a><p>Platelandia (2019)</p>";
-
-      colorBlock();
-    }
-
-    function link4() {
-      document.getElementById("link").innerHTML = "<p><a href='/work/animatethefuture'>Animate The Future!</a></p>";
-      document.getElementById("img").innerHTML = "<a href='/work/animatethefuture'><img src='AnimateTheFuture.jpg' alt='A student&apos;s claymation puppet on set.'></a><p>Animate The Future! (2017)</p>";
-
-      colorBlock();
-    }
-
-    function link5() {
-      document.getElementById("link").innerHTML = "<p><a href='/work/communikeys'>CommuniKeys</a></p>";
-      document.getElementById("img").innerHTML = "<a href='/work/communikeys'><img src='CommuniKeys.jpg' alt='A soft sculpture on the backrest of a public bench.'></a><p>CommuniKeys (2020)</p>";
-
-      colorBlock();
-    }
-  </script>
+  <script src="work.js"></script>
 
 </head>
 
@@ -65,29 +29,80 @@
     <div id="block1">
       <div class="blockContent">
         <h1>Work</h1>
-        <p><a href="#" onclick="link1(); return false;">Animation</a>
-          <br><a href="#" onclick="link2(); return false;">Video</a>
-          <br><a href="#" onclick="link3(); return false;">Web/Print</a>
+        <p><a href="#" onclick="work(1); return false;">Animation</a>
+          <br><a href="#" onclick="work(2); return false;">Video</a>
+          <br><a href="#" onclick="work(3); return false;">Web/Print</a>
         </p>
-        <p><a href="#" onclick="link4(); return false;">Teaching</a>
-          <br><a href="#" onclick="link5(); return false;">Community Engagement</a>
+        <p><a href="#" onclick="work(4); return false;">Teaching</a>
+          <br><a href="#" onclick="work(5); return false;">Community Engagement</a>
         </p>
       </div>
     </div>
 
     <div id="block2">
       <div class="blockContent">
-        <div id="link"></div>
+
+        <div class="links" id="link1">
+          <p><a href='/work/hugowar'>HugOWar</a>
+            <br><a href='/work/flowerhaircut'>Do Flowers Get Haircuts?</a>
+            <br><a href='/work/heartthrob'>Heartthrob</a></p>
+          <p><a href='/reel'>Animation Reel</a></p>
+        </div>
+        <div class="links" id="link2">
+          <p><a href='/work/tyketalks'>TykeTalks</a>
+            <br><a href='/work/homebodys'>The Homebody's</a></p>
+        </div>
+        <div class="links" id="link3">
+          <p><a href='/work/harlequins'>Harlequins</a>
+            <br><a href='/work/platelandia'>Platelandia</a>
+            <br><a href='/work/loopmanifesto'>The Loop Manifesto</a>
+            <br><a href='/work/puppycare'>The Mechanics of Puppy Care</a></p>
+        </div>
+        <div class="links" id="link4">
+          <p><a href='/work/animatethefuture'>Animate The Future!</a></p>
+        </div>
+        <div class="links" id="link5">
+          <p><a href='/work/communikeys'>CommuniKeys</a></p>
+        </div>
+
       </div>
     </div>
 
     <div id="block3">
       <div class="blockContent" id="img">
-        <a href='/work/homebodys'><img src='TheHomebodys.png' alt='Brian pulling a ceiling fan pull.'></a>
-        <p>The Homebody's (2019)</p>
+
+        <div class="media" id="img0">
+          <a href='/work/homebodys'><img src='TheHomebodys.png' alt='Brian pulling a ceiling fan pull.'></a>
+          <p>The Homebody's (2019)</p>
+        </div>
+        <div class="media" id="img1">
+          <a href='/work/hugowar'><img src='HugOWar.jpg' alt='The artist viewing an animated butterfly drinking nectar.'></a>
+          <p>HugOWar (2019)</p>
+        </div>
+        <div class="media" id="img2">
+          <a href='/work/tyketalks'><img src='TykeTalks.jpg' alt='A young girl running away, with caption &quot;Turns into? Butterfly.&quot;'></a>
+          <p>TykeTalks (2018)</p>
+        </div>
+        <div class="media" id="img3">
+          <a href='/work/platelandia'><img src='Platelandia.png' alt='An illustration of a side-view mirror looking at some odd characters.'></a>
+          <p>Platelandia (2019)</p>
+        </div>
+        <div class="media" id="img4">
+          <a href='/work/animatethefuture'><img src='AnimateTheFuture.jpg' alt='A student&apos;s claymation puppet on set.'></a>
+          <p>Animate The Future! (2017)</p>
+        </div>
+        <div class="media" id="img5">
+          <a href='/work/communikeys'><img src='CommuniKeys.jpg' alt='A soft sculpture on the backrest of a public bench.'></a>
+          <p>CommuniKeys (2020)</p>
+        </div>
+
       </div>
     </div>
 
   </div>
 
-</body></html>
+
+
+</body>
+
+</html>

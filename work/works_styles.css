@@ -55,6 +55,7 @@ video {
 }
 
 #block1 #prev {
+  margin: 0;
   position: absolute;
   left: 25px;
   top: calc(var(--vh, 1vh) * 50);
@@ -62,6 +63,7 @@ video {
 }
 
 #block1 #next {
+  margin: 0;
   position: absolute;
   right: 25px;
   top: calc(var(--vh, 1vh) * 50);
