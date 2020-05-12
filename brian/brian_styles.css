@@ -1,0 +1,100 @@
+body {
+  background: yellow;
+  font-family: monospace;
+  margin: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+a {
+  font-size: 1em;
+  font-weight: lighter;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+a {
+  color: black;
+}
+
+.nav {
+  position: fixed;
+  z-index: 2;
+}
+
+.nav #left {
+  position: fixed;
+  left: 25px;
+  bottom: 25px;
+}
+
+.nav #middle {
+  position: fixed;
+  left: 50vw;
+  bottom: 25px;
+  transform: translate(-50%);
+}
+
+.nav #right {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+}
+
+.blocks {
+  z-index: 1;
+}
+
+.blockContent {
+  padding: 25px;
+  display: inline-block;
+}
+
+#block1 {
+  position: fixed;
+  width: 50vw;
+  height: calc(var(--vh, 1vh) * 100);
+  background-color: violet;
+  overflow: scroll;
+}
+
+#block2 {
+  position: fixed;
+  left: 50vw;
+  width: 50vw;
+  height: calc(var(--vh, 1vh) * 50);
+  background-color: greenyellow;
+  overflow: scroll;
+}
+
+#block3 {
+  position: fixed;
+  left: 50vw;
+  top: calc(var(--vh, 1vh) * 50);
+  width: 50vw;
+  height: calc(var(--vh, 1vh) * 50);
+  background-color: LightCyan;
+  overflow: scroll;
+}
+
+@media (max-width:750px) {
+  #block1 {
+    width: 100vw;
+    height: calc(var(--vh, 1vh) * 50);
+  }
+
+  #block2 {
+    left: 0;
+    top: calc(var(--vh, 1vh) * 50);
+    width: 50vw;
+    height: calc(var(--vh, 1vh) * 50);
+  }
+
+  #block3 {
+    top: calc(var(--vh, 1vh) * 50);
+    width: 50vw;
+    height: calc(var(--vh, 1vh) * 50);
+  }
+}
