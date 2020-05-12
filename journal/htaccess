@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /journal
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$  proxy.php?url=https://peanutttk-journal.tumblr.com/$1
