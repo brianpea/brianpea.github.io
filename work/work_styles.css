@@ -70,7 +70,7 @@ a {
   top: calc(var(--vh, 1vh) * 50);
   width: 35vw;
   height: calc(var(--vh, 1vh) * 50);
-  background: orange;
+  background: lightskyblue;
   overflow: scroll;
 }
 
