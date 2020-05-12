@@ -14,24 +14,6 @@
 
   <script src="../../vh.js"></script>
 
-  <script>
-    function right1() {
-      document.getElementById("gallery").innerHTML = "<iframe id='sq' src='https://editor.p5js.org/bpea/embed/WA5zQrZj6'></iframe><a id='left' href='#' onclick='left1(); return false;'><</a><a id='right' href='#' onclick='right2(); return false;'>></a>";
-    }
-
-    function right2() {
-      document.getElementById("gallery").innerHTML = "<iframe id='sq' src='https://editor.p5js.org/bpea/embed/1C5hX6h8P'></iframe><a id='left' href='#' onclick='left2(); return false;'><</a>";
-    }
-
-    function left1() {
-      document.getElementById("gallery").innerHTML = "<iframe id='sq' src='https://editor.p5js.org/bpea/embed/SOyTaDXxX'></iframe><a id='right' href='#' onclick='right1(); return false;'>></a>";
-    }
-
-    function left2() {
-      document.getElementById("gallery").innerHTML = "<iframe id='sq' src='https://editor.p5js.org/bpea/embed/WA5zQrZj6'></iframe><a id='left' href='#' onclick='left1(); return false;'><</a><a id='right' href='#' onclick='right2(); return false;'>></a>";
-    }
-  </script>
-
 </head>
 
 <body>
@@ -45,10 +27,16 @@
   <div class="blocks">
     <div id="block1" style="background: white">
       <div class="blockContent" id="gallery">
-        <iframe id="sq" src='https://editor.p5js.org/bpea/embed/SOyTaDXxX'></iframe>
-        <a id='right' href='#' onclick='right1(); return false;'>
-          >
-        </a>
+
+        <iframe class="media" id="sq" src='https://editor.p5js.org/bpea/embed/SOyTaDXxX'></iframe>
+        <iframe class="media" id='sq' src='https://editor.p5js.org/bpea/embed/WA5zQrZj6'></iframe>
+        <iframe class="media" id='sq' src='https://editor.p5js.org/bpea/embed/1C5hX6h8P'></iframe>
+
+        <a id='prev' href='#' onclick='arrow(-1);'>&lt;</a>
+        <a id='next' href='#' onclick='arrow(1);'>&gt;</a>
+
+        <script src="../gallery.js"></script>
+
       </div>
     </div>
 

@@ -18,33 +18,15 @@
 
   <script>
     function key1() {
-      document.getElementById("key").innerHTML = "Voonex";
+      document.getElementById("key1").innerHTML = "Voonex";
     }
 
     function key2() {
-      document.getElementById("key").innerHTML = "Bistup";
+      document.getElementById("key2").innerHTML = "Bistup";
     }
 
     function key3() {
-      document.getElementById("key").innerHTML = "Zapster";
-    }
-  </script>
-
-  <script>
-    function right1() {
-      document.getElementById("gallery").innerHTML = "<div id='rect'><div style='padding:75% 0 0 0;position:relative;'><iframe src='https://player.vimeo.com/video/390760528?color=e0ffff&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe></div><p id='key'><a href='#' onclick='key2(); return false;'>Password</a></p></div><a id='left' href='#' onclick='left1(); return false;'><</a><a id='right' href='#' onclick='right2(); return false;'>></a>";
-    }
-
-    function right2() {
-      document.getElementById("gallery").innerHTML = "<div id='rect'><div style='padding:75% 0 0 0;position:relative;'><iframe src='https://player.vimeo.com/video/390760645?color=e0ffff&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe></div><p id='key'><a href='#' onclick='key3(); return false;'>Password</a></p></div><a id='left' href='#' onclick='left2(); return false;'><</a>";
-    }
-
-    function left1() {
-      document.getElementById("gallery").innerHTML = "<div id='rect'><div style='padding:75% 0 0 0;position:relative;'><iframe src='https://player.vimeo.com/video/390760388?color=e0ffff&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe></div><p id='key'><a href='#' onclick='key1(); return false;'>Password</a></p></div><a id='right' href='#' onclick='right1(); return false;'>></a>";
-    }
-
-    function left2() {
-      document.getElementById("gallery").innerHTML = "<div id='rect'><div style='padding:75% 0 0 0;position:relative;'><iframe src='https://player.vimeo.com/video/390760528?color=e0ffff&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe></div><p id='key'><a href='#' onclick='key2(); return false;'>Password</a></p></div><a id='left' href='#' onclick='left1(); return false;'><</a><a id='right' href='#' onclick='right2(); return false;'>></a>";
+      document.getElementById("key3").innerHTML = "Zapster";
     }
   </script>
 
@@ -61,15 +43,31 @@
   <div class="blocks">
     <div id="block1" style="background: darkmagenta;">
       <div class="blockContent" id="gallery">
-        <div id='rect'>
+
+        <div class="media" id='rect'>
           <div style='padding:75% 0 0 0;position:relative;'>
             <iframe src='https://player.vimeo.com/video/390760388?color=e0ffff&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe>
           </div>
-          <p id='key'><a href='#' onclick='key1(); return false;'>Password</a></p>
+          <p id='key1'><a href='#' onclick='key1(); return false;'>Password</a></p>
         </div>
-        <a id='right' href='#' onclick='right1(); return false;'>
-          >
-        </a>
+        <div class="media" id='rect'>
+          <div style='padding:75% 0 0 0;position:relative;'>
+            <iframe src='https://player.vimeo.com/video/390760528?color=e0ffff&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe>
+          </div>
+          <p id='key2'><a href='#' onclick='key2(); return false;'>Password</a></p>
+        </div>
+        <div class="media" id='rect'>
+          <div style='padding:75% 0 0 0;position:relative;'>
+            <iframe src='https://player.vimeo.com/video/390760645?color=e0ffff&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe>
+          </div>
+          <p id='key3'><a href='#' onclick='key3(); return false;'>Password</a></p>
+        </div>
+
+        <a id='prev' href='#' onclick='arrow(-1);'>&lt;</a>
+        <a id='next' href='#' onclick='arrow(1);'>&gt;</a>
+
+        <script src="../gallery.js"></script>
+
       </div>
     </div>
 

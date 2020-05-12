@@ -14,32 +14,6 @@
 
   <script src="../../vh.js"></script>
 
-  <script>
-    function right1() {
-      document.getElementById("gallery").innerHTML = "<img src='CommuniKeys_2.jpg' alt='A close-up of the left side of the sculpture.'><a id='left' href='#' onclick='left1(); return false;'><</a><a id='right' href='#' onclick='right2(); return false;'>></a>";
-    }
-
-    function right2() {
-      document.getElementById("gallery").innerHTML = "<img src='CommuniKeys_3.jpg' alt='A view of the right side of the sculpture.'><a id='left' href='#' onclick='left2(); return false;'><</a><a id='right' href='#' onclick='right3(); return false;'>></a>";
-    }
-
-    function right3() {
-      document.getElementById("gallery").innerHTML = "<img src='CommuniKeys_4.jpg' alt='A couple interacting with the sculpture.'><a id='left' href='#' onclick='left3(); return false;'><</a>";
-    }
-
-    function left1() {
-      document.getElementById("gallery").innerHTML = "<img src='CommuniKeys_1.jpg' alt='A front view of the sculpture installed on a public bench.'><a id='right' href='#' onclick='right1(); return false;'>></a>";
-    }
-
-    function left2() {
-      document.getElementById("gallery").innerHTML = "<img src='CommuniKeys_2.jpg' alt='A close-up of the left side of the sculpture.'><a id='left' href='#' onclick='left1(); return false;'><</a><a id='right' href='#' onclick='right2(); return false;'>></a>";
-    }
-
-    function left3() {
-      document.getElementById("gallery").innerHTML = "<img src='CommuniKeys_3.jpg' alt='A view of the right side of the sculpture.'><a id='left' href='#' onclick='left2(); return false;'><</a><a id='right' href='#' onclick='right3(); return false;'>></a>";
-    }
-  </script>
-
 </head>
 
 <body>
@@ -53,10 +27,17 @@
   <div class="blocks">
     <div id="block1" style="background: teal">
       <div class="blockContent" id="gallery">
-        <img src='CommuniKeys_1.jpg' alt='A front view of the sculpture installed on a public bench.'>
-        <a id='right' href='#' onclick='right1(); return false;'>
-          >
-        </a>
+
+        <img class="media" src='CommuniKeys_1.jpg' alt='A front view of the sculpture installed on a public bench.'>
+        <img class="media" src='CommuniKeys_2.jpg' alt='A close-up of the left side of the sculpture.'>
+        <img class="media" src='CommuniKeys_3.jpg' alt='A view of the right side of the sculpture.'>
+        <img class="media" src='CommuniKeys_4.jpg' alt='A couple interacting with the sculpture.'>
+
+        <a id='prev' href='#' onclick='arrow(-1);'>&lt;</a>
+        <a id='next' href='#' onclick='arrow(1);'>&gt;</a>
+
+        <script src="../gallery.js"></script>
+
       </div>
     </div>
 

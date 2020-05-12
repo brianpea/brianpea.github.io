@@ -14,32 +14,6 @@
 
   <script src="../../vh.js"></script>
 
-  <script>
-    function right1() {
-      document.getElementById("gallery").innerHTML = "<img src='LoopManifesto_2.png'><a id='left' href='#' onclick='left1(); return false;'><</a><a id='right' href='#' onclick='right2(); return false;'>></a>";
-    }
-
-    function right2() {
-      document.getElementById("gallery").innerHTML = "<img src='LoopManifesto_3.png'><a id='left' href='#' onclick='left2(); return false;'><</a><a id='right' href='#' onclick='right3(); return false;'>></a>";
-    }
-
-    function right3() {
-      document.getElementById("gallery").innerHTML = "<img src='LoopManifesto_4.png'><a id='left' href='#' onclick='left3(); return false;'><</a>";
-    }
-
-    function left1() {
-      document.getElementById("gallery").innerHTML = "<img src='LoopManifesto_1.png'><a id='right' href='#' onclick='right1(); return false;'>></a>";
-    }
-
-    function left2() {
-      document.getElementById("gallery").innerHTML = "<img src='LoopManifesto_2.png'><a id='left' href='#' onclick='left1(); return false;'><</a><a id='right' href='#' onclick='right2(); return false;'>></a>";
-    }
-
-    function left3() {
-      document.getElementById("gallery").innerHTML = "<img src='LoopManifesto_3.png'><a id='left' href='#' onclick='left2(); return false;'><</a><a id='right' href='#' onclick='right3(); return false;'>></a>";
-    }
-  </script>
-
 </head>
 
 <body>
@@ -53,10 +27,18 @@
   <div class="blocks">
     <div id="block1" style="background: deeppink">
       <div class="blockContent" id="gallery">
-        <img src='LoopManifesto_1.png'>
-        <a id='right' href='#' onclick='right1(); return false;'>
-          >
-        </a>
+
+        <img class="media" src='LoopManifesto_1.png'>
+        <img class="media" src='LoopManifesto_2.png'>
+        <img class="media" src='LoopManifesto_3.png'>
+        <img class="media" src='LoopManifesto_4.png'>
+
+
+        <a id='prev' href='#' onclick='arrow(-1);'>&lt;</a>
+        <a id='next' href='#' onclick='arrow(1);'>&gt;</a>
+
+        <script src="../gallery.js"></script>
+
       </div>
     </div>
 

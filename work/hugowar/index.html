@@ -14,32 +14,6 @@
 
   <script src="../../vh.js"></script>
 
-  <script>
-    function right1() {
-      document.getElementById("gallery").innerHTML = "<img src='HugOWar_2.jpg'><a id='left' href='#' onclick='left2()'; return false;'><</a><a id='right' href='#' onclick='right2()'; return false;'>></a>";
-    }
-
-    function right2() {
-      document.getElementById("gallery").innerHTML = "<img src='HugOWar_3.jpg'><a id='left' href='#' onclick='left3()'; return false;'><</a><a id='right' href='#' onclick='right3()'; return false;'>></a>";
-    }
-
-    function right3() {
-      document.getElementById("gallery").innerHTML = "<img src='HugOWar_4.jpg'><a id='left' href='#' onclick='left4()'; return false;'><</a>";
-    }
-
-    function left2() {
-      document.getElementById("gallery").innerHTML = "<img src='HugOWar_1.jpg'><a id='right' href='#' onclick='right1()'; return false;'>></a>";
-    }
-
-    function left3() {
-      document.getElementById("gallery").innerHTML = "<img src='HugOWar_2.jpg'><a id='left' href='#' onclick='left2()'; return false;'><</a><a id='right' href='#' onclick='right2()'; return false;'>></a>";
-    }
-
-    function left4() {
-      document.getElementById("gallery").innerHTML = "<img src='HugOWar_3.jpg'><a id='left' href='#' onclick='left3()'; return false;'><</a>";
-    }
-  </script>
-
 </head>
 
 <body>
@@ -53,10 +27,17 @@
   <div class="blocks">
     <div id="block1" style="background: lawngreen">
       <div class="blockContent" id="gallery">
-        <img src='HugOWar_1.jpg'>
-        <a id='right' href='#' onclick='right1(); return false;'>
-          >
-        </a>
+
+        <img class="media" src='HugOWar_1.jpg'>
+        <img class="media" src='HugOWar_2.jpg'>
+        <img class="media" src='HugOWar_3.jpg'>
+        <img class="media" src='HugOWar_4.jpg'>
+
+        <a id='prev' href='#' onclick='arrow(-1);'>&lt;</a>
+        <a id='next' href='#' onclick='arrow(1);'>&gt;</a>
+
+        <script src="../gallery.js"></script>
+
       </div>
     </div>
 

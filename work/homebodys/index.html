@@ -14,48 +14,6 @@
 
   <script src="../../vh.js"></script>
 
-  <script>
-    function right1() {
-      document.getElementById("gallery").innerHTML = "<img src='TheHomebodys_2.png'><a id='left' href='#' onclick='left2()'; return false;'><</a><a id='right' href='#' onclick='right2()'; return false;'>></a>";
-    }
-
-    function right2() {
-      document.getElementById("gallery").innerHTML = "<img src='TheHomebodys_3.png'><a id='left' href='#' onclick='left3()'; return false;'><</a><a id='right' href='#' onclick='right3()'; return false;'>></a>";
-    }
-
-    function right3() {
-      document.getElementById("gallery").innerHTML = "<img src='TheHomebodys_4.png'><a id='left' href='#' onclick='left4()'; return false;'><</a><a id='right' href='#' onclick='right4()'; return false;'>></a>";
-    }
-
-    function right4() {
-      document.getElementById("gallery").innerHTML = "<img src='TheHomebodys_5.png'><a id='left' href='#' onclick='left5()'; return false;'><</a><a id='right' href='#' onclick='right5()'; return false;'>></a>";
-    }
-
-    function right5() {
-      document.getElementById("gallery").innerHTML = "<img src='TheHomebodys_6.jpg'><a id='left' href='#' onclick='left6()'; return false;'><</a>";
-    }
-
-    function left2() {
-      document.getElementById("gallery").innerHTML = "<img src='TheHomebodys_1.png'><a id='right' href='#' onclick='right1()'; return false;'>></a>";
-    }
-
-    function left3() {
-      document.getElementById("gallery").innerHTML = "<img src='TheHomebodys_2.png'><a id='left' href='#' onclick='left2()'; return false;'><</a><a id='right' href='#' onclick='right2()'; return false;'>></a>";
-    }
-
-    function left4() {
-      document.getElementById("gallery").innerHTML = "<img src='TheHomebodys_3.png'><a id='left' href='#' onclick='left3()'; return false;'><</a><a id='right' href='#' onclick='right3()'; return false;'>></a>";
-    }
-
-    function left5() {
-      document.getElementById("gallery").innerHTML = "<img src='TheHomebodys_4.png'><a id='left' href='#' onclick='left4()'; return false;'><</a><a id='right' href='#' onclick='right4()'; return false;'>></a>";
-    }
-
-    function left6() {
-      document.getElementById("gallery").innerHTML = "<img src='TheHomebodys_5.png'><a id='left' href='#' onclick='left5()'; return false;'><</a><a id='right' href='#' onclick='right5()'; return false;'>></a>";
-    }
-  </script>
-
 </head>
 
 <body>
@@ -69,10 +27,19 @@
   <div class="blocks">
     <div id="block1" style="background: honeydew">
       <div class="blockContent" id="gallery">
-        <img src='TheHomebodys_1.png'>
-        <a id='right' href='#' onclick='right1(); return false;'>
-          >
-        </a>
+
+        <img class="media" src='TheHomebodys_1.png'>
+        <img class="media" src='TheHomebodys_2.png'>
+        <img class="media" src='TheHomebodys_3.png'>
+        <img class="media" src='TheHomebodys_4.png'>
+        <img class="media" src='TheHomebodys_5.png'>
+        <img class="media" src='TheHomebodys_6.jpg'>
+
+        <a id='prev' href='#' onclick='arrow(-1);'>&lt;</a>
+        <a id='next' href='#' onclick='arrow(1);'>&gt;</a>
+
+        <script src="../gallery.js"></script>
+
       </div>
     </div>
 

@@ -61,10 +61,18 @@
   <div class="blocks">
     <div id="block1" style="background: whitesmoke">
       <div class="blockContent" id="gallery">
-        <img src='PuppyCare_1.png'>
-        <a id='right' href='#' onclick='right1(); return false;'>
-          >
-        </a>
+
+        <img class="media" src='PuppyCare_1.png'>
+        <img class="media" src='PuppyCare_2.png'>
+        <img class="media" src='PuppyCare_3.png'>
+        <img class="media" src='PuppyCare_4.png'>
+        <img class="media" src='PuppyCare_5.png'>
+
+        <a id='prev' href='#' onclick='arrow(-1);'>&lt;</a>
+        <a id='next' href='#' onclick='arrow(1);'>&gt;</a>
+
+        <script src="../gallery.js"></script>
+
       </div>
     </div>
 

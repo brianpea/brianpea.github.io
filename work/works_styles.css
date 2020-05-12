@@ -22,7 +22,8 @@
 
 #block1 img,
 video {
-  width: 50vw;
+  max-width: 50vw;
+  max-height: calc(var(--vh, 1vh) * 75);
   position: fixed;
   top: calc(var(--vh, 1vh) * 50);
   left: 37.5vw;
@@ -49,14 +50,18 @@ video {
   border: 0;
 }
 
-#block1 #left {
+#block1 .media {
+  display: none;
+}
+
+#block1 #prev {
   position: absolute;
   left: 25px;
   top: calc(var(--vh, 1vh) * 50);
   transform: translate(0, -50%);
 }
 
-#block1 #right {
+#block1 #next {
   position: absolute;
   right: 25px;
   top: calc(var(--vh, 1vh) * 50);
@@ -84,7 +89,8 @@ video {
 
   #block1 img,
   video {
-    width: 75vw;
+    max-width: 75vw;
+    max-height: calc(var(--vh, 1vh) * 50);
     top: calc(var(--vh, 1vh) * 67.5);
     left: 50vw;
   }
@@ -102,11 +108,11 @@ video {
     left: 50vw;
   }
 
-  #block1 #left {
+  #block1 #prev {
     top: calc(var(--vh, 1vh) * 33.75);
   }
 
-  #block1 #right {
+  #block1 #next {
     top: calc(var(--vh, 1vh) * 33.75);
   }
 
