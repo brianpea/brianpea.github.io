@@ -14,9 +14,6 @@ function gallery() {
 
   media[position - 1].style.display = "inline-block";
 
-  console.log(position);
-  console.log(media.length);
-
   if (position == 1) {
     document.getElementById("prev").style.display = "none";
   } else {
