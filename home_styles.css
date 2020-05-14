@@ -1,8 +1,8 @@
-#shield {
+#star {
   position: fixed;
-  height: 100vh;
   width: 100vw;
-  z-index: 0;
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
 }
 
 #welcome {
@@ -12,4 +12,11 @@
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 1;
+}
+
+#shield {
+  position: fixed;
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
+  z-index: 0;
 }

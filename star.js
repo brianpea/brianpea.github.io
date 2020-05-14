@@ -1,35 +1,43 @@
+let Background;
+
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  var canvas = createCanvas(windowWidth, windowHeight - 1);
+  canvas.parent('star');
+
+  Background = color(255, 255, 0);
 }
 
 function draw() {
-  background(240, 248, 255);
-  var radius1;
-  var radius2 = 125;
+  let Color = color(255, 255, 0);
+  let Radius1_scale = 1;
+  let Radius2 = 125;
+  let Points = 9;
+  let Tightness = 0.25;
+  let Animate = millis() / 60000 * 60;
 
+  background(Background);
+
+  let radius1;
   if (windowWidth > windowHeight) {
-    radius1 = windowWidth * 1;
+    radius1 = windowWidth * Radius1_scale;
   } else {
-    radius1 = windowHeight * 1;
+    radius1 = windowHeight * Radius1_scale;
   }
-
-  var npoints = 9;
 
   push();
   translate(windowWidth * 0.5, windowHeight * 0.5);
   rotate(-HALF_PI);
+  stroke(Color);
+  fill(Color);
+  curveTightness(Tightness);
 
-  stroke(255, 255, 0);
-  fill(255, 255, 0);
-  star(0, 0, radius1, radius2, npoints);
+  star(0, 0, radius1, Radius2, Points);
   pop();
 }
 
-function star(x, y, radius1, radius2, npoints) {
-  let angle = TWO_PI / npoints;
+function star(x, y, radius1, radius2, points) {
+  let angle = TWO_PI / points;
   let halfRadius = radius2 + ((radius1 - radius2) / 2)
-
-  curveTightness(0.2);
 
   beginShape();
   for (let a = 0; a <= TWO_PI; a += angle) {
@@ -50,6 +58,10 @@ function star(x, y, radius1, radius2, npoints) {
     curveVertex(sx, sy);
   }
   endShape();
+}
+
+function mousePressed() {
+  Background = color(240, 248, 255);
 }
 
 function windowResized() {
