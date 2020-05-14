@@ -19,7 +19,7 @@
   position: fixed;
   left: 50vw;
   width: 50vw;
-  height: calc(var(--vh, 1vh) * 75);
+  height: calc(var(--vh, 1vh) * 65);
   background-color: greenyellow;
   overflow: scroll;
 }
@@ -27,9 +27,9 @@
 #block3 {
   position: fixed;
   left: 50vw;
-  top: calc(var(--vh, 1vh) * 75);
+  top: calc(var(--vh, 1vh) * 65);
   width: 50vw;
-  height: calc(var(--vh, 1vh) * 25);
+  height: calc(var(--vh, 1vh) * 35);
   background-color: lightcyan;
   overflow: scroll;
 }
