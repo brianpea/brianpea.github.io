@@ -4,7 +4,7 @@ function setup() {
   var canvas = createCanvas(windowWidth, windowHeight - 1);
   canvas.parent('star');
 
-  Background = color(255, 255, 0);
+  Background = color(240, 248, 255);
 }
 
 function draw() {
