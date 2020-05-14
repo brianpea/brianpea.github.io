@@ -80,8 +80,4 @@
     height: calc(var(--vh, 1vh) * 65);
     overflow: scroll;
   }
-
-  #block3 .blockContent {
-    padding-bottom: calc(51px + 3em);
-  }
 }
