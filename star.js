@@ -9,11 +9,13 @@ function setup() {
 
 function draw() {
   let Color = color(255, 255, 0);
-  let Radius1_scale = 1;
-  let Radius2 = 125;
+  let Radius1_scale = 1.5;
+  let Radius2 = 150;
   let Points = 9;
+  let scaleX = 1;
+  let scaleY = 0.5;
   let Tightness = 0.25;
-  let Animate = millis() / 60000 * 60;
+  let Animate = (millis() / 1000) / 10;
 
   background(Background);
 
@@ -26,6 +28,7 @@ function draw() {
 
   push();
   translate(windowWidth * 0.5, windowHeight * 0.5);
+  scale(scaleX, scaleY);
   rotate(-HALF_PI);
   stroke(Color);
   fill(Color);
@@ -36,8 +39,11 @@ function draw() {
 }
 
 function star(x, y, radius1, radius2, points) {
+  let partRadius_scale = 0.3;
+  let partAngle_difference = 0.05;
+
   let angle = TWO_PI / points;
-  let halfRadius = radius2 + ((radius1 - radius2) / 2)
+  let partRadius = radius2 + ((radius1 - radius2) / 2) * partRadius_scale;
 
   beginShape();
   for (let a = 0; a <= TWO_PI; a += angle) {
@@ -45,16 +51,16 @@ function star(x, y, radius1, radius2, points) {
     let sy = y + sin(a) * radius2;
     curveVertex(sx, sy);
 
-    sx = x + cos(a + angle * 0.475) * halfRadius;
-    sy = y + sin(a + angle * 0.475) * halfRadius;
+    sx = x + cos(a + angle * (0.5 - partAngle_difference)) * partRadius;
+    sy = y + sin(a + angle * (0.5 - partAngle_difference)) * partRadius;
     curveVertex(sx, sy);
 
     sx = x + cos(a + angle * 0.5) * radius1;
     sy = y + sin(a + angle * 0.5) * radius1;
     curveVertex(sx, sy);
 
-    sx = x + cos(a + angle * 0.525) * halfRadius;
-    sy = y + sin(a + angle * 0.525) * halfRadius;
+    sx = x + cos(a + angle * (0.5 + partAngle_difference)) * partRadius;
+    sy = y + sin(a + angle * (0.5 + partAngle_difference)) * partRadius;
     curveVertex(sx, sy);
   }
   endShape();
