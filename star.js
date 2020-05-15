@@ -7,8 +7,9 @@ function setup() {
 
   Background = color(240, 248, 255);
 
-  SpinStart = -HALF_PI;
-  if (SpinStart !== null) {
+  if (SpinStart === NaN) {
+    SpinStart = -HALF_PI;
+  } else {
     SpinStart = float(getItem('SpinStart'));
   }
 }
