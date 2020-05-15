@@ -1,5 +1,5 @@
 let Background;
-var SpinStart;
+var SpinStart = 0;
 
 function setup() {
   var canvas = createCanvas(windowWidth, windowHeight - 1);
@@ -7,12 +7,11 @@ function setup() {
 
   Background = color(240, 248, 255);
 
+  SpinStart = -HALF_PI;
   if (SpinStart === NaN) {
-    SpinStart = -HALF_PI;
-  } else {
     SpinStart = float(getItem('SpinStart'));
   }
-  
+
   print(SpinStart);
 }
 
