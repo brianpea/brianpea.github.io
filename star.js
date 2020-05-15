@@ -12,6 +12,8 @@ function setup() {
   } else {
     SpinStart = float(getItem('SpinStart'));
   }
+  
+  print(SpinStart);
 }
 
 function draw() {
