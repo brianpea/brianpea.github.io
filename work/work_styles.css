@@ -34,7 +34,7 @@
 }
 
 #block2 .blockContent {
-  padding-bottom: calc(51px + 3em);
+  padding-bottom: calc(50px + 1em);
 }
 
 #block3 {
@@ -59,7 +59,7 @@
 }
 
 #block3 .blockContent {
-  padding-bottom: calc(51px + 3em);
+  padding-bottom: calc(50px + 1em);
 }
 
 #img {
