@@ -33,6 +33,10 @@
   display: none;
 }
 
+#block2 .blockContent {
+  padding-bottom: calc(51px + 3em);
+}
+
 #block3 {
   position: fixed;
   left: 35vw;
@@ -52,6 +56,10 @@
 
 #block3 #img0 {
   display: inline-block;
+}
+
+#block3 .blockContent {
+  padding-bottom: calc(51px + 3em);
 }
 
 #img {
