@@ -81,6 +81,10 @@
     overflow: scroll;
   }
 
+  #block2 .blockContent {
+    padding-bottom: 25px;
+  }
+
   #block3 {
     left: 0;
     top: calc(var(--vh, 1vh) * 35);
