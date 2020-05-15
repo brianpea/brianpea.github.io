@@ -15,11 +15,15 @@
   overflow: scroll;
 }
 
+#block1 .blockContent {
+  padding-bottom: calc(51px + 3em);
+}
+
 #block2 {
   position: fixed;
   left: 50vw;
   width: 50vw;
-  height: calc(var(--vh, 1vh) * 65);
+  height: calc(var(--vh, 1vh) * 60);
   background-color: greenyellow;
   overflow: scroll;
 }
@@ -27,11 +31,15 @@
 #block3 {
   position: fixed;
   left: 50vw;
-  top: calc(var(--vh, 1vh) * 65);
+  top: calc(var(--vh, 1vh) * 60);
   width: 50vw;
-  height: calc(var(--vh, 1vh) * 35);
+  height: calc(var(--vh, 1vh) * 40);
   background-color: lightcyan;
   overflow: scroll;
+}
+
+#block3 .blockContent {
+  padding-bottom: calc(51px + 3em);
 }
 
 @media (max-width:750px) {
@@ -40,17 +48,25 @@
     height: calc(var(--vh, 1vh) * 50);
   }
 
+  #block1 .blockContent {
+    padding-bottom: 25px;
+  }
+
   #block2 {
     left: 0;
     top: calc(var(--vh, 1vh) * 50);
-    width: 65vw;
+    width: 60vw;
     height: calc(var(--vh, 1vh) * 50);
   }
 
+  #block2 .blockContent {
+    padding-bottom: calc(51px + 3em);
+  }
+
   #block3 {
-    left: 65vw;
+    left: 60vw;
     top: calc(var(--vh, 1vh) * 50);
-    width: 35vw;
+    width: 40vw;
     height: calc(var(--vh, 1vh) * 50);
   }
 }
