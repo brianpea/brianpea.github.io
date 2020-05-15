@@ -16,7 +16,7 @@
 }
 
 #block1 .blockContent {
-  padding-bottom: calc(51px + 3em);
+  padding-bottom: calc(50px + 1em);
 }
 
 #block2 {
@@ -39,7 +39,7 @@
 }
 
 #block3 .blockContent {
-  padding-bottom: calc(51px + 3em);
+  padding-bottom: calc(50px + 1em);
 }
 
 @media (max-width:750px) {
@@ -60,7 +60,7 @@
   }
 
   #block2 .blockContent {
-    padding-bottom: calc(51px + 3em);
+    padding-bottom: calc(50px + 1em);
   }
 
   #block3 {
