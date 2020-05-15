@@ -1,18 +1,10 @@
 let Background;
-var SpinStart = 0;
 
 function setup() {
   var canvas = createCanvas(windowWidth, windowHeight - 1);
   canvas.parent('star');
 
   Background = color(240, 248, 255);
-
-  SpinStart = -HALF_PI;
-  if (SpinStart === NaN) {
-    SpinStart = float(getItem('SpinStart'));
-  }
-
-  print(SpinStart);
 }
 
 function draw() {
@@ -23,7 +15,6 @@ function draw() {
   let ScaleX = 1;
   let ScaleY = 0.5;
   let Tightness = 0.25;
-  let SecsPerSpin = 5400;
 
   background(Background);
 
@@ -34,21 +25,16 @@ function draw() {
     radius1 = windowHeight * Radius1_scale;
   }
 
-  let Spin = SpinStart + (((millis() / 1000) * TWO_PI) / SecsPerSpin);
-
   push();
   translate(windowWidth * 0.5, windowHeight * 0.5);
   scale(ScaleX, ScaleY);
-  rotate(Spin);
+  rotate(-HALF_PI);
   stroke(Color);
   fill(Color);
   curveTightness(Tightness);
 
   star(0, 0, radius1, Radius2, Points);
   pop();
-
-  removeItem('SpinStart');
-  storeItem('SpinStart', str(Spin));
 }
 
 function star(x, y, radius1, radius2, points) {
