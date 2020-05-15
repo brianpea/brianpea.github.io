@@ -29,7 +29,7 @@ function draw() {
   push();
   translate(windowWidth * 0.5, windowHeight * 0.5);
   scale(scaleX, scaleY);
-  rotate(-HALF_PI + Animate);
+  rotate(-HALF_PI);
   stroke(Color);
   fill(Color);
   curveTightness(Tightness);
