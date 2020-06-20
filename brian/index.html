@@ -45,16 +45,18 @@
     <div id="block3">
       <div class="blockContent">
         <h2>About This Website</h2>
-        <p>Last Updated on <span id="date"></span></p>
+        <p>Last Updated <span id="date"></span></p>
 
         <script>
           var date = new Date(document.lastModified);
+
+          console.log(date);
+
           var m = date.getMonth() + 1;
           var d = date.getDate();
           var y = date.getFullYear();
-          date = m + "-" + d + "-" + y;
+          date = m + "/" + d + "/" + y;
           document.getElementById("date").innerHTML = date;
-
         </script>
 
       </div>
@@ -62,6 +64,4 @@
 
   </div>
 
-</body>
-
-</html>
+</body></html>
