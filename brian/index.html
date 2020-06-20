@@ -12,23 +12,6 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <script src="../../vh.js"></script>
-
-  <script>
-    function link1() {
-      document.getElementById("block2").style.background = "lightskyblue";
-    }
-
-    function link2() {
-      document.getElementById("block3").style.background = "lightskyblue";
-    }
-
-    function link3() {
-      document.getElementById("block1").style.background = "lightskyblue";
-    }
-
-  </script>
-
 </head>
 
 <body>
@@ -52,22 +35,30 @@
     <div id="block2">
       <div class="blockContent">
         <h2>Links</h2>
-        <p><a href="mailto:brian@peanutt.tk">brian@peanutt.tk</a></p>
+        <p><a href="mailto:brian@pea.zone">brian@pea.zone</a></p>
         <p><a href="https://instagram.com/pea_bri">instagram.com/pea_bri</a>
-          <br><a href="http://vimeo.com/brianpea">vimeo.com/brianpea</a></p>
-        <p><a href="BrianPea_resume_042720.pdf">BrianPea_resume_042720.pdf</a></p>
+          <br><a href="https://vimeo.com/brianpea">vimeo.com/brianpea</a></p>
+        <p><a href="BrianPea_resume_061020.pdf">BrianPea_resume_061020.pdf</a></p>
       </div>
     </div>
 
     <div id="block3">
       <div class="blockContent">
-        <h2>About This Webpage</h2>
-        <p>Version 05-15-20.3</p>
+        <h2>About This Website</h2>
+        <p>Last Updated <span id="date"></span></p>
+
+        <script>
+          var date = new Date(document.lastModified);
+          var m = date.getMonth() + 1;
+          var d = date.getDate();
+          var y = date.getFullYear();
+          date = m + "-" + d + "-" + y;
+          document.getElementById("date").innerHTML = date;
+        </script>
+
       </div>
     </div>
 
   </div>
 
-</body>
-
-</html>
+</body></html>
