@@ -21,24 +21,34 @@ a {
 
 .nav {
   position: fixed;
-  z-index: 2;
+  z-index: 3;
 }
 
 .nav #left {
+  margin: 0;
+  padding: calc(25px + 1em) 25px;
   position: fixed;
-  left: 25px;
-  bottom: 25px;
+  width: calc((100vw / 3) - 50px);
+  bottom: 0;
+  text-align: left;
 }
 
 .nav #middle {
+  margin: 0;
+  padding: calc(25px + 1em) 25px;
   position: fixed;
-  left: 50vw;
-  bottom: 25px;
-  transform: translate(-50%);
+  width: calc((100vw / 3) - 50px);
+  bottom: 0;
+  left: calc(100vw / 3);
+  text-align: center;
 }
 
 .nav #right {
+  margin: 0;
+  padding: calc(25px + 1em) 25px;
   position: fixed;
-  right: 25px;
-  bottom: 25px;
+  width: calc((100vw / 3) - 50px);
+  bottom: 0;
+  right: 0;
+  text-align: right;
 }

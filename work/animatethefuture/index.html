@@ -14,22 +14,6 @@
 
   <script src="../../vh.js"></script>
 
-  <script src="https://player.vimeo.com/api/player.js"></script>
-
-  <script>
-    function key1() {
-      document.getElementById("key1").innerHTML = "Voonex";
-    }
-
-    function key2() {
-      document.getElementById("key2").innerHTML = "Bistup";
-    }
-
-    function key3() {
-      document.getElementById("key3").innerHTML = "Zapster";
-    }
-  </script>
-
 </head>
 
 <body>
@@ -41,34 +25,33 @@
   </div>
 
   <div class="blocks">
-    <div id="block1" style="background: darkmagenta;">
-      <div class="blockContent" id="gallery">
+    <div id="block1" class="gallery" style="background: darkmagenta">
 
-        <div class="media" id='rect'>
-          <div style='padding:75% 0 0 0;position:relative;'>
-            <iframe src='https://player.vimeo.com/video/390760388?color=e0ffff&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe>
-          </div>
-          <p id='key1'><a href='#' onclick='key1(); return false;'>Password</a></p>
+      <div class="media" id='rect'>
+        <div style='padding:66.6% 0 0 0;position:relative;'>
+          <iframe src='https://player.vimeo.com/video/390760388?color=e0ffff&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe>
         </div>
-        <div class="media" id='rect'>
-          <div style='padding:75% 0 0 0;position:relative;'>
-            <iframe src='https://player.vimeo.com/video/390760528?color=e0ffff&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe>
-          </div>
-          <p id='key2'><a href='#' onclick='key2(); return false;'>Password</a></p>
-        </div>
-        <div class="media" id='rect'>
-          <div style='padding:75% 0 0 0;position:relative;'>
-            <iframe src='https://player.vimeo.com/video/390760645?color=e0ffff&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe>
-          </div>
-          <p id='key3'><a href='#' onclick='key3(); return false;'>Password</a></p>
-        </div>
-
-        <a id='prev' href='#' onclick='arrow(-1);'>&lt;</a>
-        <a id='next' href='#' onclick='arrow(1);'>&gt;</a>
-
-        <script src="../gallery.js"></script>
-
+        <script src="https://player.vimeo.com/api/player.js"></script>
+        <p class='lock'>Voonex</p>
       </div>
+      <div class="media" id='rect'>
+        <div style='padding:66.6% 0 0 0;position:relative;'>
+          <iframe src='https://player.vimeo.com/video/390760528?color=e0ffff&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+        <p class='lock'>Bistup</p>
+      </div>
+      <div class="media" id='rect'>
+        <div style='padding:66.6% 0 0 0;position:relative;'>
+          <iframe src='https://player.vimeo.com/video/390760645?color=e0ffff&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+        <p class='lock'>Zapster</p>
+      </div>
+
+      <script src="../gallery.js"></script>
+      <script src="../passwords.js"></script>
+
     </div>
 
     <div id="block2" style="background: lightcyan">
@@ -83,4 +66,6 @@
 
   </div>
 
-</body></html>
+</body>
+
+</html>

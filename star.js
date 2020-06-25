@@ -6,12 +6,10 @@ function setup() {
   var canvas = createCanvas(windowWidth, windowHeight - 1);
   canvas.parent('star');
 
-  Background = color(240, 248, 255);
-
   SpinPosition = float(getItem('Spin'));
 
   if (SpinStart === undefined) {
-    SpinStart = -HALF_PI;
+    SpinStart = random(-PI, PI);
   }
 
   if (isNaN(SpinPosition) === false) {
@@ -20,23 +18,17 @@ function setup() {
 }
 
 function draw() {
-  let Color = color(255, 255, 0);
-  let Radius1_scale = 1.5;
+  let Background = "AliceBlue";
+  let Color = "Yellow";
+  let Radius1 = 1440;
   let Radius2 = 150;
   let Points = 9;
   let ScaleX = 1;
   let ScaleY = 0.5;
-  let Tightness = 0.25;
-  let SecsPerSpin = 5400;
+  let Tightness = 0.15;
+  let SecsPerSpin = 600 * Points;
 
-  background(Background);
-
-  let radius1;
-  if (windowWidth > windowHeight) {
-    radius1 = windowWidth * Radius1_scale;
-  } else {
-    radius1 = windowHeight * Radius1_scale;
-  }
+  background(color(Background));
 
   let Spin = round(SpinStart + (((millis() / 1000) * TWO_PI) / SecsPerSpin), 5);
 
@@ -44,19 +36,19 @@ function draw() {
   translate(windowWidth * 0.5, windowHeight * 0.5);
   scale(ScaleX, ScaleY);
   rotate(Spin);
-  stroke(Color);
-  fill(Color);
+  stroke(color(Color));
+  strokeWeight(5);
+  fill(color(Color));
   curveTightness(Tightness);
 
-  star(0, 0, radius1, Radius2, Points);
+  star(0, 0, Radius1, Radius2, Points);
   pop();
-
   SpinPosition = storeItem('Spin', str(Spin));
 }
 
 function star(x, y, radius1, radius2, points) {
-  let partRadius_scale = 0.3;
-  let partAngle_difference = 0.05;
+  let partRadius_scale = 1.7;
+  let partAngle_difference = 0.035;
 
   let angle = TWO_PI / points;
   let partRadius = radius2 + ((radius1 - radius2) / 2) * partRadius_scale;

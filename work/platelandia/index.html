@@ -14,14 +14,6 @@
 
   <script src="../../vh.js"></script>
 
-  <script src="https://player.vimeo.com/api/player.js"></script>
-
-  <script>
-    function key1() {
-      document.getElementById("key").innerHTML = "Ruthfull";
-    }
-  </script>
-
 </head>
 
 <body>
@@ -33,15 +25,19 @@
   </div>
 
   <div class="blocks">
-    <div id="block1" style="background: Silver">
-      <div class="blockContent" id="gallery">
-        <div id='rect'>
-          <div style='padding:75% 0 0 0;position:relative;'>
-            <iframe src='https://player.vimeo.com/video/390746171?color=dcdcdc&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe>
-          </div>
-          <p id='key'><a href='#' onclick='key1(); return false;'>Password</a></p>
+    <div id="block1" class="gallery" style="background: Silver">
+
+      <div class="media" id='rect'>
+        <div style='padding:75% 0 0 0;position:relative;'>
+          <iframe src='https://player.vimeo.com/video/390746171?color=dcdcdc&title=0&byline=0&portrait=0' style='position:absolute;top:0;left:0;width:100%;height:100%;' frameborder='0'></iframe>
         </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+        <p class="lock">Ruthfull</p>
       </div>
+
+      <script src="../gallery.js"></script>
+      <script src="../passwords.js"></script>
+
     </div>
 
     <div id="block2" style="background: Gainsboro">
@@ -53,4 +49,6 @@
 
   </div>
 
-</body></html>
+</body>
+
+</html>

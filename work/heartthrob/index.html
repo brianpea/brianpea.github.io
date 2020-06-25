@@ -14,24 +14,6 @@
 
   <script src="../../vh.js"></script>
 
-  <script>
-    function right1() {
-      document.getElementById("gallery").innerHTML = "<iframe id='sq' src='https://editor.p5js.org/bpea/embed/WA5zQrZj6'></iframe><a id='prev' href='#' onclick='left1(); return false;'><</a><a id='next' href='#' onclick='right2(); return false;'>></a>";
-    }
-
-    function right2() {
-      document.getElementById("gallery").innerHTML = "<iframe id='sq' src='https://editor.p5js.org/bpea/embed/1C5hX6h8P'></iframe><a id='prev' href='#' onclick='left2(); return false;'><</a>";
-    }
-
-    function left1() {
-      document.getElementById("gallery").innerHTML = "<iframe id='sq' src='https://editor.p5js.org/bpea/embed/SOyTaDXxX'></iframe><a id='next' href='#' onclick='right1(); return false;'>></a>";
-    }
-
-    function left2() {
-      document.getElementById("gallery").innerHTML = "<iframe id='sq' src='https://editor.p5js.org/bpea/embed/WA5zQrZj6'></iframe><a id='prev' href='#' onclick='left1(); return false;'><</a><a id='next' href='#' onclick='right2(); return false;'>></a>";
-    }
-  </script>
-
 </head>
 
 <body>
@@ -43,23 +25,28 @@
   </div>
 
   <div class="blocks">
-    <div id="block1" style="background: white">
-      <div class="blockContent" id="gallery">
-        <iframe id="sq" src='https://editor.p5js.org/bpea/embed/SOyTaDXxX'></iframe>
-        <a id='next' href='#' onclick='right1(); return false;'>
-          >
-        </a>
+    <div id="block1" class="gallery" style="background: white">
+
+      <div class="media" id="sq">
+        <div style="padding:100% 0 0 0;position:relative;">
+          <iframe src="https://player.vimeo.com/video/205004102?color=ffe4e1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"></iframe>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
       </div>
+
+      <script src="../gallery.js"></script>
+
     </div>
 
     <div id="block2" style="background: mistyrose">
       <div class="blockContent">
         <h1>Heartthrob (2017)</h1>
-        <p>A series of interactive animations of Heartthrob, the good-natured, yellow-sneakered Valentine boy.</p>
-        <p>Click around and see what he can do!</p>
+        <p>A series of Javascript-based animations of Heartthrob, the good-natured Valentine boy with yellow sneakers.</p>
       </div>
     </div>
 
   </div>
 
-</body></html>
+</body>
+
+</html>

@@ -11,7 +11,7 @@
   position: fixed;
   width: 50vw;
   height: calc(var(--vh, 1vh) * 100);
-  background-color: violet;
+  background-color: GhostWhite;
   overflow: scroll;
 }
 
@@ -20,7 +20,7 @@
   left: 50vw;
   width: 50vw;
   height: calc(var(--vh, 1vh) * 60);
-  background-color: greenyellow;
+  background-color: GreenYellow;
   overflow: scroll;
 }
 
@@ -30,7 +30,7 @@
   top: calc(var(--vh, 1vh) * 60);
   width: 50vw;
   height: calc(var(--vh, 1vh) * 40);
-  background-color: lightcyan;
+  background-color: BlanchedAlmond;
   overflow: scroll;
 }
 

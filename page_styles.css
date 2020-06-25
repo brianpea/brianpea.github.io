@@ -1,0 +1,51 @@
+#page {
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+#page #content {
+  width: 75vw;
+  position: fixed;
+  top: calc(var(--vh, 1vh) * 50);
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+}
+
+#page #content img {
+  max-width: 75vw;
+  max-height: calc(var(--vh, 1vh) * 75);
+}
+
+#page #prev {
+  margin: 0;
+  width: 50vw;
+  height: calc(var(--vh, 1vh) * 100);
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: left;
+}
+
+#page #prevlink {
+  position: relative;
+  padding: 25px;
+  top: calc(var(--vh, 1vh) * 50);
+}
+
+#page #next {
+  margin: 0;
+  width: 50vw;
+  height: calc(var(--vh, 1vh) * 100);
+  position: fixed;
+  top: 0;
+  right: 0;
+  text-align: right;
+}
+
+#page #nextlink {
+  position: relative;
+  padding: 25px;
+  top: calc(var(--vh, 1vh) * 50);
+}
