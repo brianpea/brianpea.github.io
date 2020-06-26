@@ -1,5 +1,5 @@
-var prevIcon = "<⸺"
-var nextIcon = "⸺>"
+var prevIcon = "<"
+var nextIcon = ">"
 
 var arrowIcons = "<a id='prev' href='#' onclick='arrow(-1);'><span id='prevlink'>" + prevIcon + "</span></a><a id='next' href='#' onclick='arrow(1);'><span id='nextlink'>" + nextIcon + "</span></a>"
 

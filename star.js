@@ -1,6 +1,7 @@
 let Background;
 let SpinStart;
 let SpinPosition;
+let WindowSize;
 
 function setup() {
   var canvas = createCanvas(windowWidth, windowHeight - 1);
@@ -15,18 +16,24 @@ function setup() {
   if (isNaN(SpinPosition) === false) {
     SpinStart = SpinPosition;
   }
+
+  if (windowWidth > windowHeight) {
+    WindowSize = windowWidth;
+  } else {
+    WindowSize = windowHeight;
+  }
 }
 
 function draw() {
   let Background = "AliceBlue";
   let Color = "Yellow";
-  let Radius1 = 1440;
+  let Radius1 = WindowSize * 1.25;
   let Radius2 = 150;
   let Points = 9;
   let ScaleX = 1;
   let ScaleY = 0.5;
   let Tightness = 0.15;
-  let SecsPerSpin = 600 * Points;
+  let SecsPerSpin = Points * 600;
 
   background(color(Background));
 
@@ -47,8 +54,12 @@ function draw() {
 }
 
 function star(x, y, radius1, radius2, points) {
+  scale();
   let partRadius_scale = 1.7;
-  let partAngle_difference = 0.035;
+  let partAngle_difference = map(WindowSize, 750, 2500, 0.001, 0.14);
+
+  console.log(WindowSize);
+  console.log(partAngle_difference);
 
   let angle = TWO_PI / points;
   let partRadius = radius2 + ((radius1 - radius2) / 2) * partRadius_scale;
@@ -76,4 +87,10 @@ function star(x, y, radius1, radius2, points) {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+
+  if (windowWidth > windowHeight) {
+    WindowSize = windowWidth;
+  } else {
+    WindowSize = windowHeight;
+  }
 }
