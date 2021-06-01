@@ -49,7 +49,7 @@ function draw() {
     Zoom += 0.00625;
     document.getElementById("welcome").style.display = "none";
 
-    if (windowWidth <= 750) {
+    if (windowWidth < 750) {
       ScaleLimit = 4.75;
     } else {
       ScaleLimit = 3.75;
