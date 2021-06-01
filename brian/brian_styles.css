@@ -15,6 +15,10 @@
   overflow: scroll;
 }
 
+#block1 .blockContent {
+  padding-bottom: calc(50px + 1em);
+}
+
 #block2 {
   position: fixed;
   left: 50vw;

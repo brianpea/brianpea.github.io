@@ -1,9 +1,16 @@
-let Background;
 let SpinStart;
 let SpinPosition;
 let WindowSize;
 
+let Scale = 1;
+let ScaleLimit;
+let Zoom = 0;
+let ZoomSwitch;
+
+let Background = "AliceBlue"
+
 function setup() {
+  frameRate(24);
   var canvas = createCanvas(windowWidth, windowHeight - 1);
   canvas.parent('star');
 
@@ -22,6 +29,9 @@ function setup() {
   } else {
     WindowSize = windowHeight;
   }
+
+  document.getElementById("welcome").style.display = "inline-block";
+  document.getElementById("brian").style.display = "none";
 }
 
 function draw() {
@@ -30,10 +40,39 @@ function draw() {
   let Radius1 = WindowSize * 1.25;
   let Radius2 = 150;
   let Points = 9;
-  let ScaleX = 1;
-  let ScaleY = 0.5;
-  let Tightness = 0.15;
-  let SecsPerSpin = Points * 600;
+  let Tightness = 0.175;
+  let SecsPerSpin = Points * (60 / Points);
+
+  Scale += Zoom;
+
+  if (ZoomSwitch == true) {
+    Zoom += 0.00625;
+    document.getElementById("welcome").style.display = "none";
+
+    if (windowWidth <= 750) {
+      ScaleLimit = 4.75;
+    } else {
+      ScaleLimit = 3.75;
+    }
+
+    if (Scale >= ScaleLimit) {
+      Zoom = 0;
+      document.getElementById("brian").style.display = "inline-block";
+    }
+  } else if (ZoomSwitch == false) {
+    Zoom -= 0.00625;
+    document.getElementById("brian").style.display = "none";
+
+    if (Scale <= 1) {
+      Zoom = 0;
+      Scale = 1;
+      document.getElementById("welcome").style.display = "inline-block";
+    }
+  }
+
+  console.log(Zoom);
+  console.log(Scale);
+  console.log(ZoomSwitch);
 
   background(color(Background));
 
@@ -41,7 +80,7 @@ function draw() {
 
   push();
   translate(windowWidth * 0.5, windowHeight * 0.5);
-  scale(ScaleX, ScaleY);
+  scale(Scale, (Scale / 2));
   rotate(Spin);
   stroke(color(Color));
   strokeWeight(5);
@@ -58,8 +97,8 @@ function star(x, y, radius1, radius2, points) {
   let partRadius_scale = 1.7;
   let partAngle_difference = map(WindowSize, 750, 2500, 0.001, 0.14);
 
-  console.log(WindowSize);
-  console.log(partAngle_difference);
+  // console.log(WindowSize);
+  // console.log(partAngle_difference);
 
   let angle = TWO_PI / points;
   let partRadius = radius2 + ((radius1 - radius2) / 2) * partRadius_scale;
@@ -93,4 +132,12 @@ function windowResized() {
   } else {
     WindowSize = windowHeight;
   }
+}
+
+function zoomIn() {
+  ZoomSwitch = true;
+}
+
+function zoomOut() {
+  ZoomSwitch = !ZoomSwitch;
 }

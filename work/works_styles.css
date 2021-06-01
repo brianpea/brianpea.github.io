@@ -99,7 +99,7 @@ video {
 }
 
 #block2 .blockContent {
-  padding-bottom: calc(50px + 3em);
+  padding-bottom: calc(50px + 1em);
 }
 
 @media (max-width:750px) {

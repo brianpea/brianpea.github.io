@@ -28,11 +28,43 @@
     <a href="/blog" id="right">Blog</a>
   </div>
 
-  <div id="welcome">
-    <p>Welcome to the pea.zone;</p>
-    <p>My name is <a href="/brian">Brian</a>,
-      <br>And this is my website!</p>
+  <div class="text" id="welcome">
+    <p>Welcome to <a href="#" onclick="zoomIn(); return false;">Brian Pea</a>'s webpage!</p>
     <p>Click on a link to navigate.</p>
   </div>
 
-</body></html>
+  <div class="text" id="brian">
+    <h1>Brian Pea</h1>
+    <p>is an artist and teacher.
+    <p>He holds a BA from the University of California, Los Angeles in Design Media Arts and a minor in Visual and
+      Performing Arts Education.</p>
+    <p>He currently practices as a K-12 arts educator and a freelance worker in the West Los Angeles area.</p>
+
+    <br>
+    <h2>Links</h2>
+    <p><a href="mailto:brian@pea.zone">brian@pea.zone</a></p>
+    <p><a href="https://instagram.com/pea_bri">instagram.com/pea_bri</a>
+      <br><a href="https://vimeo.com/brianpea">vimeo.com/brianpea</a>
+    </p>
+
+    <br>
+    <h2>About This Website</h2>
+    <p>This website was coded by Brian with the help of <a href="https://p5js.org/">p5.js</a>, <a
+        href="https://minigrid.js.org/">minigrid.js</a>, and <a
+        href="http://faisalman.github.io/simple-excel-js/">simple-excel.js</a>. </p>
+    <p>Last Updated <span id="date"></span></p>
+    <script>
+      var date = new Date(document.lastModified);
+      var m = date.getMonth() + 1;
+      var d = date.getDate();
+      var y = date.getFullYear();
+      date = m + "-" + d + "-" + y;
+      document.getElementById("date").innerHTML = date;
+    </script>
+    <br>
+    <p><a href="#" onclick="zoomOut(); return false;">Exit</a></p>
+  </div>
+
+</body>
+
+</html>
