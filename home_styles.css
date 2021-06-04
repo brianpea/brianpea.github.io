@@ -6,9 +6,52 @@
 
 .text {
   position: fixed;
+  width: 50vw;
   left: 50vw;
   top: calc(var(--vh, 1vh) * 50);
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 1;
+}
+
+#prev {
+  margin: 0;
+  padding: calc(25px + 1em) 25px;
+  position: fixed;
+  top: calc(50% - (25px + 1em));
+  left: calc(-12.5vw - 25px);
+}
+
+#next {
+  margin: 0;
+  padding: calc(25px + 1em) 25px;
+  position: fixed;
+  top: calc(50% - (25px + 1em));
+  right: calc(-12.5vw - 25px);
+}
+
+#exit {
+  margin: 0;
+  padding: calc(25px + 1em) 25px;
+  position: fixed;
+  top: calc((var(--vh, 1vh) * 25) - (25px + 1em));
+  left: 50vw;
+  transform: translate(-50%);
+  text-align: center;
+}
+
+@media (max-width:750px) {
+  #prev {
+    left: -25vw;
+  }
+  
+  #next {
+    right: -25vw;
+  }
+}
+
+@media (max-height:750px) {
+  #exit {
+    top: 0;
+  }
 }

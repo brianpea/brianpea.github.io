@@ -7,7 +7,7 @@ let ScaleLimit;
 let Zoom = 0;
 let ZoomSwitch;
 
-let Background = "AliceBlue"
+let Background = "AliceBlue";
 
 function setup() {
   frameRate(24);
@@ -32,6 +32,7 @@ function setup() {
 
   document.getElementById("welcome").style.display = "inline-block";
   document.getElementById("brian").style.display = "none";
+  document.getElementById("exit").style.display = "none";
 }
 
 function draw() {
@@ -58,10 +59,12 @@ function draw() {
     if (Scale >= ScaleLimit) {
       Zoom = 0;
       document.getElementById("brian").style.display = "inline-block";
+      document.getElementById("exit").style.display = "inline-block";
     }
   } else if (ZoomSwitch == false) {
     Zoom -= 0.00625;
     document.getElementById("brian").style.display = "none";
+    document.getElementById("exit").style.display = "none";
 
     if (Scale <= 1) {
       Zoom = 0;
@@ -70,9 +73,9 @@ function draw() {
     }
   }
 
-  console.log(Zoom);
-  console.log(Scale);
-  console.log(ZoomSwitch);
+  // console.log(Zoom);
+  // console.log(Scale);
+  // console.log(ZoomSwitch);
 
   background(color(Background));
 
@@ -136,8 +139,10 @@ function windowResized() {
 
 function zoomIn() {
   ZoomSwitch = true;
+  slideshow(position);
 }
 
 function zoomOut() {
   ZoomSwitch = !ZoomSwitch;
+  position = 1;
 }

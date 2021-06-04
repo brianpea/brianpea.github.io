@@ -21,6 +21,7 @@
 
 <body>
 
+  <script>var brian = false;</script>
   <div id="star"></div>
 
   <div class="nav">
@@ -33,37 +34,44 @@
     <p>Click on a link to navigate.</p>
   </div>
 
-  <div class="text" id="brian">
-    <h1>Brian Pea</h1>
-    <p>is an artist and teacher.
-    <p>He holds a BA from the University of California, Los Angeles in Design Media Arts and a minor in Visual and
-      Performing Arts Education.</p>
-    <p>He currently practices as a K-12 arts educator and a freelance worker in the West Los Angeles area.</p>
+  <div class="text slideshow" id="brian">
+    <div class="slide">
+      <h1>Brian Pea</h1>
+      <p>is an artist and teacher.
+      <p>He holds a BA from the University of California, Los Angeles in Design Media Arts and a minor in Visual and
+        Performing Arts Education.</p>
+      <p>He currently practices as a K-12 arts educator and a freelance worker in the West Los Angeles area.</p>
+    </div>
 
-    <br>
-    <h2>Links</h2>
-    <p><a href="mailto:brian@pea.zone">brian@pea.zone</a></p>
-    <p><a href="https://instagram.com/pea_bri">instagram.com/pea_bri</a>
-      <br><a href="https://vimeo.com/brianpea">vimeo.com/brianpea</a>
-    </p>
+    <div class="slide">
+      <h2>Links</h2>
+      <p><a href="mailto:brian@pea.zone">brian@pea.zone</a></p>
+      <p><a href="https://instagram.com/pea_bri">instagram.com/pea_bri</a>
+        <br><a href="https://vimeo.com/brianpea">vimeo.com/brianpea</a>
+      </p>
+    </div>
 
-    <br>
-    <h2>About This Website</h2>
-    <p>This website was coded by Brian with the help of <a href="https://p5js.org/">p5.js</a>, <a
-        href="https://minigrid.js.org/">minigrid.js</a>, and <a
-        href="http://faisalman.github.io/simple-excel-js/">simple-excel.js</a>. </p>
-    <p>Last Updated <span id="date"></span></p>
-    <script>
-      var date = new Date(document.lastModified);
-      var m = date.getMonth() + 1;
-      var d = date.getDate();
-      var y = date.getFullYear();
-      date = m + "-" + d + "-" + y;
-      document.getElementById("date").innerHTML = date;
-    </script>
-    <br>
-    <p><a href="#" onclick="zoomOut(); return false;">Exit</a></p>
+    <div class="slide">
+      <h2>About This Website</h2>
+      <p>This website was coded by Brian with the help of <a href="https://p5js.org/">p5.js</a>, <a
+          href="https://minigrid.js.org/">minigrid.js</a>, and <a
+          href="http://faisalman.github.io/simple-excel-js/">simple-excel.js</a>. </p>
+      <p>Last Updated <span id="date"></span></p>
+      <script>
+        var date = new Date(document.lastModified);
+        var m = date.getMonth() + 1;
+        var d = date.getDate();
+        var y = date.getFullYear();
+        date = m + "-" + d + "-" + y;
+        document.getElementById("date").innerHTML = date;
+      </script>
+    </div>
+
+    <script src="slider.js"></script>
+
   </div>
+
+  <a id="exit" href="#" onclick="zoomOut(); return false;">Exit</a>
 
 </body>
 
