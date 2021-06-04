@@ -37,7 +37,7 @@
   top: calc((var(--vh, 1vh) * 25) - (25px + 1em));
   left: 50vw;
   transform: translate(-50%);
-  text-align: center;
+  /* text-align: center; */
 }
 
 @media (max-width:750px) {
