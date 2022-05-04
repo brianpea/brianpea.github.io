@@ -1,6 +1,13 @@
+@font-face {
+  font-family: Sono;
+  src: url("/assets/Sono-Light.woff2") format("woff2");
+  font-style: normal;
+}
+
 body {
-  background: yellow;
-  font-family: monospace;
+  background-color: yellow;
+  font-family: "Sono", monospace;
+  font-size: 1.5vw;
   margin: 0;
 }
 
@@ -8,47 +15,37 @@ p,
 h1,
 h2,
 h3,
-a {
-  font-size: 1em;
+a,
+li {
+  font-size: 1.5vw;
   font-weight: lighter;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin: 1em 0;
 }
 
 a {
   color: black;
+  text-decoration: underline wavy 0.1vw;
 }
 
-.nav {
-  position: fixed;
-  z-index: 3;
+a:hover {
+  text-decoration: none;
 }
 
-.nav #left {
-  margin: 0;
-  padding: calc(25px + 1em) 25px;
-  position: fixed;
-  width: calc((100vw / 3) - 50px);
-  bottom: 0;
-  text-align: left;
+ol,
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-.nav #middle {
-  margin: 0;
-  padding: calc(25px + 1em) 25px;
-  position: fixed;
-  width: calc((100vw / 3) - 50px);
-  bottom: 0;
-  left: calc(100vw / 3);
-  text-align: center;
-}
+@media (max-width:750px) {
 
-.nav #right {
-  margin: 0;
-  padding: calc(25px + 1em) 25px;
-  position: fixed;
-  width: calc((100vw / 3) - 50px);
-  bottom: 0;
-  right: 0;
-  text-align: right;
+  body,
+  h1,
+  h2,
+  h3,
+  p,
+  a,
+  li {
+    font-size: 3vw;
+  }
 }

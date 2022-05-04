@@ -4,73 +4,36 @@
 <head>
 
   <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rel="stylesheet" type="text/css" href="home_styles.css">
-
-  <link rel="icon" href="favicon.gif" type="image/gif">
+  <link rel="stylesheet" type="text/css" href="home.css">
 
   <title>Brian Pea</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <script src="vh.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
-  <script src="star.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+  <script src="https://unpkg.com/minigrid@3.1.1/dist/minigrid.min.js"></script>
+  <script src="/assets/simple-excel.js"></script>
 
 </head>
 
 <body>
-  
+
   <div id="star"></div>
 
-  <div class="nav">
-    <a href="/work" id="left">Work</a>
-    <a href="https://blog.pea.zone" id="right">Blog</a>
-  </div>
+  <div id="links">
 
-  <div class="text" id="welcome">
-    <p>Welcome to <a href="#" onclick="zoomIn(); return false;">Brian Pea</a>'s webpage!</p>
-    <p>Click on a link to navigate.</p>
-  </div>
-
-  <div class="text slideshow" id="brian">
-    <div class="slide">
-      <h1>Brian Pea</h1>
-      <p>is an artist and teacher.
-      <p>He holds a BA from the University of California, Los Angeles in Design Media Arts and a minor in Visual and
-        Performing Arts Education.</p>
-      <p>He is currently an early childhood educator and a freelance worker in the West Los Angeles area.</p>
-    </div>
-
-    <div class="slide">
-      <h2>Links</h2>
-      <p><a href="mailto:brian@pea.zone">brian@pea.zone</a></p>
-      <p><a href="https://instagram.com/pea_bri">instagram.com/pea_bri</a>
-        <br><a href="https://vimeo.com/brianpea">vimeo.com/brianpea</a>
-      </p>
-    </div>
-
-    <div class="slide">
-      <h2>About This Website</h2>
-      <p>This website was coded by Brian with the help of <a href="https://p5js.org/">p5.js</a>, <a
-          href="https://minigrid.js.org/">minigrid.js</a>, and <a
-          href="http://faisalman.github.io/simple-excel-js/">simple-excel.js</a>. </p>
-      <p>Last Updated <span id="date"></span></p>
-      <script>
-        var date = new Date(document.lastModified);
-        var m = date.getMonth() + 1;
-        var d = date.getDate();
-        var y = date.getFullYear();
-        date = m + "-" + d + "-" + y;
-        document.getElementById("date").innerHTML = date;
-      </script>
-    </div>
-
-    <script src="slider.js"></script>
+    <h1><a id="welcome" href="#"
+        onclick="ZoomSwitch = true; ZoomClick = true; window.history.pushState(); return false">Brian Pea</a></h1>
+    <br>
+    <ul id="works"></ul>
+    <br>
+    <p><a href="https://blog.pea.zone" style="text-transform: uppercase;">Blog</a></p>
 
   </div>
 
-  <a id="exit" href="#" onclick="zoomOut(); return false;">Exit</a>
+  <ol id="medias"></ol>
+
+  <script src="home.js"></script>
 
 </body>
 
