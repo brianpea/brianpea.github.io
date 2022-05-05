@@ -99,7 +99,7 @@ function draw() {
     function zoomed() {
       storeItem("Scale", Scale);
       Scale = getItem("Scale");
-      location.replace("/about");
+      location.assign("/about");
     }
 
     setTimeout(zoomed, 5000);
