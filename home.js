@@ -97,9 +97,9 @@ function draw() {
     // }
 
     function zoomed() {
-      location.replace("/about");
       storeItem("Scale", Scale);
       Scale = getItem("Scale");
+      location.replace("/about");
     }
 
     setTimeout(zoomed, 5000);
