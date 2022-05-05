@@ -252,12 +252,10 @@ function init() {
     gutter: 25
   });
   grid.mount();
-  console.log("grid init");
 }
 
 function update() {
   grid.mount();
-  console.log("grid update");
 }
 
 setTimeout(init, delay);
