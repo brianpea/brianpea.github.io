@@ -94,10 +94,15 @@ function draw() {
     //   Scale = getItem("Scale");
     // }
 
-    zoomed("/about");
+    setTimeout(zoomed, 3000);
 
     function zoomed(URL) {
-      setTimeout(function () { Zoom = 0; storeItem("Scale", Scale); Scale = getItem("Scale"); location.assign(URL); }, 3000);
+      Zoom = 0;
+      storeItem("Scale", Scale);
+      Scale = getItem("Scale");
+
+      noLoop();
+      location.assign("/about");
     }
   }
   if (ZoomSwitch == false && ZoomClick == true) {
