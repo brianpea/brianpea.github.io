@@ -19,6 +19,9 @@ let Zoom = 0;
 let ZoomSwitch;
 let ZoomClick;
 
+let ZoomMillis;
+let ZoomDelay = 3000;
+
 let textCenterX, textCenterY;
 
 function setup() {
@@ -79,30 +82,16 @@ function draw() {
 
   if (ZoomSwitch == true && ZoomClick == true) {
     ZoomClick = false;
+    ZoomMillis = millis();
   } else if (ZoomSwitch == true) {
     Zoom += 0.01;
 
-    // if (windowWidth > windowHeight) {
-    //   ScaleLimit = windowWidth / 67.5;
-    // } else {
-    //   ScaleLimit = windowHeight / 57.5;
-    // }
-
-    // if (Scale >= ScaleLimit) {
-    //   location.replace("/about");
-    //   storeItem("Scale", Scale);
-    //   Scale = getItem("Scale");
-    // }
-
-    setTimeout(zoomed, 3000);
-
-    function zoomed(URL) {
+    if (millis() > ZoomMillis + ZoomDelay) {
+      noLoop();
       Zoom = 0;
       storeItem("Scale", Scale);
       Scale = getItem("Scale");
-
-      noLoop();
-      location.assign("/about");
+      window.location = "/about";
     }
   }
   if (ZoomSwitch == false && ZoomClick == true) {
