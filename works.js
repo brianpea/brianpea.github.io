@@ -94,17 +94,20 @@ function draw() {
     //   Scale = getItem("Scale");
     // }
 
-    function zoomed() {
-      storeItem("Scale", Scale);
-      Scale = getItem("Scale");
-      location.assign("/about");
-    }
+    zoomed("/about");
 
-    setTimeout(zoomed, 5000);
+    function zoomed(URL) {
+      setTimeout(function () {
+        Zoom = 0;
+        storeItem("Scale", Scale);
+        Scale = getItem("Scale");
+        location.assign(URL);
+      });
+    }
   }
   if (ZoomSwitch == false && ZoomClick == true) {
     ZoomClick = false;
-    storeItem("ZoomClick" , ZoomClick);
+    storeItem("ZoomClick", ZoomClick);
   } else if (ZoomSwitch == false) {
     Zoom -= 0.00625;
 
@@ -247,23 +250,23 @@ if (mediaCount != 0) {
   var arrowIcons = "<a id='prev' href='#' onclick='arrow(-1);'>" + prevIcon + "</a><a id='next' href='#' onclick='arrow(1);'>" + nextIcon + "</a>"
 
   document.getElementsByClassName('gallery')[0].insertAdjacentHTML('beforeend', arrowIcons);
-  
+
   var position = 1;
   gallery(position);
-  
+
   function arrow(n) {
     gallery(position += n);
   }
-  
+
   function gallery() {
     var media = document.getElementsByClassName("media");
-  
+
     for (var i = 0; i < media.length; i++) {
       media[i].style.display = "none";
     }
-  
+
     media[position - 1].style.display = "inline-block";
-  
+
     if (position == 1) {
       document.getElementById("prev").style.display = "none";
     } else {

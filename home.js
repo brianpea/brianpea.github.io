@@ -96,13 +96,16 @@ function draw() {
     //   Scale = getItem("Scale");
     // }
 
-    function zoomed() {
-      storeItem("Scale", Scale);
-      Scale = getItem("Scale");
-      location.assign("/about");
-    }
+    zoomed("/about");
 
-    setTimeout(zoomed, 5000);
+    function zoomed(URL) {
+      setTimeout(function () {
+        Zoom = 0;
+        storeItem("Scale", Scale);
+        Scale = getItem("Scale");
+        location.assign(URL);
+      });
+    }
   }
   if (ZoomSwitch == false && ZoomClick == true) {
     ZoomClick = false;
