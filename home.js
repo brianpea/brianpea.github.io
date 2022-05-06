@@ -82,7 +82,7 @@ function draw() {
   if (ZoomSwitch == true && ZoomClick == true) {
     ZoomClick = false;
   } else if (ZoomSwitch == true) {
-    Zoom += 0.00625;
+    Zoom += 0.01;
 
     // if (windowWidth > windowHeight) {
     //   ScaleLimit = windowWidth / 67.5;
@@ -99,19 +99,14 @@ function draw() {
     zoomed("/about");
 
     function zoomed(URL) {
-      setTimeout(function () {
-        Zoom = 0;
-        storeItem("Scale", Scale);
-        Scale = getItem("Scale");
-        location.assign(URL);
-      });
+      setTimeout(function () { Zoom = 0; storeItem("Scale", Scale); Scale = getItem("Scale"); location.assign(URL); }, 3000);
     }
   }
   if (ZoomSwitch == false && ZoomClick == true) {
     ZoomClick = false;
     storeItem("ZoomClick", ZoomClick);
   } else if (ZoomSwitch == false) {
-    Zoom -= 0.00625;
+    Zoom -= 0.01;
 
     if (Scale <= 1) {
       Zoom = 0;
