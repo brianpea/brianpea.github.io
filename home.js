@@ -99,8 +99,11 @@ function draw() {
   if (ZoomSwitch == false && ZoomClick == true) {
     ZoomClick = false;
     storeItem("ZoomClick", ZoomClick);
+    ZoomMillis = millis();
   } else if (ZoomSwitch == false) {
-    Zoom -= 0.01;
+    if (millis() > ZoomMillis + delay) {
+      Zoom -= 0.01;
+    }
 
     if (Scale <= 1) {
       Zoom = 0;
