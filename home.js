@@ -1,4 +1,5 @@
 var delay = 750;
+console.log("js loaded");
 
 //vh: fixes vh for mobile
 var vh = window.innerHeight * 0.01;
@@ -99,11 +100,8 @@ function draw() {
   if (ZoomSwitch == false && ZoomClick == true) {
     ZoomClick = false;
     storeItem("ZoomClick", ZoomClick);
-    ZoomMillis = millis();
   } else if (ZoomSwitch == false) {
-    if (millis() > ZoomMillis + delay) {
-      Zoom -= 0.01;
-    }
+    Zoom -= 0.01;
 
     if (Scale <= 1) {
       Zoom = 0;
