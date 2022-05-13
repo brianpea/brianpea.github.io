@@ -91,7 +91,7 @@ function draw() {
       Zoom = 0;
       storeItem("Scale", Scale);
       Scale = getItem("Scale");
-      window.location = "/about";
+      window.location.href = "/about";
     }
   }
   if (ZoomSwitch == false && ZoomClick == true) {
