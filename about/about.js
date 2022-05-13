@@ -60,7 +60,7 @@ function arrow(n) {
 function back() {
   document.getElementById("about").style.visibility = "hidden";
   document.getElementById("back").style.visibility = "hidden";
-  setTimeout(page, 500);
+  setTimeout(page, 3000);
 
   function page() {
     window.history.go(-1);
