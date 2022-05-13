@@ -55,3 +55,14 @@ slideshow(position);
 function arrow(n) {
   slideshow(position += n);
 }
+
+//back
+function back() {
+  document.getElementById("about").style.visibility = "hidden";
+  document.getElementById("back").style.visibility = "hidden";
+  setTimeout(page, 500);
+
+  function page() {
+    window.history.go(-1);
+  }
+}
