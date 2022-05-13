@@ -55,3 +55,8 @@ slideshow(position);
 function arrow(n) {
   slideshow(position += n);
 }
+
+//back
+function back() {
+  window.location.href = document.referrer;
+}

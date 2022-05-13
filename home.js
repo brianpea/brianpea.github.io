@@ -1,5 +1,4 @@
 var delay = 750;
-console.log("js loaded");
 
 //vh: fixes vh for mobile
 var vh = window.innerHeight * 0.01;
