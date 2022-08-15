@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <link rel="stylesheet" type="text/css" href="/works.css">
+
+  <link rel="icon" href="/assets/favicon.gif" type="image/gif">
+  <title>Brian Pea</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+  <script src="/assets/simple-excel.js"></script>
+
+</head>
+
+<body>
+
+  <div id="star"></div>
+
+  <div id="links">
+
+    <h1><a id="welcome" href="#"
+        onclick="ZoomSwitch = true; ZoomClick = true; window.history.pushState(null, null); return false">Brian Pea</a></h1>
+    <br>
+    <ul id="works"></ul>
+    <br>
+    <p><a href="mailto:brian@pea.zone">brian@pea.zone</a></p>
+    <p><a href="https://blog.pea.zone" style="text-transform: uppercase;">Blog</a></p>
+
+  </div>
+
+  <div id="work">
+    <div id="scrollbox">
+      <div id="content">
+        <div id="media" class="gallery">
+          <a href="BrianPea_portfolio_GraphicDesign.pdf"><img class="media" src='portfolio_1.png' alt='First page of the graphic design portfolio.'></a>
+        </div>
+        <br>
+        <h1>Graphic Design Portfolio</h1>
+        <p>Click Image to Download</p>
+      </div>
+    </div>
+    <a id="home" href="/">Home</a>
+    <a id="menu" href="#" onclick="menu(); return false">>>></a>
+  </div>
+
+  <script src="/works.js"></script>
+
+</body>
+
+</html>
