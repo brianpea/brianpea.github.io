@@ -40,9 +40,9 @@ function setup() {
   }
 
   if (windowWidth > windowHeight) {
-    WindowSize = windowWidth;
+    WindowSize = windowWidth * 1.75;
   } else {
-    WindowSize = windowHeight;
+    WindowSize = windowHeight * 1.75;
   }
 
   ZoomSwitch = getItem("ZoomSwitch");
@@ -58,7 +58,7 @@ function setup() {
     removeItem("ZoomClick");
   }
 
-  document.getElementById("links").style.visibility = "hidden";
+  document.getElementById("links").style.opacity = 0;
 }
 
 function draw() {
@@ -72,10 +72,10 @@ function draw() {
   }
 
   let Color = "yellow";
-  let Radius1 = WindowSize * 2;
+  let Radius1 = WindowSize;
   let Radius2 = windowWidth * (0.075 * mobileMultiplier);
   let Points = 9;
-  let Tightness = map(windowWidth, 0, (3500 / mobileMultiplier), 1, 0);
+  let Tightness = map((windowWidth * 1.75), 0, (3500 / mobileMultiplier), 1, 0);
   let SecsPerSpin = Points * (600 / Points);
 
   Scale += Zoom;
@@ -176,57 +176,26 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 
   if (windowWidth > windowHeight) {
-    WindowSize = windowWidth;
+    WindowSize = windowWidth * 1.75;
   } else {
-    WindowSize = windowHeight;
+    WindowSize = windowHeight * 1.75;
   }
 }
 
 function loaded() {
   document.body.style.background = "aliceblue";
-  document.getElementById("work").style.visibility = "visible";
+  document.getElementById("work").style.opacity = 1;
+  document.getElementById("links").style.opacity = 1;
 
   if (ZoomClick == false) {
-    document.getElementById("work").style.visibility = "hidden";
-    document.getElementById("links").style.visibility = "hidden";
+    document.getElementById("work").style.opacity = 0;
+    document.getElementById("links").style.opacity = 0;
+    document.getElementById("star").style.zIndex= 4;
   } else {
-    document.getElementById("work").style.visibility = "visible";
-    document.getElementById("links").style.visibility = "visible";
+    document.getElementById("work").style.opacity = 1;
+    document.getElementById("links").style.opacity = 1;
+    document.getElementById("star").style.zIndex= 1;
   }
-}
-
-//works: populates menu links from .csv
-var csvWorks = new XMLHttpRequest();
-csvWorks.open("GET", "/works/works.csv");
-csvWorks.responseType = "blob";
-csvWorks.send();
-
-csvWorks.onload = function () {
-
-  var works = csvWorks.response;
-
-  var csvParser = new SimpleExcel.Parser.CSV();
-  csvParser.setDelimiter(",");
-  csvParser.loadFile(works, function () {
-
-    var worksList = csvParser.getSheet();
-
-    for (var i = 1; i < worksList.length; i++) {
-
-      var work = worksList[i];
-
-      var workName = work[0];
-      var workFile = work[1];
-
-      var linkList = document.createElement("li");
-      var linkLink = document.createElement("a");
-      linkLink.className = "work";
-      linkLink.href = "/" + workFile;
-      linkList.appendChild(linkLink);
-      linkLink.appendChild(document.createTextNode(workName));
-      document.getElementById('works').appendChild(linkList);
-    }
-  });
 }
 
 //gallery: makes a media slideshow with arrows
@@ -318,14 +287,45 @@ function adjust() {
   }
 }
 
-//overflow: controls dynamic overflow css styling
-var content, scrollbox;
+//modal: fullscreen image modal with alt test captions
+if (document.querySelectorAll("img").length > 0) {
+  var modalElement = document.createElement("div");
+  modalElement.id = "modal";
 
+  var modalContentElement = document.createElement("div");
+  modalContentElement.id = "modalContent";
+
+  var modalImgElement = document.createElement("img");
+  modalImgElement.id = "modalImg";
+
+  document.body.appendChild(modalElement);
+  modalElement.appendChild(modalContentElement);
+  modalContentElement.appendChild(modalImgElement);
+}
+
+var modal = document.getElementById("modal");
+var modalImg = document.getElementById("modalImg");
+
+var imgs = document.querySelectorAll("img");
+
+for (var i = 0; i < imgs.length; i++) {
+  imgs[i].onclick = function() {
+    modal.style.display = "block";
+    modalImg.src = this.src;
+  };
+
+  imgs[i].style.cursor = "pointer";
+  modal.style.cursor = "pointer";
+
+  modal.onclick = function() {modal.style.display = "none"};
+};
+
+//overflow: controls dynamic overflow css styling
 setInterval(overflow, 1);
 
 function overflow() {
-  content = document.getElementById("content").scrollHeight;
-  scrollbox = document.getElementById("scrollbox").scrollHeight;
+  var content = document.getElementById("content").scrollHeight;
+  var scrollbox = document.getElementById("scrollbox").scrollHeight;
 
   if (content >= scrollbox) {
     document.getElementById("content").style.top = "0";
@@ -336,25 +336,42 @@ function overflow() {
   }
 }
 
-//password: reveals a password
-var locks = document.querySelectorAll('.lock');
-var keys = [];
+if (document.querySelectorAll("img").length > 0) {
+  setInterval(overflowModal, 1);
 
-for (var i = 0; i < locks.length; i++) {
-  var lock = locks[i];
-  var lockNum = i + 1;
-  var lockId = "lock" + lockNum;
-  lock.id = lockId;
+  function overflowModal() {
+    var contentModal = document.getElementById("modalContent").scrollHeight;
+    var scrollboxModal = document.getElementById("modal").scrollHeight;
 
-  var key = lock.innerHTML;
-  keys.push(key);
-  var keyLink = "<a href='#' onclick='unlock(" + lockNum + ");'>Password</a>"
-
-  lock.innerHTML = keyLink;
+    if (contentModal >= scrollboxModal) {
+      document.getElementById("modalContent").style.top = "0";
+      document.getElementById("modalContent").style.transform = "translate(-50%, 0)";
+    } else {
+      document.getElementById("modalContent").style.top = "50%";
+      document.getElementById("modalContent").style.transform = "translate(-50%, -50%)";
+    }
+  }
 }
 
-function unlock(n) {
-  var lock = document.getElementById("lock" + n);
-  var key = keys[n - 1];
-  lock.innerHTML = key;
-}
+// //password: reveals a password
+// var locks = document.querySelectorAll('.lock');
+// var keys = [];
+
+// for (var i = 0; i < locks.length; i++) {
+//   var lock = locks[i];
+//   var lockNum = i + 1;
+//   var lockId = "lock" + lockNum;
+//   lock.id = lockId;
+
+//   var key = lock.innerHTML;
+//   keys.push(key);
+//   var keyLink = "<a href='#' onclick='unlock(" + lockNum + ");'>Password</a>"
+
+//   lock.innerHTML = keyLink;
+// }
+
+// function unlock(n) {
+//   var lock = document.getElementById("lock" + n);
+//   var key = keys[n - 1];
+//   lock.innerHTML = key;
+// }

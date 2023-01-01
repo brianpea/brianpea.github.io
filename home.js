@@ -42,9 +42,9 @@ function setup() {
   }
 
   if (windowWidth > windowHeight) {
-    WindowSize = windowWidth;
+    WindowSize = windowWidth * 1.75;
   } else {
-    WindowSize = windowHeight;
+    WindowSize = windowHeight * 1.75;
   }
 
   ZoomSwitch = getItem("ZoomSwitch");
@@ -60,7 +60,7 @@ function setup() {
     removeItem("ZoomClick");
   }
 
-  document.getElementById("links").style.visibility = "hidden";
+  document.getElementById("links").style.opacity = 0;
 }
 
 function draw() {
@@ -74,10 +74,10 @@ function draw() {
   }
 
   let Color = "yellow";
-  let Radius1 = WindowSize * 2;
+  let Radius1 = WindowSize;
   let Radius2 = windowWidth * (0.075 * mobileMultiplier);
   let Points = 9;
-  let Tightness = map(windowWidth, 0, (3500 / mobileMultiplier), 1, 0);
+  let Tightness = map((windowWidth * 1.75), 0, (3500 / mobileMultiplier), 1, 0);
   let SecsPerSpin = Points * (600 / Points);
 
   Scale += Zoom;
@@ -118,7 +118,7 @@ function draw() {
   let textRight = 25;
   let welcomeWidth = welcomeRef.offsetWidth;
 
-  textCenterX = windowWidth - textRight - (welcomeWidth / 2);
+  textCenterX = (windowWidth) - textRight - (welcomeWidth / 2);
 
   let textTop = textRef.offsetTop;
   let textHeight = textRef.offsetHeight;
@@ -178,61 +178,27 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 
   if (windowWidth > windowHeight) {
-    WindowSize = windowWidth;
+    WindowSize = windowWidth * 1.75;
   } else {
-    WindowSize = windowHeight;
+    WindowSize = windowHeight * 1.75;
   }
 }
 
 function loaded() {
   document.body.style.background = "aliceblue";
-  document.getElementById("medias").style.visibility = "visible";
+  document.getElementById("medias").style.opacity = 1;
+  document.getElementById("links").style.opacity = 1;
 
   if (ZoomClick == false) {
-    document.getElementById("links").style.visibility = "hidden";
+    document.getElementById("medias").style.opacity = 0;
+    document.getElementById("links").style.opacity = 0;
+    document.getElementById("star").style.zIndex= 4;
   } else {
-    document.getElementById("links").style.visibility = "visible";
+    document.getElementById("medias").style.opacity = 1;
+    document.getElementById("links").style.opacity = 1;
+    document.getElementById("star").style.zIndex= 1;
   }
 }
-
-//hover: set the z-index of media on link hover
-var medias = document.getElementsByClassName("media");
-
-function work(n) {
-  var media = "media" + n;
-  document.getElementById(media).style.zIndex = "2";
-}
-
-function unhover() {
-  for (var i = 0; i < medias.length; i++) {
-    medias[i].style.zIndex = "0";
-  }
-}
-
-var works = document.getElementsByClassName("work");
-var medias = document.getElementsByClassName("media");
-
-var workId, mediaId;
-
-function hovers() {
-  for (var i = 0; i < works.length; i++) {
-    var workNum = i + 1;
-    workId = "work" + workNum;
-    works[i].id = workId;
-
-    var workFunction = "work(" + workNum + ")"
-    works[i].setAttribute("onmouseover", workFunction);
-    works[i].setAttribute("onmouseout", "unhover()")
-  }
-
-  for (var j = 0; j < medias.length; j++) {
-    var mediaNum = j + 1;
-    mediaId = "media" + mediaNum;
-    medias[j].id = mediaId;
-  }
-}
-
-setTimeout(hovers, delay);
 
 //grid: makes dynamic grid of media based on height
 var grid;
@@ -253,7 +219,7 @@ function update() {
 setTimeout(init, delay);
 window.addEventListener('resize', update);
 
-//works: populates menu links/home media from .csv
+//works: populates home media from .csv
 var csvWorks = new XMLHttpRequest();
 csvWorks.open("GET", "works/works.csv");
 csvWorks.responseType = "blob";
@@ -276,20 +242,49 @@ csvWorks.onload = function () {
       var workName = work[0];
       var workFile = work[1];
       var workAlt = work[2];
+      var workTag = work[3];
+      var workFormat = work[4];
 
-      var mediaMedia = document.createElement("img");
-      mediaMedia.className = "media";
-      mediaMedia.src = "works/" + workFile + ".jpg";
-      mediaMedia.alt = workAlt;
-      document.getElementById('medias').appendChild(mediaMedia);
-
-      var linkList = document.createElement("li");
       var linkLink = document.createElement("a");
       linkLink.className = "work";
       linkLink.href = "/" + workFile;
-      linkList.appendChild(linkLink);
-      linkLink.appendChild(document.createTextNode(workName));
-      document.getElementById('works').appendChild(linkList);
+
+      var container = document.createElement("div");
+      container.className = "container";
+      container.classList.add("media");
+      linkLink.appendChild(container);
+
+      var mediaMedia = document.createElement("img");
+      mediaMedia.src = "works/" + workFile + "." + workFormat;
+      mediaMedia.alt = workAlt;
+      container.appendChild(mediaMedia);
+
+      var overlay = document.createElement("div");
+      overlay.classList.add("overlay");
+      overlay.classList.add(workTag);
+      container.appendChild(overlay);
+
+      var overlayText = document.createElement("p");
+      overlayText.classList.add("name");
+      overlayText.appendChild(document.createTextNode(workName));
+      overlay.appendChild(overlayText);
+
+      document.getElementById('medias').appendChild(linkLink);
     }
   });
+}
+
+//tags: makes overlays opaque based on tag selection
+function tag(tag) {
+
+  var all = document.getElementsByClassName("overlay");
+  var notTagged = document.querySelectorAll(".overlay:not(." + tag + ")");
+
+  for (var i = 0; i < all.length; i++) {
+    all[i].style.opacity = "";
+  };
+
+  for (var j = 0; j < notTagged.length; j++) {
+    notTagged[j].style.opacity = 1;
+  };
 }
