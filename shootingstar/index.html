@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <link rel="stylesheet" type="text/css" href="/works.css">
+
+  <link rel="icon" href="/assets/favicon.gif" type="image/gif">
+  <title>Brian Pea</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+  <script src="/assets/simple-excel.js"></script>
+
+</head>
+
+<body>
+
+  <div id="star"></div>
+
+  <div id="links">
+
+    <h1><a id="welcome" href="javascript:void(0);"
+        onclick="ZoomSwitch = true; ZoomClick = true; window.history.pushState(null, null); return false">Brian Pea</a>
+    </h1>
+    <br>
+    <p><a href="/">Home</a></p>
+    <br>
+    <p><a href="mailto:brian@pea.zone">brian​@pea.zone</a></p>
+    <p><a href="https://blog.pea.zone" style="text-transform: uppercase;">Blog</a></p>
+
+  </div>
+
+  <div id="work">
+    <div id="scrollbox">
+      <div id="content">
+        <div id="media" class="gallery">
+          <div id="video" class="media">
+            <div style='padding:75% 0 0 0;position:relative;'>
+              <iframe
+                src="https://player.vimeo.com/video/793264618?color=f0f8ff&amp;title=0&amp;byline=0&amp;portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"></iframe>
+            </div>
+            <script src="https://player.vimeo.com/api/player.js"></script>
+          </div>
+          <div id="video" class="media">
+            <div style='padding:75% 0 0 0;position:relative;'>
+              <iframe
+                src="https://player.vimeo.com/video/793565093?color=f0f8ff&amp;title=0&amp;byline=0&amp;portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"></iframe>
+            </div>
+            <script src="https://player.vimeo.com/api/player.js"></script>
+          </div>
+        </div>
+        <br>
+        <h1>Shooting Star (2023)</h1>
+        <p>An animation made in After Effects, with a breakdown video isolating each step of the process.</p>
+      </div>
+    </div>
+    <a id="menu" href="javascript:void(0);" onclick="menu(); return false">>>></a>
+  </div>
+
+  <script src="/works.js"></script>
+
+</body>
+
+</html>
