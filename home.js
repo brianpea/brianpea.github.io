@@ -255,7 +255,8 @@ csvWorks.onload = function () {
       linkLink.appendChild(container);
 
       var mediaMedia = document.createElement("img");
-      mediaMedia.src = "works/" + workFile + "." + workFormat;
+      mediaMedia.srcset = "works/" + workFile + "_600." + workFormat + ", " + "works/" + workFile + "_1200." + workFormat + " 2x";
+      mediaMedia.src = "works/" + workFile + "_1200." + workFormat;
       mediaMedia.alt = workAlt;
       container.appendChild(mediaMedia);
 
