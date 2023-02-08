@@ -200,25 +200,6 @@ function loaded() {
   }
 }
 
-//grid: makes dynamic grid of media based on height
-var grid;
-
-function init() {
-  grid = new Minigrid({
-    container: '#medias',
-    item: '.media',
-    gutter: 25
-  });
-  grid.mount();
-}
-
-function update() {
-  grid.mount();
-}
-
-setTimeout(init, delay);
-window.addEventListener('resize', update);
-
 //works: populates home media from .csv
 var csvWorks = new XMLHttpRequest();
 csvWorks.open("GET", "works/works.csv");
@@ -273,6 +254,25 @@ csvWorks.onload = function () {
     }
   });
 }
+
+//grid: makes dynamic grid of media based on height
+var grid;
+
+function init() {
+  grid = new Minigrid({
+    container: '#medias',
+    item: '.media',
+    gutter: 25
+  });
+  grid.mount();
+}
+
+function update() {
+  grid.mount();
+}
+
+setTimeout(init, delay);
+window.addEventListener('resize', update);
 
 //tags: makes overlays opaque based on tag selection
 function tag(tag) {

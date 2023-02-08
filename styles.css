@@ -26,6 +26,9 @@ li {
 a {
   color: black;
   text-decoration: underline wavy 0.1vw;
+  -webkit-text-decoration-line:  underline;
+  -webkit-text-decoration-style: wavy;
+  -webkit-text-decoration-thickness: 0.1vw;
 }
 
 a:hover {
