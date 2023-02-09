@@ -22,19 +22,17 @@ csvPreload.onload = function () {
             var workFile = work[1];
             var workFormat = work[4];
 
-            if (workFormat.toString() == "gif") {
+            var preloadHref = "works/" + workFile + "_1200." + workFormat;
+            var preloadSrcset = "works/" + workFile + "_300." + workFormat + " 300w, works/" + workFile + "_600." + workFormat + " 600w, works/" + workFile + "_1200." + workFormat + " 1200w";
 
-                var preloadHref = "works/" + workFile + "_1200.gif";
-                var preloadSrcset = "works/" + workFile + "_600.gif, works/" + workFile + "_1200.gif 2x";
+            var preload = document.createElement("link");
+            preload.rel = "preload";
+            preload.as = "image";
+            preload.href = preloadHref;
+            preload.imageSrcset = preloadSrcset;
+            preload.imageSizes = "(max-width:750px) calc(65vw - 50px), calc(25vw - 25px)"
+            document.head.appendChild(preload);
 
-                var preload = document.createElement("link");
-                preload.rel = "preload";
-                preload.as = "image";
-                preload.href = preloadHref;
-                preload.imageSrcset = preloadSrcset;
-                document.head.appendChild(preload);
-
-            }
         }
     });
 }

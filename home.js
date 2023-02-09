@@ -256,8 +256,9 @@ csvWorks.onload = function () {
       linkLink.appendChild(container);
 
       var mediaMedia = document.createElement("img");
-      mediaMedia.srcset = "works/" + workFile + "_600." + workFormat + ", works/" + workFile + "_1200." + workFormat + " 2x";
       mediaMedia.src = "works/" + workFile + "_1200." + workFormat;
+      mediaMedia.srcset = "works/" + workFile + "_300." + workFormat + " 300w, works/" + workFile + "_600." + workFormat + " 600w, works/" + workFile + "_1200." + workFormat + " 1200w";
+      mediaMedia.sizes = "(max-width:750px) calc(65vw - 50px), calc(25vw - 25px)";
       mediaMedia.alt = workAlt;
       container.appendChild(mediaMedia);
 
