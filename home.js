@@ -256,10 +256,7 @@ csvWorks.onload = function () {
       linkLink.appendChild(container);
 
       var mediaMedia = document.createElement("img");
-      // mediaMedia.classList.add("lazyload");
-      // mediaMedia.setAttribute("data-srcset", "works/" + workFile + "_600." + workFormat + ", " + "works/" + workFile + "_1200." + workFormat + " 2x");
-      // mediaMedia.setAttribute("data-src", "works/" + workFile + "_1200." + workFormat);
-      mediaMedia.srcset = "works/" + workFile + "_600." + workFormat + ", " + "works/" + workFile + "_1200." + workFormat + " 2x";
+      mediaMedia.srcset = "works/" + workFile + "_600." + workFormat + ", works/" + workFile + "_1200." + workFormat + " 2x";
       mediaMedia.src = "works/" + workFile + "_1200." + workFormat;
       mediaMedia.alt = workAlt;
       container.appendChild(mediaMedia);
