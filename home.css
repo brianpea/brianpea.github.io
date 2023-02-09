@@ -59,9 +59,9 @@ img{
   transform: translate(-50%, -50%);
   text-align: center;
   text-decoration: underline wavy 0.1vw;
-  -webkit-text-decoration-line:  underline;
-  -webkit-text-decoration-style: wavy;
-  -webkit-text-decoration-thickness: 0.1vw;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-thickness: 0.1vw;
   color: yellow;
   transition: 0.25s ease-out;
 }
