@@ -255,12 +255,26 @@ csvWorks.onload = function () {
       container.classList.add("media");
       linkLink.appendChild(container);
 
-      var mediaMedia = document.createElement("img");
-      mediaMedia.src = "works/" + workFile + "_1200." + workFormat;
-      mediaMedia.srcset = "works/" + workFile + "_300." + workFormat + " 300w, works/" + workFile + "_600." + workFormat + " 600w, works/" + workFile + "_1200." + workFormat + " 1200w";
-      mediaMedia.sizes = "(max-width:750px) calc(65vw - 50px), calc(25vw - 25px)";
-      mediaMedia.alt = workAlt;
-      container.appendChild(mediaMedia);
+      if (workFormat == "jpg" || workFormat == "gif") {
+        var mediaMedia = document.createElement("img");
+        mediaMedia.src = "works/" + workFile + "_1200." + workFormat;
+        mediaMedia.srcset = "works/" + workFile + "_300." + workFormat + " 300w, works/" + workFile + "_600." + workFormat + " 600w, works/" + workFile + "_1200." + workFormat + " 1200w";
+        mediaMedia.sizes = "(max-width:750px) calc(65vw - 50px), calc(25vw - 25px)";
+        mediaMedia.alt = workAlt;
+        container.appendChild(mediaMedia);
+      }
+      
+      if (workFormat == "mp4") {
+        var mediaTag = document.createElement("video");
+        mediaTag.autoplay = true;
+        mediaTag.loop = true;
+        container.appendChild(mediaTag);
+
+        var mediaMedia = document.createElement("source");
+        mediaMedia.src = "works/" + workFile + "." + workFormat;
+        mediaMedia.type = "video/mp4";
+        mediaTag.appendChild(mediaMedia);
+      }
 
       var overlay = document.createElement("div");
       overlay.classList.add("overlay");

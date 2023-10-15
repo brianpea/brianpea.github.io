@@ -40,6 +40,11 @@ img{
   vertical-align: top;
 }
 
+video {
+  width: calc(25vw - 25px);
+  vertical-align: top;
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -96,6 +101,10 @@ img{
   }
 
   img {
+    width: calc(65vw - 50px);
+  }
+
+  video {
     width: calc(65vw - 50px);
   }
 }
