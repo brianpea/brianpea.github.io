@@ -16,8 +16,8 @@ p,
 h1,
 h2,
 h3,
-a,
-li {
+a
+{
   font-size: 1.5vw;
   font-weight: lighter;
   margin: 1em 0;

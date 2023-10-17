@@ -246,9 +246,11 @@ csvWorks.onload = function () {
       var workTag = work[3];
       var workFormat = work[4];
 
+      var linkList = document.createElement("li");
       var linkLink = document.createElement("a");
       linkLink.className = "work";
       linkLink.href = "/" + workFile;
+      linkList.appendChild(linkLink);
 
       var container = document.createElement("div");
       container.className = "container";
@@ -257,22 +259,28 @@ csvWorks.onload = function () {
 
       if (workFormat == "jpg" || workFormat == "gif") {
         var mediaMedia = document.createElement("img");
-        mediaMedia.src = "works/" + workFile + "_1200." + workFormat;
-        mediaMedia.srcset = "works/" + workFile + "_300." + workFormat + " 300w, works/" + workFile + "_600." + workFormat + " 600w, works/" + workFile + "_1200." + workFormat + " 1200w";
-        mediaMedia.sizes = "(max-width:750px) calc(65vw - 50px), calc(25vw - 25px)";
+        mediaMedia.className = "lazy";
+        mediaMedia.src = "works/" + workFile + "_placer." + workFormat;
+        mediaMedia.dataset.src = "works/" + workFile + "_1200." + workFormat;
+        mediaMedia.dataset.srcset = "works/" + workFile + "_300." + workFormat + " 300w, works/" + workFile + "_600." + workFormat + " 600w, works/" + workFile + "_1200." + workFormat + " 1200w";
         mediaMedia.alt = workAlt;
+        mediaMedia.addEventListener("load", update);
         container.appendChild(mediaMedia);
       }
       
       if (workFormat == "mp4") {
         var mediaTag = document.createElement("video");
+        mediaTag.className = "lazy";
         mediaTag.autoplay = true;
         mediaTag.loop = true;
+        mediaTag.setAttribute('playsinline',"");
+        mediaTag.poster = "works/" + workFile + "_placer.jpg";
         container.appendChild(mediaTag);
 
         var mediaMedia = document.createElement("source");
-        mediaMedia.src = "works/" + workFile + "." + workFormat;
+        mediaMedia.dataset.src = "works/" + workFile + "." + workFormat;
         mediaMedia.type = "video/mp4";
+        mediaMedia.addEventListener("load", update);
         mediaTag.appendChild(mediaMedia);
       }
 
@@ -286,10 +294,55 @@ csvWorks.onload = function () {
       overlayText.appendChild(document.createTextNode(workName));
       overlay.appendChild(overlayText);
 
-      document.getElementById('medias').appendChild(linkLink);
+      document.getElementById('medias').appendChild(linkList);
     }
   });
 }
+
+//lazyloader: loads media lazily via intersection observer
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImgs = [].slice.call(document.querySelectorAll("img.lazy"));
+  var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImgObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(image) {
+        if (image.isIntersecting) {
+          let lazyImg = image.target;
+          lazyImg.src = lazyImg.dataset.src;
+          lazyImg.srcset = lazyImg.dataset.srcset;
+          lazyImg.classList.remove("lazy");
+          lazyImgObserver.unobserve(lazyImg);
+        }
+      });
+    });
+
+    var lazyVideoObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(video) {
+        if (video.isIntersecting) {
+          for (var source in video.target.children) {
+            var videoSource = video.target.children[source];
+            if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+              videoSource.src = videoSource.dataset.src;
+            }
+          }
+
+          video.target.load();
+          video.target.classList.remove("lazy");
+          lazyVideoObserver.unobserve(video.target);
+        }
+      });
+    });
+
+    lazyImgs.forEach(function(lazyImg) {
+      lazyImgObserver.observe(lazyImg);
+    });
+
+    lazyVideos.forEach(function(lazyVideo) {
+      lazyVideoObserver.observe(lazyVideo);
+    });
+  }
+});
 
 //tags: makes overlays opaque based on tag selection
 function tag(tag) {
