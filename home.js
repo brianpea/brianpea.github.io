@@ -260,7 +260,7 @@ csvWorks.onload = function () {
       if (workFormat == "jpg" || workFormat == "gif") {
         var mediaMedia = document.createElement("img");
         mediaMedia.className = "lazy";
-        mediaMedia.src = "works/" + workFile + "_placer.jpg";
+        mediaMedia.src = "works/" + workFile + "_300." + workFormat;
         mediaMedia.dataset.src = "works/" + workFile + "_1200." + workFormat;
         mediaMedia.dataset.srcset = "works/" + workFile + "_300." + workFormat + " 300w, works/" + workFile + "_600." + workFormat + " 600w, works/" + workFile + "_1200." + workFormat + " 1200w";
         mediaMedia.alt = workAlt;
@@ -268,21 +268,22 @@ csvWorks.onload = function () {
         container.appendChild(mediaMedia);
       }
       
-      if (workFormat == "mp4") {
-        var mediaTag = document.createElement("video");
-        mediaTag.className = "lazy";
-        mediaTag.autoplay = true;
-        mediaTag.loop = true;
-        mediaTag.setAttribute('playsinline',"");
-        mediaTag.poster = "works/" + workFile + "_placer.jpg";
-        container.appendChild(mediaTag);
+      // if (workFormat == "mp4") {
+      //   var mediaTag = document.createElement("video");
+      //   mediaTag.className = "lazy";
+      //   mediaTag.autoplay = true;
+      //   mediaTag.loop = true;
+      //   mediaTag.muted = true;
+      //   mediaTag.setAttribute('playsinline',"");
+      //   // mediaTag.poster = "works/" + workFile + "_placer.jpg";
+      //   container.appendChild(mediaTag);
 
-        var mediaMedia = document.createElement("source");
-        mediaMedia.dataset.src = "works/" + workFile + "." + workFormat;
-        mediaMedia.type = "video/mp4";
-        mediaMedia.addEventListener("load", update);
-        mediaTag.appendChild(mediaMedia);
-      }
+      //   var mediaMedia = document.createElement("source");
+      //   mediaMedia.dataset.src = "works/" + workFile + "." + "webm";
+      //   mediaMedia.type = "video/webm; codecs=vp9";
+      //   mediaMedia.addEventListener("load", update);
+      //   mediaTag.appendChild(mediaMedia);
+      // }
 
       var overlay = document.createElement("div");
       overlay.classList.add("overlay");
