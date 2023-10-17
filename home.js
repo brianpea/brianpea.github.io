@@ -260,7 +260,7 @@ csvWorks.onload = function () {
       if (workFormat == "jpg" || workFormat == "gif") {
         var mediaMedia = document.createElement("img");
         mediaMedia.className = "lazy";
-        mediaMedia.src = "works/" + workFile + "_placer." + workFormat;
+        mediaMedia.src = "works/" + workFile + "_placer.jpg";
         mediaMedia.dataset.src = "works/" + workFile + "_1200." + workFormat;
         mediaMedia.dataset.srcset = "works/" + workFile + "_300." + workFormat + " 300w, works/" + workFile + "_600." + workFormat + " 600w, works/" + workFile + "_1200." + workFormat + " 1200w";
         mediaMedia.alt = workAlt;
