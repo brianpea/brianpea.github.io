@@ -9,6 +9,42 @@ window.addEventListener('resize', () => {
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
 
+//loader: loading screen
+var loader = document.getElementById("loader");
+
+// var loaderText = document.createElement("p");
+// loaderText.appendChild(document.createTextNode("Loading"));
+// loader.appendChild(loaderText);
+
+var loaderAnimation = document.createElement("p");
+loader.appendChild(loaderAnimation);
+
+var animationFrames = ["|||","|||","|||","/||","//|","///","///","///","|//","||/"];
+var animationFramerate = 100;
+animator(animationFrames, animationFramerate);
+
+function animator(frames, framerate) {
+  var i = -1;
+  setInterval(
+    function() {
+      loaderAnimation.innerHTML = frames[i];
+      i++;
+      i %= frames.length;
+    },
+    framerate
+  );
+}
+
+function loaderOn() {
+  loader.style.opacity = 1;
+}
+
+function loaderOff() {
+  loader.style.display = "none";
+}
+
+setTimeout(loaderOn, 2475);
+
 //star: star animation/interaction
 let SpinStart;
 let SpinPosition;
@@ -188,15 +224,21 @@ function loaded() {
   document.body.style.background = "aliceblue";
   document.getElementById("medias").style.opacity = 1;
   document.getElementById("links").style.opacity = 1;
-
+  document.getElementById("loader").style.opacity = 0; 
+  document.getElementById("loader").style.zIndex= 0;
+  setTimeout(loaderOff, 500);
+  
   if (ZoomClick == false) {
     document.getElementById("medias").style.opacity = 0;
     document.getElementById("links").style.opacity = 0;
     document.getElementById("star").style.zIndex= 4;
+    document.getElementById("loader").style.zIndex= 5;
   } else {
     document.getElementById("medias").style.opacity = 1;
     document.getElementById("links").style.opacity = 1;
     document.getElementById("star").style.zIndex= 1;
+    document.getElementById("loader").style.zIndex= 0;
+    setTimeout(loaderOff, 500);
   }
 }
 
@@ -346,8 +388,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 //tags: makes overlays opaque based on tag selection
-function tag(tag) {
+// var tagClick = false;
 
+function tag(tag) {
   var all = document.getElementsByClassName("overlay");
   var notTagged = document.querySelectorAll(".overlay:not(." + tag + ")");
 
@@ -358,4 +401,23 @@ function tag(tag) {
   for (var j = 0; j < notTagged.length; j++) {
     notTagged[j].style.opacity = 1;
   };
+
+  // tagClick = true;
 }
+
+// function untag() {
+//   var clickArea = document.querySelectorAll("a");
+//   clickArea.onclick = console.log("clickArea clicked");
+
+//   if (tagClick == false) {
+//     var all = document.getElementsByClassName("overlay");
+
+//     for (var i = 0; i < all.length; i++) {
+//       all[i].style.opacity = "";
+//     };
+//   } else {
+//     tagClick = false;
+//   }
+// }
+
+// document.addEventListener("click", untag);

@@ -5,6 +5,18 @@
   height: calc(var(--vh, 1vh) * 100);
 }
 
+#loader {
+  position: fixed;
+  left: 50vw;
+  top: calc(var(--vh, 1vh) * 50);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 5;
+  opacity: 0;
+  transition: 0.25s ease-out;
+  white-space: pre;
+}
+
 #links {
   margin: 0;
   padding: calc(25px + 1em) 25px;
