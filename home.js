@@ -12,10 +12,6 @@ window.addEventListener('resize', () => {
 //loader: loading screen
 var loader = document.getElementById("loader");
 
-// var loaderText = document.createElement("p");
-// loaderText.appendChild(document.createTextNode("Loading"));
-// loader.appendChild(loaderText);
-
 var loaderAnimation = document.createElement("p");
 loader.appendChild(loaderAnimation);
 
@@ -388,7 +384,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 //tags: makes overlays opaque based on tag selection
-// var tagClick = false;
+var tagClick = false;
 
 function tag(tag) {
   var all = document.getElementsByClassName("overlay");
@@ -402,22 +398,30 @@ function tag(tag) {
     notTagged[j].style.opacity = 1;
   };
 
-  // tagClick = true;
+  tagClick = true;
 }
 
-// function untag() {
-//   var clickArea = document.querySelectorAll("a");
-//   clickArea.onclick = console.log("clickArea clicked");
+function untag() {
+  var clickArea = document.querySelectorAll("a");
 
-//   if (tagClick == false) {
-//     var all = document.getElementsByClassName("overlay");
+  for (var i = 0; i < clickArea.length; i++) {
+    var areaLink = clickArea[i];
+    areaLink.addEventListener("click", ignore);
 
-//     for (var i = 0; i < all.length; i++) {
-//       all[i].style.opacity = "";
-//     };
-//   } else {
-//     tagClick = false;
-//   }
-// }
+    function ignore() {
+      tagClick = true;
+    }
+  }
 
-// document.addEventListener("click", untag);
+  if (tagClick == false) {
+    var all = document.getElementsByClassName("overlay");
+
+    for (var j = 0; j < all.length; j++) {
+      all[j].style.opacity = "";
+    };
+  } else {
+    tagClick = false;
+  }
+}
+
+document.addEventListener("click", untag);
