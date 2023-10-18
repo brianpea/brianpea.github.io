@@ -10,10 +10,6 @@ window.addEventListener('resize', () => {
 //loader: loading screen
 var loader = document.getElementById("loader");
 
-// var loaderText = document.createElement("p");
-// loaderText.appendChild(document.createTextNode("Loading"));
-// loader.appendChild(loaderText);
-
 var loaderAnimation = document.createElement("p");
 loader.appendChild(loaderAnimation);
 
