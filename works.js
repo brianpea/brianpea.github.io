@@ -108,7 +108,7 @@ function draw() {
   let Radius2 = windowWidth * (0.075 * mobileMultiplier);
   let Points = 9;
   let Tightness = map((windowWidth * 1.75), 0, (3500 / mobileMultiplier), 1, 0);
-  let SecsPerSpin = Points * (600 / Points);
+  let SecsPerSpin = Points * 60;
 
   Scale += Zoom;
 
@@ -214,24 +214,29 @@ function windowResized() {
   }
 }
 
+document.body.style.overflow = "hidden";
+
 function loaded() {
+  document.body.style.overflow = "auto";
   document.body.style.background = "aliceblue";
   document.getElementById("work").style.opacity = 1;
   document.getElementById("links").style.opacity = 1;
   document.getElementById("loader").style.opacity = 0; 
-  document.getElementById("loader").style.zIndex= 0;
+  document.getElementById("loader").style.zIndex = 0;
   setTimeout(loaderOff, 500);
 
   if (ZoomClick == false) {
+    document.body.style.overflow = "hidden";
     document.getElementById("work").style.opacity = 0;
     document.getElementById("links").style.opacity = 0;
-    document.getElementById("star").style.zIndex= 4;
-    document.getElementById("loader").style.zIndex= 5;
+    document.getElementById("star").style.zIndex = 4;
+    document.getElementById("loader").style.zIndex = 5;
   } else {
+    document.body.style.overflow = "auto";
     document.getElementById("work").style.opacity = 1;
     document.getElementById("links").style.opacity = 1;
-    document.getElementById("star").style.zIndex= 1;
-    document.getElementById("loader").style.zIndex= 0;
+    document.getElementById("star").style.zIndex = 1;
+    document.getElementById("loader").style.zIndex = 0;
     setTimeout(loaderOff, 500);
   }
 }

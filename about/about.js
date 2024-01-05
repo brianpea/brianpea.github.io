@@ -58,5 +58,12 @@ function arrow(n) {
 
 //back
 function back() {
-  window.location.href = document.referrer;
+  document.getElementById("about").style.opacity = 0;
+  setTimeout(backPage, 250);
+
+  function backPage() {
+    window.location.href = document.referrer;
+  }
 }
+
+document.getElementById("about").style.opacity = 1;

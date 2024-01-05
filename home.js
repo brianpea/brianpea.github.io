@@ -110,7 +110,7 @@ function draw() {
   let Radius2 = windowWidth * (0.075 * mobileMultiplier);
   let Points = 9;
   let Tightness = map((windowWidth * 1.75), 0, (3500 / mobileMultiplier), 1, 0);
-  let SecsPerSpin = Points * (600 / Points);
+  let SecsPerSpin = Points * 60;
 
   Scale += Zoom;
 
@@ -162,7 +162,10 @@ function draw() {
 
   clear();
 
-  let Spin = round(SpinStart + (((millis() / 1000) * TWO_PI) / SecsPerSpin), 5);
+  let scrollHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
+  // let scrollMap = map(window.scrollY, 0, scrollHeight - window.windowHeight, 0, 0.5);
+
+  let Spin = round(SpinStart + ((millis() / 1000) * TWO_PI) / SecsPerSpin + window.scrollY / 2500, 5);
 
   push();
   translate(textCenterX, textCenterY);
@@ -216,24 +219,29 @@ function windowResized() {
   }
 }
 
+document.body.style.overflow = "hidden";
+
 function loaded() {
+  document.body.style.overflow = "auto";
   document.body.style.background = "aliceblue";
   document.getElementById("medias").style.opacity = 1;
   document.getElementById("links").style.opacity = 1;
   document.getElementById("loader").style.opacity = 0; 
-  document.getElementById("loader").style.zIndex= 0;
+  document.getElementById("loader").style.zIndex = 0;
   setTimeout(loaderOff, 500);
   
   if (ZoomClick == false) {
+    document.body.style.overflow = "hidden";
     document.getElementById("medias").style.opacity = 0;
     document.getElementById("links").style.opacity = 0;
-    document.getElementById("star").style.zIndex= 4;
-    document.getElementById("loader").style.zIndex= 5;
+    document.getElementById("star").style.zIndex = 4;
+    document.getElementById("loader").style.zIndex = 5;
   } else {
+    document.body.style.overflow = "auto";
     document.getElementById("medias").style.opacity = 1;
     document.getElementById("links").style.opacity = 1;
-    document.getElementById("star").style.zIndex= 1;
-    document.getElementById("loader").style.zIndex= 0;
+    document.getElementById("star").style.zIndex = 1;
+    document.getElementById("loader").style.zIndex = 0;
     setTimeout(loaderOff, 500);
   }
 }
