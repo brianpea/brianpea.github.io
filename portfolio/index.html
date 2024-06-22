@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <link rel="stylesheet" type="text/css" href="/works.css">
+
+  <link rel="icon" href="/assets/favicon.gif" type="image/gif">
+  <title>Brian Pea</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.min.js" defer></script>
+
+</head>
+
+<body>
+
+  <div id="star"></div>
+
+  <div id="links">
+
+    <h1><a id="welcome" href="javascript:void(0);"
+        onclick="ZoomSwitch = true; ZoomClick = true; window.history.pushState(null, null); return false">Brian Pea</a>
+    </h1>
+    <br>
+    <p><a href="/">Home</a></p>
+    <br>
+    <p><a href="mailto:brian@pea.zone">brian​@pea.zone</a></p>
+    <p><a href="https://instagram.com/brianispea">​@brianispea</a></p>
+    <p><a href="https://blog.pea.zone" style="text-transform: uppercase;">Blog</a></p>
+
+  </div>
+
+  <div id="work">
+    <div id="scrollbox">
+      <div id="content">
+        <div id="media" class="gallery">
+          <img class="media" src='InterstellarBrews_1.jpg' alt='An illustration of someone passing their friend a PBR.'>
+        </div>
+        <br>
+        <h2>Interstellar Brews (2020)</h2>
+        <p>A Pabst Blue Ribbon can illustration submission.</p>
+      </div>
+    </div>
+    <a id="menu" href="javascript:void(0);" onclick="menu(); return false">>>></a>
+  </div>
+
+  </div>
+
+  <div id="loader"></div>
+  
+  <script src="/works.js"></script>
+
+</body>
+
+</html>
