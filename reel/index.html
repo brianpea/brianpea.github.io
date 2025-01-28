@@ -19,18 +19,19 @@
 
   <div id="star"></div>
 
-  <div id="links">
+  <div id="nav">
+    <p id="home"><a href="/">Home</a></p>
 
     <h1><a id="welcome" href="javascript:void(0);"
         onclick="ZoomSwitch = true; ZoomClick = true; window.history.pushState(null, null); return false">Brian Pea</a>
     </h1>
-    <br>
-    <p><a href="/">Home</a></p>
-    <br>
-    <p><a href="mailto:brian@pea.zone">brian​@pea.zone</a></p>
-    <p><a href="https://instagram.com/brianispea">​@brianispea</a></p>
-    <p><a href="https://blog.pea.zone">Blog</a></p>
-
+    
+    <ul id="links" class="overflow">
+      <li><p class="overflowtitle">Find me at</p></li>
+      <li><p><a href="mailto:brian@pea.zone">brian​@pea.zone</a></p></li>
+      <li><p><a href="https://instagram.com/brianispea">​@brianispea</a></p></li>
+      <li><p><a href="https://blog.pea.zone">Blog</a></p></li>
+    </ul>
   </div>
 
   <div id="work">
@@ -53,7 +54,7 @@
         <p>Motion graphics work from the past three years.</p>
       </div>
     </div>
-    <a id="menu" href="javascript:void(0);" onclick="menu(); return false">>>></a>
+    <!-- <a id="menu" href="javascript:void(0);" onclick="menu(); return false">>>></a> -->
   </div>
 
   <div id="loader"></div>

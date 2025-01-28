@@ -90,25 +90,43 @@ function setup() {
     removeItem("ZoomClick");
   }
 
-  document.getElementById("links").style.opacity = 0;
+  document.getElementById("nav").style.opacity = 0;
 }
 
 function draw() {
   setTimeout(loaded, 100);
 
-  let mobileMultiplier;
+  let radius1Multiplier;
+  let radius2Multiplier = 0.06;
+  let tightnessMultiplier;
+
   if (windowWidth <= 750) {
-    mobileMultiplier = 2;
+    radius1Multiplier = 1.3;
+    radius2Multiplier = radius2Multiplier * 2;
+    tightnessMultiplier = 1.5;
   } else {
-    mobileMultiplier = 1;
+    radius1Multiplier = 1;
+    tightnessMultiplier = 1;
   }
 
   let Color = "yellow";
-  let Radius1 = WindowSize;
-  let Radius2 = windowWidth * (0.075 * mobileMultiplier);
+  let Radius1 = WindowSize * radius1Multiplier;
+  let Radius2 = windowWidth * radius2Multiplier;
   let Points = 9;
-  let Tightness = map((windowWidth * 1.75), 0, (3500 / mobileMultiplier), 1, 0);
+  let Tightness = map((windowWidth * 1.75), 0, (3500 / tightnessMultiplier), 1, 0);
   let SecsPerSpin = Points * 60;
+
+  function mapper (number, inMin, inMax, outMin, outMax) {
+    if (number < inMin) {
+      return outMin;
+    } else if (number > inMax) {
+      return outMax;
+    } else {
+      return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+    };
+  }
+
+  var zoomValue = mapper(windowWidth, 250, 1500, 0.02, 0.01);
 
   Scale += Zoom;
 
@@ -116,7 +134,7 @@ function draw() {
     ZoomClick = false;
     ZoomMillis = millis();
   } else if (ZoomSwitch == true) {
-    Zoom += 0.01;
+    Zoom += zoomValue;
 
     if (millis() > ZoomMillis + ZoomDelay) {
       noLoop();
@@ -130,7 +148,7 @@ function draw() {
     ZoomClick = false;
     storeItem("ZoomClick", ZoomClick);
   } else if (ZoomSwitch == false) {
-    Zoom -= 0.01;
+    Zoom -= zoomValue;
 
     if (Scale <= 1) {
       Zoom = 0;
@@ -142,21 +160,27 @@ function draw() {
     }
   }
 
-  let textRef = document.getElementById("links");
-  let welcomeRef = document.getElementById("welcome");
+  // let textRef = document.getElementById("nav");
+  // // let welcomeRef = document.getElementById("welcome");
 
-  let textRight = 25;
-  let welcomeWidth = welcomeRef.offsetWidth;
+  // // let textRight = 25;
+  // // let welcomeWidth = welcomeRef.offsetWidth;
 
-  textCenterX = windowWidth - textRight - (welcomeWidth / 2);
+  // // textCenterX = windowWidth - textRight - (welcomeWidth / 2);
+  // textCenterX = windowWidth - (textRef.offsetWidth / 2);
 
-  let textTop = textRef.offsetTop;
-  let textHeight = textRef.offsetHeight;
-  let welcomeHeight = welcomeRef.offsetHeight;
-  let em = windowWidth * 0.015;
-  let padding = 25;
+  // // let textTop = textRef.offsetTop;
+  // // let textHeight = textRef.offsetHeight;
+  // // let welcomeHeight = welcomeRef.offsetHeight;
+  // // let em = windowWidth * 0.015;
+  // // let padding = 25;
 
-  textCenterY = textTop - (textHeight / 2) + ((em * mobileMultiplier) + padding) + (em * mobileMultiplier) + (welcomeHeight / 2);
+  // // textCenterY = textTop - (textHeight / 2) + ((em * mobileMultiplier) + padding) + (em * mobileMultiplier) + (welcomeHeight / 2);
+  // textCenterY = windowHeight / 2;
+
+  var welcomeRef = document.getElementById("welcome");
+  textCenterX = welcomeRef.getBoundingClientRect().left + (welcomeRef.offsetWidth / 2);
+  textCenterY = welcomeRef.getBoundingClientRect().top + (welcomeRef.offsetHeight / 2);
 
   clear();
 
@@ -220,7 +244,7 @@ function loaded() {
   document.body.style.overflow = "auto";
   document.body.style.background = "aliceblue";
   document.getElementById("work").style.opacity = 1;
-  document.getElementById("links").style.opacity = 1;
+  document.getElementById("nav").style.opacity = 1;
   document.getElementById("loader").style.opacity = 0; 
   document.getElementById("loader").style.zIndex = 0;
   setTimeout(loaderOff, 500);
@@ -228,13 +252,13 @@ function loaded() {
   if (ZoomClick == false) {
     document.body.style.overflow = "hidden";
     document.getElementById("work").style.opacity = 0;
-    document.getElementById("links").style.opacity = 0;
+    document.getElementById("nav").style.opacity = 0;
     document.getElementById("star").style.zIndex = 4;
     document.getElementById("loader").style.zIndex = 5;
   } else {
     document.body.style.overflow = "auto";
     document.getElementById("work").style.opacity = 1;
-    document.getElementById("links").style.opacity = 1;
+    document.getElementById("nav").style.opacity = 1;
     document.getElementById("star").style.zIndex = 1;
     document.getElementById("loader").style.zIndex = 0;
     setTimeout(loaderOff, 500);
@@ -282,53 +306,60 @@ if (mediaCount != 0) {
 }
 
 //menu: hides/shows side links to make work area larger/smaller
-var toggle = false;
-var interval;
+// var toggle = false;
+// var interval;
 
-function menu() {
-  clearInterval(interval);
-  document.getElementById("menu").style.display = "none";
-  document.getElementById("work").style.transition = "1s ease-out";
+// function menu() {
+//   clearInterval(interval);
+//   document.getElementById("menu").style.display = "none";
+//   document.getElementById("work").style.transition = "1s ease-out";
+//   document.getElementById("content").style.transition = "1s ease-out";
 
-  if (toggle == true) {
-    document.getElementById("work").style.width = "calc(65vw - 25px)";
-    document.getElementById("work").ontransitionend = show;
-  } else if (toggle == false) {
-    document.getElementById("work").style.width = "100vw";
-    document.getElementById("work").ontransitionend = hide;
-  }
-}
+//   if (toggle == true) {
+//     document.getElementById("work").style.zIndex = "2";
+//     document.getElementById("nav").style.zIndex = "3";
+//     document.getElementById("work").style.width = "calc(65vw - 25px)";
+//     document.getElementById("content").style.width = "calc(65vw - 75px)";
+//     document.getElementById("work").ontransitionend = show;
+//   } else if (toggle == false) {
+//     document.getElementById("work").style.zIndex = "3";
+//     document.getElementById("nav").style.zIndex = "2";
+//     document.getElementById("work").style.width = "100vw";
+//     document.getElementById("content").style.width = "calc(100% - 50px)";
+//     document.getElementById("work").ontransitionend = hide;
+//   }
+// }
 
-function show() {
-  document.getElementById("menu").innerHTML = ">>>";
-  document.getElementById("menu").style.display = "inline-block";
-  document.getElementById("work").style.transition = "none";
-  toggle = false;
-  interval = setInterval(adjust, 1);
-}
+// function show() {
+//   document.getElementById("menu").innerHTML = ">>>";
+//   document.getElementById("menu").style.display = "inline-block";
+//   document.getElementById("work").style.transition = "none";
+//   toggle = false;
+//   interval = setInterval(adjust, 1);
+// }
 
-function hide() {
-  document.getElementById("menu").innerHTML = "<<<";
-  document.getElementById("menu").style.display = "inline-block";
-  document.getElementById("work").style.transition = "none";
-  toggle = true;
-  interval = setInterval(adjust, 1);
-}
+// function hide() {
+//   document.getElementById("menu").innerHTML = "<<<";
+//   document.getElementById("menu").style.display = "inline-block";
+//   document.getElementById("work").style.transition = "none";
+//   toggle = true;
+//   interval = setInterval(adjust, 1);
+// }
 
-function adjust() {
-  if (window.innerWidth > 750) {
-    document.getElementById("work").style.width = "calc(75vw - 25px)";
-    document.getElementById("menu").style.display = "none";
-  } else {
-    if (toggle == true) {
-      document.getElementById("work").style.width = "100vw";
-      document.getElementById("menu").style.display = "inline-block";
-    } else if (toggle == false) {
-      document.getElementById("work").style.width = "calc(65vw - 25px)";
-      document.getElementById("menu").style.display = "inline-block";
-    }
-  }
-}
+// function adjust() {
+//   if (window.innerWidth > 750) {
+//     document.getElementById("work").style.width = "calc(75vw - 25px)";
+//     document.getElementById("menu").style.display = "none";
+//   } else {
+//     if (toggle == true) {
+//       document.getElementById("work").style.width = "100vw";
+//       document.getElementById("menu").style.display = "inline-block";
+//     } else if (toggle == false) {
+//       document.getElementById("work").style.width = "calc(65vw - 25px)";
+//       document.getElementById("menu").style.display = "inline-block";
+//     }
+//   }
+// }
 
 //modal: fullscreen image modal with alt test captions
 if (document.querySelectorAll("img").length > 0) {
@@ -368,9 +399,9 @@ setInterval(overflow, 1);
 
 function overflow() {
   var content = document.getElementById("content").scrollHeight;
-  var scrollbox = document.getElementById("scrollbox").scrollHeight;
+  var work = document.getElementById("work").scrollHeight;
 
-  if (content >= scrollbox) {
+  if (content >= work) {
     document.getElementById("content").style.top = "0";
     document.getElementById("content").style.transform = "translate(0, 0)";
   } else {

@@ -21,23 +21,25 @@
 
   <div id="star"></div>
 
-  <div id="links">
-
-    <h1><a id="welcome" href="javascript:void(0);"
-        onclick="ZoomSwitch = true; ZoomClick = true; window.history.pushState(null, null); return false">Brian Pea</a>
-    </h1>
-    <br>
-    <ul id="works">
-      <li><p><a href="javascript:void(0);" onclick="tag('animation');" ; return false>Animation</a></li>
-      <li><p><a href="javascript:void(0);" onclick="tag('design')" ; return false>Design</a></p></li>
-      <li><p><a href="javascript:void(0);" onclick="tag('video')" ; return false>Video</a></p></li>
-      <li><p><a href="javascript:void(0);" onclick="tag('illustration')" ; return false>Illustration</a></p></li>
+  <div id="nav">
+    <ul id="works" class="overflow">
+      <li><p class="overflowtitle">Filter by</p></li>
+      <li><p><a href="javascript:void(0);" onclick="tag('animation'); return false">Animation</a></li>
+      <li><p><a href="javascript:void(0);" onclick="tag('design'); return false">Design</a></p></li>
+      <li><p><a href="javascript:void(0);" onclick="tag('video'); return false">Video</a></p></li>
+      <li><p><a href="javascript:void(0);" onclick="tag('illustration'); return false">Illustration</a></p></li>
     </ul>
-    <br>
-    <p><a href="mailto:brian@pea.zone">brian​@pea.zone</a></p>
-    <p><a href="https://instagram.com/brianispea">​@brianispea</a></p>
-    <p><a href="https://blog.pea.zone">Blog</a></p>
 
+    <h1>
+      <a id="welcome" href="/about" onclick="ZoomSwitch = true; ZoomClick = true; window.history.pushState(null, null); return false">Brian Pea</a>
+    </h1>
+    
+    <ul id="links" class="overflow">
+      <li><p class="overflowtitle">Find me at</p></li>
+      <li><p><a href="mailto:brian@pea.zone">brian​@pea.zone</a></p></li>
+      <li><p><a href="https://instagram.com/brianispea">​@brianispea</a></p></li>
+      <li><p><a href="https://blog.pea.zone">Blog</a></p></li>
+    </ul>
   </div>
 
   <ul id="medias"></ul>

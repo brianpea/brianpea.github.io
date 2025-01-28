@@ -92,25 +92,43 @@ function setup() {
     removeItem("ZoomClick");
   }
 
-  document.getElementById("links").style.opacity = 0;
+  document.getElementById("nav").style.opacity = 0;
 }
 
 function draw() {
   setTimeout(loaded, delay);
 
-  let mobileMultiplier;
+  let radius1Multiplier;
+  let radius2Multiplier = 0.06;
+  let tightnessMultiplier;
+
   if (windowWidth <= 750) {
-    mobileMultiplier = 2;
+    radius1Multiplier = 1.3;
+    radius2Multiplier = radius2Multiplier * 2;
+    tightnessMultiplier = 1.5;
   } else {
-    mobileMultiplier = 1;
+    radius1Multiplier = 1;
+    tightnessMultiplier = 1;
   }
 
   let Color = "yellow";
-  let Radius1 = WindowSize;
-  let Radius2 = windowWidth * (0.075 * mobileMultiplier);
+  let Radius1 = WindowSize * radius1Multiplier;
+  let Radius2 = windowWidth * radius2Multiplier;
   let Points = 9;
-  let Tightness = map((windowWidth * 1.75), 0, (3500 / mobileMultiplier), 1, 0);
+  let Tightness = map((windowWidth * 1.75), 0, (3500 / tightnessMultiplier), 1, 0);
   let SecsPerSpin = Points * 60;
+
+  function mapper (number, inMin, inMax, outMin, outMax) {
+    if (number < inMin) {
+      return outMin;
+    } else if (number > inMax) {
+      return outMax;
+    } else {
+      return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+    };
+  }
+
+  var zoomValue = mapper(windowWidth, 250, 1500, 0.02, 0.01);
 
   Scale += Zoom;
 
@@ -118,7 +136,7 @@ function draw() {
     ZoomClick = false;
     ZoomMillis = millis();
   } else if (ZoomSwitch == true) {
-    Zoom += 0.01;
+    Zoom += zoomValue;
 
     if (millis() > ZoomMillis + ZoomDelay) {
       noLoop();
@@ -132,7 +150,7 @@ function draw() {
     ZoomClick = false;
     storeItem("ZoomClick", ZoomClick);
   } else if (ZoomSwitch == false) {
-    Zoom -= 0.01;
+    Zoom -= zoomValue;
 
     if (Scale <= 1) {
       Zoom = 0;
@@ -144,25 +162,31 @@ function draw() {
     }
   }
 
-  let textRef = document.getElementById("links");
-  let welcomeRef = document.getElementById("welcome");
+  // let textRef = document.getElementById("nav");
+  // // let welcomeRef = document.getElementById("welcome");
 
-  let textRight = 25;
-  let welcomeWidth = welcomeRef.offsetWidth;
+  // // let textRight = 25;
+  // // let welcomeWidth = welcomeRef.offsetWidth;
 
-  textCenterX = (windowWidth) - textRight - (welcomeWidth / 2);
+  // // textCenterX = windowWidth - textRight - (welcomeWidth / 2);
+  // textCenterX = windowWidth - (textRef.offsetWidth / 2);
 
-  let textTop = textRef.offsetTop;
-  let textHeight = textRef.offsetHeight;
-  let welcomeHeight = welcomeRef.offsetHeight;
-  let em = windowWidth * 0.015;
-  let padding = 25;
+  // // let textTop = textRef.offsetTop;
+  // // let textHeight = textRef.offsetHeight;
+  // // let welcomeHeight = welcomeRef.offsetHeight;
+  // // let em = windowWidth * 0.015;
+  // // let padding = 25;
 
-  textCenterY = textTop - (textHeight / 2) + ((em * mobileMultiplier) + padding) + (em * mobileMultiplier) + (welcomeHeight / 2);
+  // // textCenterY = textTop - (textHeight / 2) + ((em * mobileMultiplier) + padding) + (em * mobileMultiplier) + (welcomeHeight / 2);
+  // textCenterY = windowHeight / 2;
+
+  var welcomeRef = document.getElementById("welcome");
+  textCenterX = welcomeRef.getBoundingClientRect().left + (welcomeRef.offsetWidth / 2);
+  textCenterY = welcomeRef.getBoundingClientRect().top + (welcomeRef.offsetHeight / 2);
 
   clear();
 
-  let scrollHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
+  // let scrollHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
   // let scrollMap = map(window.scrollY, 0, scrollHeight - window.windowHeight, 0, 0.5);
 
   let Spin = round(SpinStart + ((millis() / 1000) * TWO_PI) / SecsPerSpin + window.scrollY / 2500, 5);
@@ -225,7 +249,7 @@ function loaded() {
   document.body.style.overflow = "auto";
   document.body.style.background = "aliceblue";
   document.getElementById("medias").style.opacity = 1;
-  document.getElementById("links").style.opacity = 1;
+  document.getElementById("nav").style.opacity = 1;
   document.getElementById("loader").style.opacity = 0; 
   document.getElementById("loader").style.zIndex = 0;
   setTimeout(loaderOff, 500);
@@ -233,13 +257,13 @@ function loaded() {
   if (ZoomClick == false) {
     document.body.style.overflow = "hidden";
     document.getElementById("medias").style.opacity = 0;
-    document.getElementById("links").style.opacity = 0;
+    document.getElementById("nav").style.opacity = 0;
     document.getElementById("star").style.zIndex = 4;
     document.getElementById("loader").style.zIndex = 5;
   } else {
     document.body.style.overflow = "auto";
     document.getElementById("medias").style.opacity = 1;
-    document.getElementById("links").style.opacity = 1;
+    document.getElementById("nav").style.opacity = 1;
     document.getElementById("star").style.zIndex = 1;
     document.getElementById("loader").style.zIndex = 0;
     setTimeout(loaderOff, 500);
@@ -342,7 +366,7 @@ csvWorks.onload = function () {
       overlay.appendChild(overlayText);
 
       document.getElementById('medias').appendChild(linkList);
-    }
+    };
   });
 }
 
@@ -360,7 +384,7 @@ document.addEventListener("DOMContentLoaded", function() {
           lazyImg.srcset = lazyImg.dataset.srcset;
           lazyImg.classList.remove("lazy");
           lazyImgObserver.unobserve(lazyImg);
-        }
+        };
       });
     });
 
@@ -371,8 +395,8 @@ document.addEventListener("DOMContentLoaded", function() {
             var videoSource = video.target.children[source];
             if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
               videoSource.src = videoSource.dataset.src;
-            }
-          }
+            };
+          };
 
           video.target.load();
           video.target.classList.remove("lazy");
@@ -388,7 +412,7 @@ document.addEventListener("DOMContentLoaded", function() {
     lazyVideos.forEach(function(lazyVideo) {
       lazyVideoObserver.observe(lazyVideo);
     });
-  }
+  };
 });
 
 //tags: makes overlays opaque based on tag selection
@@ -418,8 +442,8 @@ function untag() {
 
     function ignore() {
       tagClick = true;
-    }
-  }
+    };
+  };
 
   if (tagClick == false) {
     var all = document.getElementsByClassName("overlay");
@@ -429,7 +453,40 @@ function untag() {
     };
   } else {
     tagClick = false;
-  }
+  };
 }
 
 document.addEventListener("click", untag);
+
+//overflow menus: compresses menus into a sidebar in mobile
+// if (window.innerWidth <= 750) {
+//   var overflow = document.getElementsByClassName("overflow");
+
+//   for (var i = 0; i < overflow.length; i++) {
+//     var overflowTitle = document.getElementsByClassName("overflowtitle")[i];
+
+//     var overflowLink = document.createElement("a");
+//     overflowLink.appendChild(document.createTextNode(overflowTitle.innerText));
+//     overflowLink.href = "javascript:void(0);";
+//     overflowLink.setAttribute("onclick", "menu('show" + [i + 1] + "')");
+
+//     overflowTitle.innerText = "";
+//     overflowTitle.appendChild(overflowLink);
+
+//     var overflowSib = overflowTitle.parentElement.nextElementSibling;
+
+//     while(overflowSib) {
+//       var overflowSibKids = overflowSib.children[0];
+//       overflowSib = overflowSib.nextElementSibling;
+//     };
+//   }
+
+//   function menu(state) {
+//     if (state == "show1") {
+//       console.log("show1"); 
+//     };
+//     if (state == "show2") {
+//       console.log("show2"); 
+//     };
+//   };
+// }
