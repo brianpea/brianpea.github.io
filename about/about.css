@@ -5,6 +5,7 @@
   text-align: center;
   opacity: 0;
   transition: 0.25s ease-out;
+  overflow: auto;
 }
 
 #content {
@@ -19,7 +20,7 @@
 #prev {
   margin: 0;
   padding: calc(25px + 1em) 25px;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 6.25%;
   transform: translate(0, -50%);
@@ -28,7 +29,7 @@
 #next {
   margin: 0;
   padding: calc(25px + 1em) 25px;
-  position: absolute;
+  position: fixed;
   top: 50%;
   right: 6.25%;
   transform: translate(0, -50%);
@@ -37,7 +38,7 @@
 #back {
   margin: 0;
   padding: calc(25px + 1em) 25px;
-  position: absolute;
+  position: fixed;
   top: 6.25%;
   left: 50%;
   transform: translate(-50%, 0);
@@ -68,8 +69,19 @@
   }
 }
 
-@media (max-height:750px) {
+@media (max-height:650px) {
+  #content {
+    width: calc(50% * (1 - 0.2));
+    left: calc(50% + (50% * 0.2));
+  }
+
+  #prev {
+    left: 20%;
+  }
+
   #back {
-    top: 0;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
   }
 }

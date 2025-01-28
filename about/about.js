@@ -49,7 +49,7 @@ var arrowIcons = "<a id='prev' href='#' onclick='arrow(-1); return false'><span 
 
 document.getElementsByClassName('slideshow')[0].insertAdjacentHTML('beforeend', arrowIcons);
 
-var position = 1;
+var position = 2;
 slideshow(position);
 
 function arrow(n) {
@@ -67,3 +67,19 @@ function back() {
 }
 
 document.getElementById("about").style.opacity = 1;
+
+//overflow: controls dynamic overflow css styling
+setInterval(overflow, 1);
+
+function overflow() {
+  var content = document.getElementById("content").scrollHeight;
+  var work = document.getElementById("about").scrollHeight;
+
+  if (content >= work) {
+    document.getElementById("content").style.top = "0";
+    document.getElementById("content").style.transform = "translate(-50%, 0)";
+  } else {
+    document.getElementById("content").style.top = "50%";
+    document.getElementById("content").style.transform = "translate(-50%, -50%)";
+  }
+}

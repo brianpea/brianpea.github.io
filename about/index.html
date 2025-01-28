@@ -20,6 +20,13 @@
   <div id="about" class="slideshow">
     <div id="content">
       <div class="slide">
+        <h2 class="sr-only">Contact</h2>
+        <p>Please reach out with any work inquiries, currently open to any projects!</p>
+        <p>Email me at<br><a href="mailto:brian@pea.zone">brian​@pea.zone</a></p>
+        <p>or DM me on Instagram<br><a href="https://instagram.com/brianispea">​@brianispea</a></p>
+      </div>
+
+      <div class="slide">
         <h1 class="sr-only">About</h1>
         <p>Brian Pea is an artist and teacher.
         <p>He holds a BA from the University of California, Los Angeles in Design Media Arts and a minor in Visual and
@@ -33,13 +40,14 @@
           <a href="https://minigrid.js.org/">minigrid.js</a>, and 
           <a href="http://faisalman.github.io/simple-excel-js/">simple-excel.js</a>.</p>
         <p>Typeset in <a href="https://github.com/sursly/sono/">Sono</a> by Tyler Finck.</p>
-        <p>Last Updated <span id="date"></span></p>
+        <p>Last updated on<br><span id="date"></span></p>
         <script>
           var date = new Date(document.lastModified);
-          var m = date.getMonth() + 1;
+          const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+          var m = months[date.getMonth()];
           var d = date.getDate();
           var y = date.getFullYear();
-          date = m + "-" + d + "-" + y;
+          date = m + ". " + d + ", " + y;
           document.getElementById("date").innerHTML = date;
         </script>
       </div>

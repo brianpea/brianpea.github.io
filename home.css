@@ -149,3 +149,13 @@ video {
     width: calc(65vw - 50px);
   }
 }
+
+@media (max-height: 650px) {
+  #links {
+    visibility: hidden;
+  }
+
+  #welcome {
+    top: calc((var(--vh, 1vh) * 85) - 1em);
+  }
+}

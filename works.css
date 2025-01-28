@@ -175,10 +175,11 @@
     left: 0;
     bottom: 0;
     width: 100vw;
-    height: calc((var(--vh, 1vh) * 12.5) - 50px);
+    height: calc((var(--vh, 1vh) * 30) - 50px);
   }
 
   #home {
+    /* top: 1em; */
     top: calc(50% - 1em);
     transform: translate(0, -50%);
   }
@@ -190,20 +191,18 @@
   }
   
   #links {
-    top: calc(50% - 1em);
-    transform: translate(0, -50%);
-    right: 25px;
+    bottom: 0;
     visibility: hidden;
   }
 
   #work {
     width: 100vw;
-    height: calc(var(--vh, 1vh) * 87.5);
+    height: calc(var(--vh, 1vh) * 70);
   }
 
   #scrollbox {
     width: 100%;
-    height: calc(var(--vh, 1vh) * 87.5);
+    height: calc(var(--vh, 1vh) * 70);
   }
 
   #content {
@@ -225,5 +224,15 @@
 
   #menu {
     display: inline-block;
+  }
+}
+
+@media (max-height:650px) {  
+  #links {
+    visibility: hidden;
+  }
+
+  #welcome {
+    top: calc((var(--vh, 1vh) * 85) - 1em);
   }
 }
