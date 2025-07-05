@@ -39,7 +39,7 @@
   margin: 0;
   padding: calc(25px + 1em) 25px;
   position: fixed;
-  top: 6.25%;
+  bottom: 6.25%;
   left: 50%;
   transform: translate(-50%, 0);
 }
@@ -56,6 +56,10 @@
 }
 
 @media (max-width:750px) {
+  #content {
+    width: 75%;
+  }
+
   #prev {
     left: 0;
   }
@@ -65,11 +69,11 @@
   }
 
   #back {
-    top: 0;
+    bottom: 0;
   }
 }
 
-@media (max-height:650px) {
+/* @media (max-height:650px) {
   #content {
     width: calc(50% * (1 - 0.2));
     left: calc(50% + (50% * 0.2));
@@ -84,4 +88,4 @@
     top: 50%;
     transform: translate(0, -50%);
   }
-}
+} */

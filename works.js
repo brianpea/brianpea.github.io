@@ -101,9 +101,15 @@ function draw() {
   let tightnessMultiplier;
 
   if (windowWidth <= 750) {
-    radius1Multiplier = 1.3;
-    radius2Multiplier = radius2Multiplier * 2;
-    tightnessMultiplier = 1.5;
+    if (windowHeight <= 500) {
+      radius1Multiplier = 1.15;
+      radius2Multiplier = radius2Multiplier * 1.5;
+      tightnessMultiplier = 1.25;
+    } else {
+      radius1Multiplier = 1.3;
+      radius2Multiplier = radius2Multiplier * 2;
+      tightnessMultiplier = 1.5;
+    }
   } else {
     radius1Multiplier = 1;
     tightnessMultiplier = 1;

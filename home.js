@@ -103,9 +103,15 @@ function draw() {
   let tightnessMultiplier;
 
   if (windowWidth <= 750) {
-    radius1Multiplier = 1.3;
-    radius2Multiplier = radius2Multiplier * 2;
-    tightnessMultiplier = 1.5;
+    if (windowHeight <= 500) {
+      radius1Multiplier = 1.15;
+      radius2Multiplier = radius2Multiplier * 1.5;
+      tightnessMultiplier = 1.25;
+    } else {
+      radius1Multiplier = 1.3;
+      radius2Multiplier = radius2Multiplier * 2;
+      tightnessMultiplier = 1.5;
+    }
   } else {
     radius1Multiplier = 1;
     tightnessMultiplier = 1;
@@ -330,9 +336,11 @@ csvWorks.onload = function () {
       if (workFormat == "jpg" || workFormat == "gif") {
         var mediaMedia = document.createElement("img");
         mediaMedia.className = "lazy";
-        mediaMedia.src = "works/" + workFile + "_300." + workFormat;
-        mediaMedia.dataset.src = "works/" + workFile + "_1200." + workFormat;
-        mediaMedia.dataset.srcset = "works/" + workFile + "_300." + workFormat + " 300w, works/" + workFile + "_600." + workFormat + " 600w, works/" + workFile + "_1200." + workFormat + " 1200w";
+        mediaMedia.src = "works/" + workFile + "_600." + workFormat;
+        mediaMedia.srcset = "works/" + workFile + "_300." + workFormat + " 300w, works/" + workFile + "_600." + workFormat + " 600w, works/" + workFile + "_1200." + workFormat + " 1200w";
+        mediaMedia.sizes = "(max-width: 500px) 300px, (max-width: 750px) 600px, (max-width: 1300px) 300px, (max-width: 2500px) 600px, 1200px"
+        // mediaMedia.dataset.src = "works/" + workFile + "_1200." + workFormat;
+        // mediaMedia.dataset.srcset = "works/" + workFile + "_300." + workFormat + " 300w, works/" + workFile + "_600." + workFormat + " 600w, works/" + workFile + "_1200." + workFormat + " 1200w";
         mediaMedia.alt = workAlt;
         mediaMedia.addEventListener("load", update);
         container.appendChild(mediaMedia);
