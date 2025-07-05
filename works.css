@@ -33,6 +33,7 @@
 #home {
   position: absolute;
   top: 1em;
+  width: inherit;
 }
 
 #welcome {
@@ -45,7 +46,8 @@
 
 #links {
   position: absolute;
-  bottom: 0;
+  bottom: 1em;
+  width: inherit;
 }
 
 #links li:first-child {

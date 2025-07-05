@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <link rel="stylesheet" type="text/css" href="/works.css">
+
+  <link rel="icon" href="/assets/favicon.gif" type="image/gif">
+  <title>Brian Pea</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.min.js" defer></script>
+
+</head>
+
+<body>
+
+  <div id="star"></div>
+
+  <div id="nav">
+    <p id="home"><a href="/">Home</a></p>
+
+    <h1><a id="welcome" href="javascript:void(0);"
+        onclick="ZoomSwitch = true; ZoomClick = true; window.history.pushState(null, null); return false">Brian Pea</a>
+    </h1>
+    
+    <ul id="links" class="overflow">
+      <li><p class="overflowtitle">Find me at</p></li>
+      <li><p><a href="mailto:brian@pea.zone">brian​@pea.zone</a></p></li>
+      <li><p><a href="https://instagram.com/brianispea">​@brianispea</a></p></li>
+      <li><p><a href="https://blog.pea.zone">Blog</a></p></li>
+    </ul>
+  </div>
+
+  <div id="work">
+    <div id="scrollbox">
+      <div id="content">
+        <div id="media" class="gallery">
+          <img class="media" src='CoursePosters_1.jpg' alt='A smartphone shows two versions of the animated design in Instagram.'>
+          <div id="video_sq" class="media">
+            <div id="sq">
+              <iframe 
+                src="https://player.vimeo.com/video/871706348?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                frameborder="0" allow="autoplay; fullscreen; picture-in-picture" 
+                style="position:absolute;top:0;left:0;width:100%;height:100%;" title="VAPAE Courses">
+              </iframe>
+            </div>
+            <script src="https://player.vimeo.com/api/player.js"></script>
+          </div>
+          <img class="media" src='CoursePosters_2.png' alt='Three posters announcing university college courses, with dark text and multicolor background on beige paper.'>
+        </div>
+        <br>
+        <h2>UCLA VAPAE Course Posters (2023-24)</h2>
+        <p>A series of print and animated designs to announce the courses offered by UCLA's Visual and Performing Arts Education (VAPAE) program for the 2023-24 academic year.</p>
+        <p>Inspired by ceramic tiles from the Arts and Crafts movement, the designs use naturalistic, interconnected elements to visually exemplify the program's approach to coursework.</p>
+      </div>
+    </div>
+    <!-- <a id="menu" href="javascript:void(0);" onclick="menu(); return false">>>></a> -->
+  </div>
+
+  <div id="loader"></div>
+  
+  <script src="/works.js"></script>
+
+</body>
+
+</html>
