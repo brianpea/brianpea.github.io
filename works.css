@@ -171,7 +171,7 @@
 }
 
 #modalContent {
-  padding: 25px;
+  /* padding: 25px; */
   /* position: absolute; */
   /* left: 50%; */
   /* transform: translate(-50%, 0); */
@@ -183,7 +183,8 @@
 
 #modalImg {
   display: block;
-  width: 100%;
+  padding: 25px;
+  /* width: 100%; */
   /* margin: 1em 0; */
 }
 

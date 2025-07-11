@@ -391,6 +391,7 @@ for (var i = 0; i < imgs.length; i++) {
   imgs[i].onclick = function() {
     modal.style.display = "block";
     modalImg.src = this.src;
+    imagescale();
   };
 
   imgs[i].style.cursor = "pointer";
@@ -398,6 +399,28 @@ for (var i = 0; i < imgs.length; i++) {
 
   modal.onclick = function() {modal.style.display = "none"};
 };
+
+function imagescale() {
+  var imgWidth = modalImg.width;
+  var imgHeight = modalImg.height;
+
+  var windowRatio = window.innerWidth / window.innerHeight;
+  var imgRatio = imgWidth / imgHeight;
+
+  var modalPadding = parseInt(window.getComputedStyle(modalImg, null).getPropertyValue("padding"));
+  var imgModalWidth = modal.clientWidth - (modalPadding * 2);
+  var imgModalHeight = modal.clientHeight - (modalPadding * 2);
+
+  if (windowRatio >= imgRatio) {
+    modalImg.style.width = imgModalWidth + "px";
+    modalImg.style.height = null;
+  } else {
+    modalImg.style.width = null;
+    modalImg.style.height = imgModalHeight + "px";
+  }
+}
+
+window.addEventListener('resize', imagescale);
 
 //overflow: controls dynamic overflow css styling
 setInterval(overflow, 1);
