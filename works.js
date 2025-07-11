@@ -392,6 +392,7 @@ for (var i = 0; i < imgs.length; i++) {
     modal.style.display = "block";
     modalImg.src = this.src;
     imagescale();
+    modal.scrollTo(0,0);
   };
 
   imgs[i].style.cursor = "pointer";
@@ -412,11 +413,11 @@ function imagescale() {
   var imgModalHeight = modal.clientHeight - (modalPadding * 2);
 
   if (windowRatio >= imgRatio) {
-    modalImg.style.width = imgModalWidth + "px";
-    modalImg.style.height = null;
+    modalImg.style.maxWidth = imgModalWidth + "px";
+    modalImg.style.maxHeight = null;
   } else {
-    modalImg.style.width = null;
-    modalImg.style.height = imgModalHeight + "px";
+    modalImg.style.maxWidth = null;
+    modalImg.style.maxHeight = imgModalHeight + "px";
   }
 }
 
