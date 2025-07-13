@@ -163,7 +163,6 @@
   width: 100vw;
   height: calc(var(--vh, 1vh) * 100);
   left: 0;
-  /* background-color: yellow; */
   display: none;
   text-align: center;
   z-index: 4;
@@ -171,22 +170,14 @@
 }
 
 #modalContent {
-  /* padding: 25px; */
-  /* position: absolute; */
-  /* left: 50%; */
-  /* transform: translate(-50%, 0); */
-  /* display: inline-block; */
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
-  display: block;
+  padding: 25px;
+  position: absolute;
+  font-size: 0; /* removes whitespace gap for inline element inside */
 }
 
 #modalImg {
-  padding: 25px;
-  /* display: block; */
-  /* width: 100%; */
-  /* margin: 1em 0; */
+  position: relative;
+  display: inline;
 }
 
 @media (max-width:750px) {

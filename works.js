@@ -383,6 +383,7 @@ if (document.querySelectorAll("img").length > 0) {
 }
 
 var modal = document.getElementById("modal");
+var modalContent = document.getElementById("modalContent");
 var modalImg = document.getElementById("modalImg");
 
 var imgs = document.querySelectorAll("img");
@@ -408,57 +409,63 @@ function imagescale() {
   var windowRatio = window.innerWidth / window.innerHeight;
   var imgRatio = imgWidth / imgHeight;
 
-  var modalPadding = parseInt(window.getComputedStyle(modalImg, null).getPropertyValue("padding"));
-  var imgModalWidth = modal.clientWidth - (modalPadding * 2);
-  var imgModalHeight = modal.clientHeight - (modalPadding * 2);
+  var modalPaddingOffset = parseInt(window.getComputedStyle(modalContent).padding) * 2;
+  var modalImgWidth = modal.clientWidth - modalPaddingOffset;
+  var modalImgHeight = modal.clientHeight - modalPaddingOffset;
 
   if (windowRatio >= imgRatio) {
-    modalImg.style.maxWidth = imgModalWidth + "px";
+    modalImg.style.maxWidth = modalImgWidth + "px";
     modalImg.style.maxHeight = null;
     modal.style.overflowX = "hidden";
     modal.style.overflowY = null;
   } else {
     modalImg.style.maxWidth = null;
-    modalImg.style.maxHeight = imgModalHeight + "px";
+    modalImg.style.maxHeight = modalImgHeight + "px";
     modal.style.overflowX = null;
     modal.style.overflowY = "hidden";
+  }
+
+  if ((window.innerWidth - modalPaddingOffset) >= imgWidth) {
+    modalContent.style.width = "calc(100vw - " + modalPaddingOffset + "px)";
+  } else {
+    modalContent.style.width = "auto";
   }
 }
 
 window.addEventListener('resize', imagescale);
 
-//overflow: controls dynamic overflow css styling
+//overflow: controls dynamic horizontal overflow styling (center on screen to top aligned)
 setInterval(overflow, 1);
 
 function overflow() {
-  var content = document.getElementById("content").scrollHeight;
-  var work = document.getElementById("work").scrollHeight;
+  var content = document.getElementById("content");
+  var work = document.getElementById("work");
 
-  if (content >= work) {
-    document.getElementById("content").style.top = "0";
-    document.getElementById("content").style.transform = "translate(0, 0)";
+  if (content.scrollHeight >= work.scrollHeight) {
+    content.style.top = "0";
+    content.style.transform = "translate(0, 0)";
   } else {
-    document.getElementById("content").style.top = "50%";
-    document.getElementById("content").style.transform = "translate(0, -50%)";
+    content.style.top = "50%";
+    content.style.transform = "translate(0, -50%)";
   }
 }
 
-// if (document.querySelectorAll("img").length > 0) {
-//   setInterval(overflowModal, 1);
+if (document.querySelectorAll("img").length > 0) {
+  setInterval(overflowModal, 1);
 
-//   function overflowModal() {
-//     var contentModal = document.getElementById("modalContent").scrollHeight;
-//     var scrollboxModal = document.getElementById("modal").scrollHeight;
+  function overflowModal() {
+    var contentModal = document.getElementById("modalContent");
+    var scrollboxModal = document.getElementById("modal");
 
-//     if (contentModal >= scrollboxModal) {
-//       document.getElementById("modalContent").style.top = "0";
-//       document.getElementById("modalContent").style.transform = "translate(-50%, 0)";
-//     } else {
-//       document.getElementById("modalContent").style.top = "50%";
-//       document.getElementById("modalContent").style.transform = "translate(-50%, -50%)";
-//     }
-//   }
-// }
+    if (contentModal.scrollHeight >= scrollboxModal.scrollHeight) {
+      contentModal.style.top = "0";
+      contentModal.style.transform = "translate(0, 0)";
+    } else {
+      contentModal.style.top = "50%";
+      contentModal.style.transform = "translate(0, -50%)";
+    }
+  }
+}
 
 // //password: reveals a password
 // var locks = document.querySelectorAll('.lock');
