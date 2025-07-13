@@ -393,7 +393,10 @@ for (var i = 0; i < imgs.length; i++) {
     modal.style.display = "block";
     modalImg.src = this.src;
     imagescale();
-    modal.scrollTo(0,0);
+
+    var scrollToX = (parseInt(window.getComputedStyle(modalContent).width) - window.width + 50) / 2;
+    var scrollToY = (parseInt(window.getComputedStyle(modalContent).height) - window.height + 50) / 2;
+    modal.scrollTo(scrollToX,scrollToY);
   };
 
   imgs[i].style.cursor = "pointer";
