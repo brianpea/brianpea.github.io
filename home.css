@@ -150,6 +150,11 @@ video {
   video {
     width: calc(65vw - 25px);
   }
+
+  .overlay .name {
+    text-decoration: underline wavy 0.2vw;
+    text-decoration-thickness: 0.2vw;
+  }
 }
 
 @media (max-width: 750px) and (max-height: 500px) {
@@ -163,6 +168,11 @@ video {
 
   video {
     width: calc(32.5vw - 25px);
+  }
+
+  .overlay .name {
+    text-decoration: underline wavy 0.1vw;
+    text-decoration-thickness: 0.1vw;
   }
 }
 
