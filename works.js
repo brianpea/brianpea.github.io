@@ -415,13 +415,13 @@ function imagescale() {
   if (windowRatio >= imgRatio) {
     modalImg.style.maxWidth = imgModalWidth + "px";
     modalImg.style.maxHeight = null;
-    modal.style.overflowX = "hidden";
-    modal.style.overflowY = null;
+    // modal.style.overflowX = "hidden";
+    // modal.style.overflowY = null;
   } else {
     modalImg.style.maxWidth = null;
     modalImg.style.maxHeight = imgModalHeight + "px";
-    modal.style.overflowX = null;
-    modal.style.overflowY = "hidden";
+    // modal.style.overflowX = null;
+    // modal.style.overflowY = "hidden";
   }
 }
 
@@ -443,22 +443,22 @@ function overflow() {
   }
 }
 
-if (document.querySelectorAll("img").length > 0) {
-  setInterval(overflowModal, 1);
+// if (document.querySelectorAll("img").length > 0) {
+//   setInterval(overflowModal, 1);
 
-  function overflowModal() {
-    var contentModal = document.getElementById("modalContent").scrollHeight;
-    var scrollboxModal = document.getElementById("modal").scrollHeight;
+//   function overflowModal() {
+//     var contentModal = document.getElementById("modalContent").scrollHeight;
+//     var scrollboxModal = document.getElementById("modal").scrollHeight;
 
-    if (contentModal >= scrollboxModal) {
-      document.getElementById("modalContent").style.top = "0";
-      document.getElementById("modalContent").style.transform = "translate(-50%, 0)";
-    } else {
-      document.getElementById("modalContent").style.top = "50%";
-      document.getElementById("modalContent").style.transform = "translate(-50%, -50%)";
-    }
-  }
-}
+//     if (contentModal >= scrollboxModal) {
+//       document.getElementById("modalContent").style.top = "0";
+//       document.getElementById("modalContent").style.transform = "translate(-50%, 0)";
+//     } else {
+//       document.getElementById("modalContent").style.top = "50%";
+//       document.getElementById("modalContent").style.transform = "translate(-50%, -50%)";
+//     }
+//   }
+// }
 
 // //password: reveals a password
 // var locks = document.querySelectorAll('.lock');
