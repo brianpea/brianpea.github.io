@@ -415,13 +415,13 @@ function imagescale() {
   if (windowRatio >= imgRatio) {
     modalImg.style.maxWidth = imgModalWidth + "px";
     modalImg.style.maxHeight = null;
-    // modal.style.overflowX = "hidden";
-    // modal.style.overflowY = null;
+    modal.style.overflowX = "hidden";
+    modal.style.overflowY = null;
   } else {
     modalImg.style.maxWidth = null;
     modalImg.style.maxHeight = imgModalHeight + "px";
-    // modal.style.overflowX = null;
-    // modal.style.overflowY = "hidden";
+    modal.style.overflowX = null;
+    modal.style.overflowY = "hidden";
   }
 }
 
