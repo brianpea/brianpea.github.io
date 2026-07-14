@@ -51,7 +51,7 @@
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   border: 0;
 }
 
@@ -63,7 +63,7 @@
   #prev {
     left: 0;
   }
-  
+
   #next {
     right: 0;
   }
@@ -72,20 +72,3 @@
     bottom: 0;
   }
 }
-
-/* @media (max-height:650px) {
-  #content {
-    width: calc(50% * (1 - 0.2));
-    left: calc(50% + (50% * 0.2));
-  }
-
-  #prev {
-    left: 20%;
-  }
-
-  #back {
-    left: 0;
-    top: 50%;
-    transform: translate(0, -50%);
-  }
-} */

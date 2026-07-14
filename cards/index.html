@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <link rel="stylesheet" type="text/css" href="/works.css">
+
+  <link rel="icon" href="/assets/favicon.gif" type="image/gif">
+  <title>Brian Pea</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.min.js" defer></script>
+
+</head>
+
+<body>
+
+  <div id="star"></div>
+
+  <div id="nav">
+    <p id="home"><a href="/">Home</a></p>
+
+    <h1><a id="welcome" href="javascript:void(0);"
+        onclick="ZoomSwitch = true; ZoomClick = true; window.history.pushState(null, null); return false">Brian Pea</a>
+    </h1>
+
+    <ul id="links" class="overflow">
+      <li>
+        <p class="overflowtitle">Find me at</p>
+      </li>
+      <li>
+        <p><a href="mailto:brian@pea.zone">brian​@pea.zone</a></p>
+      </li>
+      <li>
+        <p><a href="https://instagram.com/brianispea">​@brianispea</a></p>
+      </li>
+      <li>
+        <p><a href="https://blog.pea.zone">Blog</a></p>
+      </li>
+    </ul>
+  </div>
+
+  <div id="work">
+    <div id="scrollbox">
+      <div id="content">
+        <h2>Greeting Cards</h2>
+        <div id="media" class="gallery">
+          <picture>
+            <source srcset="cards1.webp" type="image/webp">
+            <img class="media" src="cards1.jpg"
+              alt='A greeting card with a baby and a fart cloud. There is text that reads "Sorry this baby made an oopsie."'>
+          </picture>
+          <picture>
+            <source srcset="cards2.webp" type="image/webp">
+            <img class="media" src="cards2.jpg"
+              alt='A greeting card with a baby and a fart cloud. There is text that reads "Sorry this baby made an oopsie."'>
+          </picture>
+          <picture>
+            <source srcset="cards3.webp" type="image/webp">
+            <img class="media" src="cards3.jpg"
+              alt='A greeting card with a baby and a fart cloud. There is text that reads "Sorry this baby made an oopsie."'>
+          </picture>
+          <picture>
+            <source srcset="cards4.webp" type="image/webp">
+            <img class="media" src="cards4.jpg"
+              alt='A greeting card with a baby and a fart cloud. There is text that reads "Sorry this baby made an oopsie."'>
+          </picture>
+        </div>
+        <p>My series of linocut greeting cards.</p>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <div id="loader"></div>
+
+  <script src="/works.js"></script>
+
+</body>
+
+</html>

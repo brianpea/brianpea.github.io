@@ -37,8 +37,8 @@ function setup() {
 }
 
 function draw() {
-    ZoomSwitch = getItem('ZoomSwitch');
-    ZoomClick = getItem('ZoomClick');
+  ZoomSwitch = getItem('ZoomSwitch');
+  ZoomClick = getItem('ZoomClick');
 }
 
 //slides: makes a slideshow with arrows

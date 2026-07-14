@@ -13,14 +13,14 @@ var loader = document.getElementById("loader");
 var loaderAnimation = document.createElement("p");
 loader.appendChild(loaderAnimation);
 
-var animationFrames = ["|||","|||","|||","/||","//|","///","///","///","|//","||/"];
+var animationFrames = ["|||", "|||", "|||", "/||", "//|", "///", "///", "///", "|//", "||/"];
 var animationFramerate = 100;
 animator(animationFrames, animationFramerate);
 
 function animator(frames, framerate) {
   var i = -1;
   setInterval(
-    function() {
+    function () {
       loaderAnimation.innerHTML = frames[i];
       i++;
       i %= frames.length;
@@ -121,7 +121,7 @@ function draw() {
   let Tightness = map((windowWidth * 1.75), 0, (3500 / tightnessMultiplier), 1, 0);
   let SecsPerSpin = Points * 60;
 
-  function mapper (number, inMin, inMax, outMin, outMax) {
+  function mapper(number, inMin, inMax, outMin, outMax) {
     if (number < inMin) {
       return outMin;
     } else if (number > inMax) {
@@ -164,24 +164,6 @@ function draw() {
       removeItem("ZoomClick");
     }
   }
-
-  // let textRef = document.getElementById("nav");
-  // // let welcomeRef = document.getElementById("welcome");
-
-  // // let textRight = 25;
-  // // let welcomeWidth = welcomeRef.offsetWidth;
-
-  // // textCenterX = windowWidth - textRight - (welcomeWidth / 2);
-  // textCenterX = windowWidth - (textRef.offsetWidth / 2);
-
-  // // let textTop = textRef.offsetTop;
-  // // let textHeight = textRef.offsetHeight;
-  // // let welcomeHeight = welcomeRef.offsetHeight;
-  // // let em = windowWidth * 0.015;
-  // // let padding = 25;
-
-  // // textCenterY = textTop - (textHeight / 2) + ((em * mobileMultiplier) + padding) + (em * mobileMultiplier) + (welcomeHeight / 2);
-  // textCenterY = windowHeight / 2;
 
   var welcomeRef = document.getElementById("welcome");
   textCenterX = welcomeRef.getBoundingClientRect().left + (welcomeRef.offsetWidth / 2);
@@ -250,7 +232,7 @@ function loaded() {
   document.body.style.background = "aliceblue";
   document.getElementById("work").style.opacity = 1;
   document.getElementById("nav").style.opacity = 1;
-  document.getElementById("loader").style.opacity = 0; 
+  document.getElementById("loader").style.opacity = 0;
   document.getElementById("loader").style.zIndex = 0;
   setTimeout(loaderOff, 500);
 
@@ -310,99 +292,106 @@ if (mediaCount != 0) {
   }
 }
 
-//menu: hides/shows side links to make work area larger/smaller
-// var toggle = false;
-// var interval;
+//mediascale: dynamically maps media scaling to aspect ratio (smallest at 1:1 ratio)
+function mediascale() {
 
-// function menu() {
-//   clearInterval(interval);
-//   document.getElementById("menu").style.display = "none";
-//   document.getElementById("work").style.transition = "1s ease-out";
-//   document.getElementById("content").style.transition = "1s ease-out";
+  var scaleMin = 0.5625;
+  var scaleMax = 0.8125;
 
-//   if (toggle == true) {
-//     document.getElementById("work").style.zIndex = "2";
-//     document.getElementById("nav").style.zIndex = "3";
-//     document.getElementById("work").style.width = "calc(65vw - 25px)";
-//     document.getElementById("content").style.width = "calc(65vw - 75px)";
-//     document.getElementById("work").ontransitionend = show;
-//   } else if (toggle == false) {
-//     document.getElementById("work").style.zIndex = "3";
-//     document.getElementById("nav").style.zIndex = "2";
-//     document.getElementById("work").style.width = "100vw";
-//     document.getElementById("content").style.width = "calc(100% - 50px)";
-//     document.getElementById("work").ontransitionend = hide;
-//   }
-// }
+  var medias = document.getElementsByClassName('media');
+  var refWidth = document.getElementById("media").offsetWidth;
 
-// function show() {
-//   document.getElementById("menu").innerHTML = ">>>";
-//   document.getElementById("menu").style.display = "inline-block";
-//   document.getElementById("work").style.transition = "none";
-//   toggle = false;
-//   interval = setInterval(adjust, 1);
-// }
+  for (var i = 0; i < medias.length; i++) {
+    var media = medias[i];
+    var ratio, ratioMap;
 
-// function hide() {
-//   document.getElementById("menu").innerHTML = "<<<";
-//   document.getElementById("menu").style.display = "inline-block";
-//   document.getElementById("work").style.transition = "none";
-//   toggle = true;
-//   interval = setInterval(adjust, 1);
-// }
+    if (media.querySelector("#wide") !== null) {
+      ratio = 16 / 9;
+    } else if (media.querySelector("#full") !== null) {
+      ratio = 4 / 3;
+    } else if (media.querySelector("#sq") !== null) {
+      ratio = 1 / 1;
+    } else {
+      ratio = media.width / media.height;
+    }
 
-// function adjust() {
-//   if (window.innerWidth > 750) {
-//     document.getElementById("work").style.width = "calc(75vw - 25px)";
-//     document.getElementById("menu").style.display = "none";
-//   } else {
-//     if (toggle == true) {
-//       document.getElementById("work").style.width = "100vw";
-//       document.getElementById("menu").style.display = "inline-block";
-//     } else if (toggle == false) {
-//       document.getElementById("work").style.width = "calc(65vw - 25px)";
-//       document.getElementById("menu").style.display = "inline-block";
-//     }
-//   }
-// }
+    if (ratio > 1) {
+      ratioMap = 1 / ratio;
+    } else {
+      ratioMap = ratio;
+    }
 
-//modal: fullscreen image modal with alt test captions
-if (document.querySelectorAll("img").length > 0) {
+    function mapper(number, inMin, inMax, outMin, outMax) {
+      if (number < inMin) {
+        return outMin;
+      } else if (number > inMax) {
+        return outMax;
+      } else {
+        return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+      };
+    }
+
+    var scaleAmount = mapper(ratioMap, 0.5, 1, scaleMax, scaleMin);
+
+    if (ratio < 1) {
+      media.style.width = (refWidth * scaleAmount * ratio) + "px";
+    } else {
+      media.style.width = (refWidth * scaleAmount) + "px";
+    }
+    media.style.maxWidth = "none";
+    media.style.maxHeight = "none";
+  }
+}
+
+window.addEventListener("load", mediascale);
+window.addEventListener("resize", mediascale);
+
+//modal: fullscreen image modal (maybe with alt text captions one day)
+var pics = document.querySelectorAll("picture");
+var modal, modalContent, modalImg, modalPaddingOffset;
+
+if (pics.length > 0) {
   var modalElement = document.createElement("div");
   modalElement.id = "modal";
 
   var modalContentElement = document.createElement("div");
   modalContentElement.id = "modalContent";
 
+  var modalPictureElement = document.createElement("picture");
+  var modalSourceElement = document.createElement("source");
   var modalImgElement = document.createElement("img");
   modalImgElement.id = "modalImg";
 
   document.body.appendChild(modalElement);
   modalElement.appendChild(modalContentElement);
-  modalContentElement.appendChild(modalImgElement);
+  modalContentElement.appendChild(modalPictureElement);
+  modalPictureElement.appendChild(modalSourceElement);
+  modalPictureElement.appendChild(modalImgElement);
+
+  modal = document.getElementById("modal");
+  modalContent = document.getElementById("modalContent");
+  modalImg = document.getElementById("modalImg");
+  modalPaddingOffset = parseInt(window.getComputedStyle(modalContent).padding) * 2;
 }
 
-var modal = document.getElementById("modal");
-var modalContent = document.getElementById("modalContent");
-var modalImg = document.getElementById("modalImg");
-
-var imgs = document.querySelectorAll("img");
-
-for (var i = 0; i < imgs.length; i++) {
-  imgs[i].onclick = function() {
+for (var i = 0; i < pics.length; i++) {
+  pics[i].onclick = function () {
     modal.style.display = "block";
-    modalImg.src = this.src;
-    imagescale();
+    modal.querySelector("source").srcset = this.children[0].srcset;
+    modalImg.src = this.children[1].src;
 
-    var scrollToX = (parseInt(window.getComputedStyle(modalContent).width) - window.width + 50) / 2;
-    var scrollToY = (parseInt(window.getComputedStyle(modalContent).height) - window.height + 50) / 2;
-    modal.scrollTo(scrollToX,scrollToY);
+    if (modalImg.complete) {
+      imagescale();
+    } else {
+      modalImg.addEventListener("load", imagescale);
+    }
+
   };
 
-  imgs[i].style.cursor = "pointer";
+  pics[i].style.cursor = "pointer";
   modal.style.cursor = "pointer";
 
-  modal.onclick = function() {modal.style.display = "none"};
+  modal.onclick = function () { modal.style.display = "none" };
 };
 
 function imagescale() {
@@ -412,27 +401,34 @@ function imagescale() {
   var windowRatio = window.innerWidth / window.innerHeight;
   var imgRatio = imgWidth / imgHeight;
 
-  var modalPaddingOffset = parseInt(window.getComputedStyle(modalContent).padding) * 2;
-  var modalImgWidth = modal.clientWidth - modalPaddingOffset;
-  var modalImgHeight = modal.clientHeight - modalPaddingOffset;
+  var modalImgWidth = window.innerWidth - modalPaddingOffset;
+  var modalImgHeight = window.innerHeight - modalPaddingOffset;
 
-  if (windowRatio >= imgRatio) {
-    modalImg.style.maxWidth = modalImgWidth + "px";
-    modalImg.style.maxHeight = null;
+  if (modalImgWidth > 1200) {
+    modalImgWidth = 1200;
+    modalImgHeight = 1200 / imgRatio;
+  }
+
+  if (windowRatio > imgRatio) {
+    modalImg.style.width = modalImgWidth - getScrollbarWidth() + "px";
+    modalImg.style.height = "auto";
     modal.style.overflowX = "hidden";
     modal.style.overflowY = null;
-  } else {
-    modalImg.style.maxWidth = null;
-    modalImg.style.maxHeight = modalImgHeight + "px";
+  } else if (windowRatio < imgRatio) {
+    modalImg.style.width = null;
+    modalImg.style.height = modalImgHeight - getScrollbarWidth() + "px";
     modal.style.overflowX = null;
+    modal.style.overflowY = "hidden";
+  } else {
+    modalImg.style.width = modalImgWidth + "px";
+    modalImg.style.height = null;
+    modal.style.overflowX = "hidden";
     modal.style.overflowY = "hidden";
   }
 
-  if ((window.innerWidth - modalPaddingOffset) >= imgWidth) {
-    modalContent.style.width = "calc(100vw - " + modalPaddingOffset + "px)";
-  } else {
-    modalContent.style.width = "auto";
-  }
+  var scrollToX = (imgWidth - window.innerWidth + modalPaddingOffset) / 2;
+  var scrollToY = (imgHeight - window.innerHeight + modalPaddingOffset) / 2;
+  modal.scrollTo(scrollToX, scrollToY);
 }
 
 window.addEventListener('resize', imagescale);
@@ -458,37 +454,37 @@ if (document.querySelectorAll("img").length > 0) {
 
   function overflowModal() {
     var contentModal = document.getElementById("modalContent");
-    var scrollboxModal = document.getElementById("modal");
 
-    if (contentModal.scrollHeight >= scrollboxModal.scrollHeight) {
+    if (contentModal.scrollHeight > window.innerHeight) {
       contentModal.style.top = "0";
+      contentModal.style.left = "50%";
+      contentModal.style.transform = "translate(-50%, 0)";
+    } else if (contentModal.scrollWidth > window.innerWidth) {
+      contentModal.style.top = "0";
+      contentModal.style.left = "0";
       contentModal.style.transform = "translate(0, 0)";
     } else {
       contentModal.style.top = "50%";
-      contentModal.style.transform = "translate(0, -50%)";
+      contentModal.style.left = "50%";
+      contentModal.style.transform = "translate(-50%, -50%)";
     }
   }
 }
 
-// //password: reveals a password
-// var locks = document.querySelectorAll('.lock');
-// var keys = [];
+//scrollbar width: gets scrollbar width to calculate some styling
+function getScrollbarWidth() {
+  var outer = document.createElement('div');
+  outer.style.visibility = 'hidden';
+  outer.style.overflow = 'scroll';
+  outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
+  document.body.appendChild(outer);
 
-// for (var i = 0; i < locks.length; i++) {
-//   var lock = locks[i];
-//   var lockNum = i + 1;
-//   var lockId = "lock" + lockNum;
-//   lock.id = lockId;
+  var inner = document.createElement('div');
+  outer.appendChild(inner);
 
-//   var key = lock.innerHTML;
-//   keys.push(key);
-//   var keyLink = "<a href='#' onclick='unlock(" + lockNum + ");'>Password</a>"
+  var scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
 
-//   lock.innerHTML = keyLink;
-// }
+  outer.parentNode.removeChild(outer);
 
-// function unlock(n) {
-//   var lock = document.getElementById("lock" + n);
-//   var key = keys[n - 1];
-//   lock.innerHTML = key;
-// }
+  return scrollbarWidth;
+};
