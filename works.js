@@ -338,9 +338,9 @@ function mediascale() {
     var scaleAmount = mapper(ratioMap, 0.5, 1, scaleMax, scaleMin);
 
     if (ratio < 1) {
-      media.style.width = (refWidth * scaleAmount * ratio) + "px";
+      media.style.width = parseInt(refWidth * scaleAmount * ratio) + "px";
     } else {
-      media.style.width = (refWidth * scaleAmount) + "px";
+      media.style.width = parseInt(refWidth * scaleAmount) + "px";
     }
     media.style.maxWidth = "none";
     media.style.maxHeight = "none";
