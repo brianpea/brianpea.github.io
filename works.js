@@ -331,6 +331,10 @@ function mediascale() {
       };
     }
 
+    if (window.innerWidth <= 750 && window.innerHeight > 500) {
+      scaleMin = scaleMax;
+    }
+
     var scaleAmount = mapper(ratioMap, 0.5, 1, scaleMax, scaleMin);
 
     if (ratio < 1) {
@@ -345,6 +349,7 @@ function mediascale() {
 
 window.addEventListener("load", mediascale);
 window.addEventListener("resize", mediascale);
+window.addEventListener("orientationchange", mediascale);
 
 //modal: fullscreen image modal (maybe with alt text captions one day)
 var pics = document.querySelectorAll("picture");
