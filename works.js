@@ -292,13 +292,13 @@ if (mediaCount != 0) {
   }
 }
 
-//mediascale: dynamically maps media scaling to aspect ratio (smallest at 1:1 ratio)
+//mediascale: dynamically maps media scaling to aspect ratio (smallest at 1:1 ratio, largest at 1;2 ratio)
 function mediascale() {
 
   var scaleMin = 0.5625;
   var scaleMax = 0.8125;
 
-  var medias = document.getElementsByClassName('media');
+  var medias = document.getElementsByClassName("media");
   var refWidth = document.getElementById("media").offsetWidth;
 
   for (var i = 0; i < medias.length; i++) {
@@ -347,9 +347,9 @@ function mediascale() {
   }
 }
 
-window.addEventListener("load", mediascale);
-window.addEventListener("resize", mediascale);
-window.addEventListener("orientationchange", mediascale);
+// window.addEventListener("load", mediascale);
+// window.addEventListener("resize", mediascale);
+setInterval(mediascale, 1);
 
 //modal: fullscreen image modal (maybe with alt text captions one day)
 var pics = document.querySelectorAll("picture");
@@ -390,7 +390,6 @@ for (var i = 0; i < pics.length; i++) {
     } else {
       modalImg.addEventListener("load", imagescale);
     }
-
   };
 
   pics[i].style.cursor = "pointer";
