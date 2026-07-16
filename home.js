@@ -301,22 +301,22 @@ csvWorks.onload = function () {
 
       if (workDisplay == "banner") {
         var bannerList = document.createElement("li");
-        // var bannerLink = document.createElement("a");
+        var bannerLink = document.createElement("a");
         var bannerBox = document.createElement("div");
         bannerBox.className = "bannerbox";
-        // bannerLink.href = "/" + workFile;
-        // bannerLink.appendChild(bannerBox);
-        // bannerList.appendChild(bannerLink);
-        bannerList.appendChild(bannerBox);
+        bannerLink.href = "/" + workFile;
+        bannerLink.appendChild(bannerBox);
+        bannerList.appendChild(bannerLink);
+        // bannerList.appendChild(bannerBox);
 
-        var bannerLink = document.createElement("a");
-        var bannerText = document.createElement("h2");
+        // var bannerLink = document.createElement("a");
+        var bannerText = document.createElement("p");
         bannerText.appendChild(document.createTextNode(workName));
         bannerText.className = "name";
-        bannerLink.href = "/" + workFile;
-        bannerLink.appendChild(bannerText);
-        bannerBox.appendChild(bannerLink);
-        // bannerBox.appendChild(bannerText);
+        // bannerLink.href = "/" + workFile;
+        // bannerLink.appendChild(bannerText);
+        // bannerBox.appendChild(bannerLink);
+        bannerBox.appendChild(bannerText);
 
         var bannerScroll = document.createElement("div");
         bannerScroll.className = "bannerscroll";
@@ -342,29 +342,31 @@ csvWorks.onload = function () {
 
             var bannerSheet = csvParser.getSheet();
 
-            for (var j = 1; j < bannerSheet.length; j++) {
-              var bannerMedia = bannerSheet[j];
+            for (var j = 0; j < 2; j++) {
+              for (var k = 1; k < bannerSheet.length; k++) {
+                var bannerMedia = bannerSheet[k];
 
-              var bannerMediaFile = bannerMedia[0];
-              var bannerMediaAlt = bannerMedia[1];
-              var isAnimation = bannerMedia[2];
+                var bannerMediaFile = bannerMedia[0];
+                var bannerMediaAlt = bannerMedia[1];
+                var isAnimation = bannerMedia[2];
 
-              // var bannerImgLink = document.createElement("a");
-              var bannerImg = document.createElement("img");
-              // bannerImgLink.href = "/" + bannerFile;
-              bannerImg.srcset = "works/banner_" + bannerFile + "/" + bannerMediaFile + "_300.webp 300w, works/banner_" + bannerFile + "/" + bannerMediaFile + "_600.webp 600w, works/banner_" + bannerFile + "/" + bannerMediaFile + "_1200.webp 1200w";
-              bannerImg.sizes = "(max-width: 685px) 300px, (max-width: 750px) 600px, (max-width: 1600px) 300px, (max-width: 3200px) 600px, 1200px"
+                // var bannerImgLink = document.createElement("a");
+                var bannerImg = document.createElement("img");
+                // bannerImgLink.href = "/" + bannerFile;
+                bannerImg.srcset = "works/banner_" + bannerFile + "/" + bannerMediaFile + "_300.webp 300w, works/banner_" + bannerFile + "/" + bannerMediaFile + "_600.webp 600w, works/banner_" + bannerFile + "/" + bannerMediaFile + "_1200.webp 1200w";
+                bannerImg.sizes = "(max-width: 685px) 300px, (max-width: 750px) 600px, (max-width: 1600px) 300px, (max-width: 3200px) 600px, 1200px"
 
-              if (isAnimation == "yes") {
-                bannerImg.src = "works/banner_" + bannerFile + "/" + bannerMediaFile + ".gif";
-              } else {
-                bannerImg.src = "works/banner_" + bannerFile + "/" + bannerMediaFile + ".jpg";
+                if (isAnimation == "yes") {
+                  bannerImg.src = "works/banner_" + bannerFile + "/" + bannerMediaFile + ".gif";
+                } else {
+                  bannerImg.src = "works/banner_" + bannerFile + "/" + bannerMediaFile + ".jpg";
+                }
+
+                bannerImg.alt = bannerMediaAlt;
+                // bannerImgLink.appendChild(bannerImg);
+                // bannerMedias.appendChild(bannerImgLink);
+                bannerMedias.appendChild(bannerImg);
               }
-
-              bannerImg.alt = bannerMediaAlt;
-              // bannerImgLink.appendChild(bannerImg);
-              // bannerMedias.appendChild(bannerImgLink);
-              bannerMedias.appendChild(bannerImg);
             }
           });
         }
@@ -417,10 +419,8 @@ csvWorks.onload = function () {
         overlay.appendChild(overlayText);
 
         document.getElementById('grid').appendChild(gridList);
-
       }
-
-    };
+    }
   });
 }
 

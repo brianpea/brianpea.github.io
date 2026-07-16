@@ -33,15 +33,22 @@
 #home {
   position: absolute;
   top: 1em;
+  left: 0;
   width: inherit;
+}
+
+#home a {
+  padding: calc(25px + 1em) 25px;
 }
 
 #welcome {
   position: absolute;
   top: calc(50% - 1em);
   left: calc(50% + 12.5px);
+  padding: calc(25px + 1em) 25px;
   transform: translate(-50%, -50%);
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 #links {
