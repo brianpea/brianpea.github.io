@@ -342,7 +342,7 @@ csvWorks.onload = function () {
 
             var bannerSheet = csvParser.getSheet();
 
-            for (var j = 0; j < 2; j++) {
+            for (var j = 0; j < 3; j++) {
               for (var k = 1; k < bannerSheet.length; k++) {
                 var bannerMedia = bannerSheet[k];
 
@@ -392,7 +392,6 @@ csvWorks.onload = function () {
         gridBox.className = "gridbox";
         gridBox.classList.add("grid");
         gridLink.appendChild(gridBox);
-
 
         var gridImg = document.createElement("img");
         gridImg.srcset = "works/" + workFile + "_300.webp  300w, works/" + workFile + "_600.webp  600w, works/" + workFile + "_1200.webp  1200w";
