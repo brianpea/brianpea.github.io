@@ -342,7 +342,7 @@ csvWorks.onload = function () {
 
             var bannerSheet = csvParser.getSheet();
 
-            for (var j = 0; j < 3; j++) {
+            for (var j = 0; j < 2; j++) {
               for (var k = 1; k < bannerSheet.length; k++) {
                 var bannerMedia = bannerSheet[k];
 
